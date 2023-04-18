@@ -1,5 +1,6 @@
 from config import *
 from sprites.player import (Player)
+from sprites.background import (Background)
 
 class Game:
     def __init__(self, window):
@@ -8,6 +9,7 @@ class Game:
         self.groups = {}
         self.prev_time = 0
         self.player = Player(window, self.groups)
+        self.background = Background(window)
         
     
     def handle_event(self, event):
@@ -22,9 +24,11 @@ class Game:
     
     def update(self):
         self.window.fill((100, 100, 100))
+        self.window.blit(BACKGROUND_IMAGE, (0, 0))
         
+
         delta_t = self.calc_delta_t()
-        
+        self.background.update(delta_t)
         self.player.update(delta_t)
         
         
