@@ -1,0 +1,9 @@
+WINDOW_WIDTH = 1000
+WINDOW_HEIGHT = 700
+
+
+
+
+
+
+FPS = 60
