@@ -7,7 +7,6 @@ class Background(pygame.sprite.Sprite):
         
         self.window = window
         self.parts = self.gen_parts()
-    
     def gen_parts(self):
         parts = []
         
