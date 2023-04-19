@@ -5,10 +5,8 @@ WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 560
 
 
-PLAYER_WIDTH = 44
-PLAYER_HEIGHT = 64
-PLAYER_IMAGE = pygame.image.load(os.path.join("assets", "img", "player.png"))
-PLAYER_IMAGE = pygame.transform.scale(PLAYER_IMAGE, (PLAYER_WIDTH, PLAYER_HEIGHT))
+PLAYER_WIDTH = 78
+PLAYER_HEIGHT = 94
 
 
 BACKGROUND_IMAGE = pygame.image.load(os.path.join("assets", "img", "background", "1.png"))

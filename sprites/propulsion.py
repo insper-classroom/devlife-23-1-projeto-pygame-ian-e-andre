@@ -4,13 +4,13 @@ from config import *
 import random
 
 class Propulsion(pygame.sprite.Sprite):
-    def __init__(self, WINDOW, player):
+    def __init__(self, window, player):
         pygame.sprite.Sprite.__init__(self)
         
         self.rect = pygame.Rect(player.rect.x, player.rect.y, 16, 32)
         
         
-        self.WINDOW = WINDOW
+        self.window = window
         self.delta_t = 0
         self.current_image_index = 1
         self.timer_count = 0
@@ -19,9 +19,13 @@ class Propulsion(pygame.sprite.Sprite):
         
     
     def draw(self):
-        img = pygame.transform.scale(pygame.image.load(os.path.join("assets", "img", "propulsion", f"{self.current_image_index}.png")), (20, 40))
-        img = pygame.transform.rotate(img, 180)
-        self.WINDOW.blit(img, [self.player.rect.x, self.player.rect.y + 40])
+        image = pygame.image.load(os.path.join("assets", "img", "propulsion", f"{self.current_image_index}.png"))
+        image = pygame.transform.smoothscale(image, (80, 80))
+        bounding_rect = image.get_bounding_rect()
+        cropped_image = image.subsurface(bounding_rect)
+        
+        self.window.blit(cropped_image, (self.player.rect.x - 60, self.player.rect.y + 60))
+        
     
     def update(self, delta_t):
         self.delta_t = delta_t
@@ -33,7 +37,7 @@ class Propulsion(pygame.sprite.Sprite):
             self.timer_count = 0
             self.current_image_index += 1
         
-        if (self.current_image_index == 5):
+        if (self.current_image_index == 4):
             self.current_image_index = 1
            
         if (self.player.bumping):
