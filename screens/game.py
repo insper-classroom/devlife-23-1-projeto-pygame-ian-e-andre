@@ -1,6 +1,7 @@
 from config import *
 from sprites.player import (Player)
 from sprites.background import (Background)
+from sprites.propulsion import (Propulsion)
 
 class Game:
     def __init__(self, window):
@@ -10,6 +11,7 @@ class Game:
         self.prev_time = 0
         self.player = Player(window, self.groups)
         self.background = Background(window)
+        self.propulsion = Propulsion(window, self.player)
         
     
     def handle_event(self, event):
@@ -29,8 +31,8 @@ class Game:
 
         delta_t = self.calc_delta_t()
         self.background.update(delta_t)
+        self.propulsion.update(delta_t)
         self.player.update(delta_t)
-        
         
                 
         

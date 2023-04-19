@@ -10,6 +10,8 @@ class Player(pygame.sprite.Sprite):
         
         self.rect = pygame.Rect(120, 0, PLAYER_WIDTH, PLAYER_HEIGHT)
         
+        self.bumping = False
+        
         self.vely = 0
         
         self.bump_acel = -0.03
@@ -28,12 +30,15 @@ class Player(pygame.sprite.Sprite):
                 self.vely = self.bump_max_acel
             else:
                 self.vely += self.bump_acel
+                
+            self.bumping = True
         else:
             if (self.vely >= self.gravity_max_acel):
                 self.vely = self.gravity_max_acel
             else:
                 self.vely += self.gravity_acel
                 
+            self.bumping = False
         self.rect.y += self.vely * delta_t
         
         if (self.rect.y >= WINDOW_HEIGHT - PLAYER_HEIGHT):

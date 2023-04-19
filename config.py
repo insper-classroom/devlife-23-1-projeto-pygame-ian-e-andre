@@ -16,7 +16,7 @@ BACKGROUND_IMAGE = pygame.transform.scale(BACKGROUND_IMAGE, (WINDOW_WIDTH, WINDO
 
 
 
-FPS = 100
+FPS = 60
 
 
 VEL_X = 0.3
