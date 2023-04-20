@@ -81,6 +81,8 @@ class Player(pygame.sprite.Sprite):
             self.on_top = True
         else: 
             self.on_top = False
+            
+        
         
     def draw(self):
         image = None
@@ -91,7 +93,9 @@ class Player(pygame.sprite.Sprite):
             image = pygame.image.load(os.path.join("assets", "img", "player-walking", f"{self.current_image_index}.png"))
             image = pygame.transform.smoothscale(image, (WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT))
             
-            
+        bounding_rect = image.get_bounding_rect()
+        self.rect.width = bounding_rect[2]
+        self.rect.height = bounding_rect[3]
         self.window.blit(image, (self.rect.x, self.rect.y))
             
     def check_obstacles_collision(self):
