@@ -27,16 +27,19 @@ class Player(pygame.sprite.Sprite):
         self.on_top = False
         self.on_floor = False
         
+        self.shield = False
+        self.alive = False
+        
 
     def movement(self, delta_t):
-        current_player_height = WALKING_PLAYER_HEIGHT
+        current_image_height = WALKING_PLAYER_HEIGHT
         if (not self.on_floor):
-            current_player_height = JETPACK_PLAYER_HEIGHT
+            current_image_height = JETPACK_PLAYER_HEIGHT
 
         pressed_keys = pygame.key.get_pressed()
 
         if (pressed_keys[pygame.K_SPACE]):
-            if (self.rect.y == WINDOW_HEIGHT - current_player_height - FLOOR_HEIGHT):
+            if (self.rect.y == WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT):
                 self.vely = self.bump_max_acel / 2 # fazer animacao de explosão de poeira por causa do salto 
             elif (self.vely <= self.bump_max_acel):
                 self.vely = self.bump_max_acel
@@ -55,11 +58,8 @@ class Player(pygame.sprite.Sprite):
 
         
         
-        if (self.rect.y >= WINDOW_HEIGHT - current_player_height - FLOOR_HEIGHT):
-            self.rect.y = WINDOW_HEIGHT - current_player_height - FLOOR_HEIGHT
-            
-            self.rect.width = WALKING_PLAYER_WIDTH
-            self.rect.height = WALKING_PLAYER_HEIGHT
+        if (self.rect.y >= WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT):
+            self.rect.y = WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT
             
             if (not self.on_floor):
                 self.current_image_index = 1
@@ -67,9 +67,6 @@ class Player(pygame.sprite.Sprite):
                 
             self.on_floor = True
         else:
-            self.rect.width = JETPACK_PLAYER_WIDTH
-            self.rect.height = JETPACK_PLAYER_HEIGHT
-            
             if (self.on_floor):
                 self.current_image_index = 1
                 self.timer_vel = 0.1
@@ -97,6 +94,14 @@ class Player(pygame.sprite.Sprite):
             
         self.window.blit(image, (self.rect.x, self.rect.y))
             
+    def check_obstacles_collision(self):
+        for grp_name in self.groups:
+            grp = self.groups[grp_name]
+            
+            if (pygame.sprite.spritecollideany(self, grp)):
+                pygame.quit()
+            
+                
     
     def update(self, delta_t):
         self.movement(delta_t)
@@ -110,6 +115,7 @@ class Player(pygame.sprite.Sprite):
         if ((not self.on_floor and self.current_image_index == 8) or (self.on_floor and self.current_image_index == 16)):
             self.current_image_index = 1
             
+        self.check_obstacles_collision()
         
         self.draw()
         
