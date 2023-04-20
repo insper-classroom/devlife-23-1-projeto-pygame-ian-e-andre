@@ -12,7 +12,7 @@ class Background(pygame.sprite.Sprite):
     def gen_parts(self):
         parts = []
         
-        for i in range(2, 6):
+        for i in range(1, 6):
             image = pygame.image.load(os.path.join("assets", "img", "background", f"{i}.png"))
             image = pygame.transform.scale(image, (WINDOW_WIDTH, WINDOW_HEIGHT))
 
@@ -25,9 +25,8 @@ class Background(pygame.sprite.Sprite):
             self.window.blit(part["image"], (part["x1"], 0))
             self.window.blit(part["image"], (part["x2"], 0))
             
-        
-        # self.window.blit(FLOOR_IMAGE, (self.floor["x1"], WINDOW_HEIGHT - FLOOR_HEIGHT))
-        self.window.blit(FLOOR_IMAGE, (0, WINDOW_HEIGHT - FLOOR_HEIGHT))
+        self.window.blit(FLOOR_IMAGE, (self.floor["x1"], 0))
+        self.window.blit(FLOOR_IMAGE, (self.floor["x2"], 0))
     
     def movement(self, delta_t):
         for i in range(len(self.parts)):
@@ -39,6 +38,9 @@ class Background(pygame.sprite.Sprite):
             
             if (self.parts[i]["x2"] < 0):
                 self.parts[i]["x2"] = WINDOW_WIDTH
+
+        self.floor["x1"] -= (VEL_X * delta_t) 
+        self.floor["x2"] -= (VEL_X * delta_t)
 
         if (self.floor["x1"] < WINDOW_WIDTH * -1):
             self.floor["x1"] = 0

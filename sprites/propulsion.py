@@ -24,13 +24,12 @@ class Propulsion(pygame.sprite.Sprite):
         bounding_rect = image.get_bounding_rect()
         cropped_image = image.subsurface(bounding_rect)
         
-        self.window.blit(cropped_image, (self.player.rect.x - 50, self.player.rect.y + 70))
+        
+        self.window.blit(cropped_image, (self.player.rect.x - 45, self.player.rect.y + 75))
         
     
     def update(self, delta_t):
         self.delta_t = delta_t
-        
-        
         self.timer_count += self.timer_vel * self.delta_t
         
         if (self.timer_count >= 10):
