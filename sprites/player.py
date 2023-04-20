@@ -2,7 +2,7 @@ import pygame
 from config import *
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, window, groups):
+    def __init__(self, window, groups, coin_count):
         pygame.sprite.Sprite.__init__(self)
         
         self.window = window
@@ -24,11 +24,17 @@ class Player(pygame.sprite.Sprite):
         self.timer_count = 0
         self.timer_vel = 0.1
         
+        self.coin_count = coin_count
+
         self.on_top = False
         self.on_floor = False
         
         self.shield = False
         self.alive = False
+
+        self.sounds = {
+            "coin_sound": pygame.mixer.Sound("assets/snd/coin01.ogg")
+        }
         
 
     def movement(self, delta_t):
@@ -103,7 +109,12 @@ class Player(pygame.sprite.Sprite):
             grp = self.groups[grp_name]
             
             if (pygame.sprite.spritecollideany(self, grp)):
-                pygame.quit()
+                if (grp_name == "eletric_obstacles"):
+                    pygame.quit()
+                elif (grp_name == "coins"):
+                    self.coin_count +=1
+                    grp.remove(pygame.sprite.spritecollideany(self, grp))
+                    self.sounds["coin_sound"].play()
             
                 
     

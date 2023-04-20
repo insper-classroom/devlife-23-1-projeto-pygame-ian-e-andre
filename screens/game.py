@@ -3,22 +3,26 @@ from sprites.player import (Player)
 from sprites.background import (Background)
 from sprites.propulsion import (Propulsion)
 from sprites.eletric_obstacle import (Eletric_obstacle)
+from sprites.coin import (Coin)
 
 class Game:
     def __init__(self, window):
         self.window = window
         
         self.groups = {
-            "eletric_obstacles": pygame.sprite.Group()
+            "eletric_obstacles": pygame.sprite.Group(),
+            "coins": pygame.sprite.Group(),
         }
         self.prev_time = 0
-        self.player = Player(window, self.groups)
+        self.coin_count = 0
+        self.player = Player(window, self.groups, self.coin_count)
         self.background = Background(window)
         self.propulsion = Propulsion(window, self.player)
         self.obstacle_count = 0
         self.obstacle_count_vel = 0.1
 
         self.groups["eletric_obstacles"].add(Eletric_obstacle(window, self.groups))
+        self.groups["coins"].add(Coin(window, self.groups))
         
     
     def handle_event(self, event):
@@ -37,6 +41,7 @@ class Game:
         if (self.obstacle_count >= 100):
             self.obstacle_count = 0 
             self.groups["eletric_obstacles"].add(Eletric_obstacle(self.window, self.groups))
+            self.groups["coins"].add(Coin(self.window, self.groups))
     
     def update(self):
         self.window.fill((100, 100, 100))
@@ -49,8 +54,9 @@ class Game:
         self.propulsion.update(delta_t)
         self.player.update(delta_t)
 
-        for grp in self.groups["eletric_obstacles"]:
-            grp.update(delta_t)
+        for i in self.groups:
+            self.groups[i].update(delta_t)
+        
         
                 
         

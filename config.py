@@ -14,6 +14,9 @@ WALKING_PLAYER_HEIGHT = 96
 ELETRIC_OBSTACLE_WIDTH = 130
 ELETRIC_OBSTACLE_HEIGHT = 25
 
+COIN_WIDTH = 53
+COIN_HEIGHT = 49
+
 
 BACKGROUND_IMAGE = pygame.image.load(os.path.join("assets", "img", "background", "1.png"))
 BACKGROUND_IMAGE = pygame.transform.scale(BACKGROUND_IMAGE, (WINDOW_WIDTH, WINDOW_HEIGHT))
