@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
         self.bump_acel = -0.03
         self.bump_max_acel = -0.5
         
-        self.gravity_acel = 0.01
+        self.gravity_acel = 0.02
         self.gravity_max_acel = 0.5
         
         self.current_image_index = 1
