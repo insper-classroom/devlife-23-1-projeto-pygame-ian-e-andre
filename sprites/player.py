@@ -24,6 +24,7 @@ class Player(pygame.sprite.Sprite):
         self.timer_count = 0
         self.timer_vel = 0.1
         
+        self.on_top = False
         self.on_floor = False
         
 
@@ -77,6 +78,12 @@ class Player(pygame.sprite.Sprite):
         
         if (self.rect.y <= 0):
             self.rect.y = 0
+            
+            if (not self.on_top):
+                self.vely = 0
+            self.on_top = True
+        else: 
+            self.on_top = False
         
     def draw(self):
         image = None
