@@ -15,7 +15,9 @@ class Game:
         self.player = Player(window, self.groups)
         self.background = Background(window)
         self.propulsion = Propulsion(window, self.player)
-        
+        self.obstacle_count = 0
+        self.obstacle_count_vel = 0.1
+
         self.groups["eletric_obstacles"].add(Eletric_obstacle(window, self.groups))
         
     
@@ -29,12 +31,20 @@ class Game:
         
         return delta_t
     
+    def add_obstacles(self, delta_t):
+        self.obstacle_count += self.obstacle_count_vel * delta_t
+
+        if (self.obstacle_count >= 100):
+            self.obstacle_count = 0 
+            self.groups["eletric_obstacles"].add(Eletric_obstacle(self.window, self.groups))
+    
     def update(self):
         self.window.fill((100, 100, 100))
         self.window.blit(BACKGROUND_IMAGE, (0, 0))
         
 
         delta_t = self.calc_delta_t()
+        self.add_obstacles(delta_t)
         self.background.update(delta_t)
         self.propulsion.update(delta_t)
         self.player.update(delta_t)
