@@ -38,6 +38,9 @@ class Eletric_obstacle(pygame.sprite.Sprite):
     def movement(self, delta_t):
         self.rect.x -= VEL_X * delta_t
             
+        if (self.rect.x < -ELETRIC_OBSTACLE_WIDTH):
+            self.groups["eletric_obstacles"].remove(self)
+            
     def update_hitbox(self):
         self.mask = pygame.mask.from_surface(self.sprite_image)    
     
