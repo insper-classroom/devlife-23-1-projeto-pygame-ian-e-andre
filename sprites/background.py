@@ -13,7 +13,7 @@ class Background(pygame.sprite.Sprite):
         parts = []
         
         for i in range(1, 6):
-            image = pygame.image.load(os.path.join("assets", "img", "background", f"{i}.png"))
+            image = pygame.image.load(os.path.join("assets", "img", "background", f"{i}.png")).convert_alpha()
             image = pygame.transform.scale(image, (WINDOW_WIDTH, WINDOW_HEIGHT))
 
             parts.append({"x1": 0, "x2": WINDOW_WIDTH, "image": image})

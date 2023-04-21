@@ -1,5 +1,7 @@
 import pygame
 from config import *
+from utils.counter import Counter
+from utils.utils import (get_animation_images, group_mask_collided)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, window, groups, coin_count):
@@ -9,7 +11,7 @@ class Player(pygame.sprite.Sprite):
         self.groups = groups
         
         self.rect = pygame.Rect(120, 0, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
-        
+    
         self.bumping = False
         
         self.vely = 0
@@ -20,12 +22,6 @@ class Player(pygame.sprite.Sprite):
         self.gravity_acel = 0.02
         self.gravity_max_acel = 0.5
         
-        self.current_image_index = 1
-        self.timer_count = 0
-        self.timer_vel = 0.1
-        
-        self.coin_count = coin_count
-
         self.on_top = False
         self.on_floor = False
         
@@ -35,6 +31,16 @@ class Player(pygame.sprite.Sprite):
         self.sounds = {
             "coin_sound": pygame.mixer.Sound("assets/snd/coin01.ogg")
         }
+        
+        pygame.mixer.Sound.set_volume(self.sounds["coin_sound"], 0.1)
+        
+        self.jetpack_animation_images = get_animation_images("assets/img/player-jetpack", 8, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
+        self.walking_animation_images = get_animation_images("assets/img/player-walking", 16, WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT)
+        self.animation_counter = Counter(0.1, 10, True, self.animation)
+        self.current_animation_index = 1
+        
+        self.sprite_image = self.jetpack_animation_images[self.current_animation_index]
+        self.mask = pygame.mask.from_surface(self.sprite_image)
         
 
     def movement(self, delta_t):
@@ -61,21 +67,20 @@ class Player(pygame.sprite.Sprite):
                 
             self.bumping = False
         self.rect.y += self.vely * delta_t
-
         
         
         if (self.rect.y >= WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT):
             self.rect.y = WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT
             
             if (not self.on_floor):
-                self.current_image_index = 1
-                self.timer_vel = 0.2
+                self.current_animation_index = 1
+                self.animation_counter.timer_vel = 0.2
                 
             self.on_floor = True
         else:
             if (self.on_floor):
-                self.current_image_index = 1
-                self.timer_vel = 0.1
+                self.current_animation_index = 1
+                self.animation_counter.timer_vel = 0.1
                 
             self.on_floor = False
         
@@ -89,48 +94,43 @@ class Player(pygame.sprite.Sprite):
             self.on_top = False
             
         
+    def update_hitbox(self):
+        self.mask = pygame.mask.from_surface(self.sprite_image)
         
     def draw(self):
-        image = None
         if (not self.on_floor):
-            image = pygame.image.load(os.path.join("assets", "img", "player-jetpack", f"{self.current_image_index}.png"))
-            image = pygame.transform.smoothscale(image, (JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT))
+            self.sprite_image = self.jetpack_animation_images[self.current_animation_index]
         elif (self.on_floor):
-            image = pygame.image.load(os.path.join("assets", "img", "player-walking", f"{self.current_image_index}.png"))
-            image = pygame.transform.smoothscale(image, (WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT))
+            self.sprite_image = self.walking_animation_images[self.current_animation_index] 
             
-        bounding_rect = image.get_bounding_rect()
-        self.rect.width = bounding_rect[2]
-        self.rect.height = bounding_rect[3]
-        self.window.blit(image, (self.rect.x, self.rect.y))
+        self.window.blit(self.sprite_image, (self.rect.x, self.rect.y))
             
-    def check_obstacles_collision(self):
+    def check_group_collision(self):
         for grp_name in self.groups:
             grp = self.groups[grp_name]
-            
-            if (pygame.sprite.spritecollideany(self, grp)):
+                
+                
+            collided_sprites = group_mask_collided(self, grp)
+            if (collided_sprites):
                 if (grp_name == "eletric_obstacles"):
                     pygame.quit()
                 elif (grp_name == "coins"):
-                    self.coin_count +=1
-                    grp.remove(pygame.sprite.spritecollideany(self, grp))
+                    grp.remove(collided_sprites)
                     self.sounds["coin_sound"].play()
             
+    def animation(self):
+        self.current_animation_index += 1
+        
+        if ((not self.on_floor and self.current_animation_index == 8) or (self.on_floor and self.current_animation_index == 16)):
+            self.current_animation_index = 1
                 
     
     def update(self, delta_t):
         self.movement(delta_t)
         
-        self.timer_count += self.timer_vel * delta_t
-        
-        if (self.timer_count >= 10):
-            self.timer_count = 0
-            self.current_image_index += 1
-        
-        if ((not self.on_floor and self.current_image_index == 8) or (self.on_floor and self.current_image_index == 16)):
-            self.current_image_index = 1
-            
-        self.check_obstacles_collision()
+        self.animation_counter.update(delta_t)
+        self.check_group_collision()
+        self.update_hitbox()
         
         self.draw()
         
