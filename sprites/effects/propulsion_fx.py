@@ -4,7 +4,7 @@ from config import *
 from utils.counter import Counter
 from utils.utils import get_animation_images
 
-class Propulsion(pygame.sprite.Sprite):
+class Propulsion_fx(pygame.sprite.Sprite):
     def __init__(self, window, player):
         pygame.sprite.Sprite.__init__(self)
         
@@ -13,7 +13,6 @@ class Propulsion(pygame.sprite.Sprite):
         self.current_animation_index = 1
         self.player = player 
         self.animation_counter = Counter(0.1, 8, True, self.animation)
-        
     
     def draw(self):
         image = self.animation_images[self.current_animation_index]

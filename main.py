@@ -24,7 +24,7 @@ class Main:
                     pygame.quit()
             
             self.current_screen.update()
-                
+                   
             pygame.display.update()  
             
 

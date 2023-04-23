@@ -6,11 +6,11 @@ from utils.utils import get_animation_images
 
 
 class Coin(pygame.sprite.Sprite):
-    def __init__(self, window, groups):
+    def __init__(self, window, obj_groups):
         pygame.sprite.Sprite.__init__(self)
         
         self.window = window
-        self.groups = groups
+        self.obj_groups = obj_groups
         
         position = self.gen_random_position()
         
@@ -34,7 +34,7 @@ class Coin(pygame.sprite.Sprite):
         self.rect.x -= VEL_X * delta_t
         
         if (self.rect.x < -COIN_WIDTH):
-            self.groups["coins"].remove(self)
+            self.obj_groups["coins"].remove(self)
         
     def draw(self):
         self.sprite_image = self.animation_images[self.current_animation_index]

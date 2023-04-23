@@ -2,13 +2,16 @@ import pygame
 from config import *
 from utils.counter import Counter
 from utils.utils import (get_animation_images, group_mask_collided)
+from sprites.effects.jump_fx import (Jump_fx)
+from sprites.effects.propulsion_fx import (Propulsion_fx)
+
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, window, groups, coin_count):
+    def __init__(self, window, obj_groups, coin_count):
         pygame.sprite.Sprite.__init__(self)
         
         self.window = window
-        self.groups = groups
+        self.obj_groups = obj_groups
         
         self.rect = pygame.Rect(120, 0, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
     
@@ -37,10 +40,15 @@ class Player(pygame.sprite.Sprite):
         self.jetpack_animation_images = get_animation_images("assets/img/player-jetpack", 8, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
         self.walking_animation_images = get_animation_images("assets/img/player-walking", 16, WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT)
         self.animation_counter = Counter(0.1, 10, True, self.animation)
-        self.current_animation_index = 1
+        self.current_animation_index = 0
         
         self.sprite_image = self.jetpack_animation_images[self.current_animation_index]
         self.mask = pygame.mask.from_surface(self.sprite_image)
+        
+        self.effects = {
+            "jump": Jump_fx(window, self),
+            "propulsion": Propulsion_fx(window, self),
+        }
         
 
     def movement(self, delta_t):
@@ -52,7 +60,8 @@ class Player(pygame.sprite.Sprite):
 
         if (pressed_keys[pygame.K_SPACE]):
             if (self.rect.y == WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT):
-                self.vely = self.bump_max_acel / 2 # fazer animacao de explosão de poeira por causa do salto 
+                self.vely = self.bump_max_acel  
+                self.effects["jump"].jump = True
             elif (self.vely <= self.bump_max_acel):
                 self.vely = self.bump_max_acel
             elif (self.rect.y > 0):
@@ -73,13 +82,13 @@ class Player(pygame.sprite.Sprite):
             self.rect.y = WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT
             
             if (not self.on_floor):
-                self.current_animation_index = 1
-                self.animation_counter.timer_vel = 0.2
+                self.current_animation_index = 0
+                self.animation_counter.timer_vel = 0.3
                 
             self.on_floor = True
         else:
             if (self.on_floor):
-                self.current_animation_index = 1
+                self.current_animation_index = 0
                 self.animation_counter.timer_vel = 0.1
                 
             self.on_floor = False
@@ -95,6 +104,9 @@ class Player(pygame.sprite.Sprite):
             
         
     def update_hitbox(self):
+        dimensions = self.sprite_image.get_bounding_rect()
+        self.rect.width = dimensions[2]
+        self.rect.height = dimensions[3]
         self.mask = pygame.mask.from_surface(self.sprite_image)
         
     def draw(self):
@@ -106,8 +118,8 @@ class Player(pygame.sprite.Sprite):
         self.window.blit(self.sprite_image, (self.rect.x, self.rect.y))
             
     def check_group_collision(self):
-        for grp_name in self.groups:
-            grp = self.groups[grp_name]
+        for grp_name in self.obj_groups:
+            grp = self.obj_groups[grp_name]
                 
                 
             collided_sprites = group_mask_collided(self, grp)
@@ -121,8 +133,12 @@ class Player(pygame.sprite.Sprite):
     def animation(self):
         self.current_animation_index += 1
         
-        if ((not self.on_floor and self.current_animation_index == 8) or (self.on_floor and self.current_animation_index == 16)):
-            self.current_animation_index = 1
+        if (
+            (not self.on_floor and self.current_animation_index == len(self.jetpack_animation_images) - 1) 
+            or 
+            (self.on_floor and self.current_animation_index == len(self.walking_animation_images) - 1)
+        ):
+            self.current_animation_index = 0
                 
     
     def update(self, delta_t):
@@ -131,6 +147,9 @@ class Player(pygame.sprite.Sprite):
         self.animation_counter.update(delta_t)
         self.check_group_collision()
         self.update_hitbox()
+        
+        for fx in self.effects.values():
+            fx.update(delta_t)
         
         self.draw()
         

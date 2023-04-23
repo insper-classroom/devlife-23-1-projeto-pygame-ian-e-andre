@@ -5,11 +5,11 @@ from utils.counter import Counter
 from utils.utils import get_animation_images
 
 class Eletric_obstacle(pygame.sprite.Sprite):
-    def __init__(self, window, groups):
+    def __init__(self, window, obj_groups):
         pygame.sprite.Sprite.__init__(self)
         
         self.window = window
-        self.groups = groups
+        self.obj_groups = obj_groups
         
         position = self.gen_random_position()
         
@@ -39,7 +39,7 @@ class Eletric_obstacle(pygame.sprite.Sprite):
         self.rect.x -= VEL_X * delta_t
             
         if (self.rect.x < -ELETRIC_OBSTACLE_WIDTH):
-            self.groups["eletric_obstacles"].remove(self)
+            self.obj_groups["eletric_obstacles"].remove(self)
             
     def update_hitbox(self):
         self.mask = pygame.mask.from_surface(self.sprite_image)    
