@@ -9,3 +9,10 @@ Lembre-se de colocar algumas imagens do jogo no seu README.
 Além disso, a página do jogo deve ser feita dentro da pasta `docs`.
 
 APAGUE ESSE CONTEÚDO E SUBSTITUA PELO SEU PRÓPRIO README!
+
+---------
+
+INSTALAÇÃO
+
+pip install pygame
+pip install pygame --upgrade

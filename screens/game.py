@@ -14,8 +14,9 @@ class Game:
             "eletric_obstacles": pygame.sprite.Group(),
             "coins": pygame.sprite.Group(),
         }
-        
 
+        self.background_image = pygame.image.load(os.path.join("assets", "img", "background", "1.png"))
+        self.background_image = pygame.transform.scale(self.background_image, (WINDOW_WIDTH, WINDOW_HEIGHT))
         
         self.prev_time = 0
         self.coin_count = 0
@@ -48,9 +49,8 @@ class Game:
     
     def update(self):
         self.window.fill((100, 100, 100))
-        self.window.blit(BACKGROUND_IMAGE, (0, 0))
+        self.window.blit(self.background_image, (0, 0))
         
-
         delta_t = self.calc_delta_t()
         
         self.background.update(delta_t)

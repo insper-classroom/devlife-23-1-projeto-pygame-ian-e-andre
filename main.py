@@ -13,10 +13,9 @@ class Main:
         
     def run(self):
         clock = pygame.time.Clock()
+        pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
 
-        while True:
-            clock.tick(FPS)
-            
+        while 1:
             for event in pygame.event.get():
                 self.current_screen.handle_event(event)
                 
@@ -26,6 +25,9 @@ class Main:
             self.current_screen.update()
                    
             pygame.display.update()  
+            
+            clock.tick(FPS)
+            
             
 
 main = Main()
