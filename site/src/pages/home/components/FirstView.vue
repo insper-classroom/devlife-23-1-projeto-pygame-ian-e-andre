@@ -49,8 +49,8 @@ export default defineComponent({
                 <a class="menu" href="#description">Description</a>
                 <a class="menu" href="#logs">Development logs</a>
                 <a class="menu" href="#installation">Installation</a>
+                <a class="menu" href="#gallery">Gallery</a>
                 <a class="menu">Play</a>
-                <a class="menu">Video</a>
 
                 
                 <button class="play-button">Launch game</button>
