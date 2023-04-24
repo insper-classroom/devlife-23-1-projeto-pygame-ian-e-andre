@@ -28,7 +28,6 @@ class Main:
             pygame.display.update()  
             
             clock.tick(FPS)
-            
-
+               
 main = Main()
 main.run()

@@ -21,6 +21,8 @@ class Game:
         
         self.prev_time = 0
         self.coin_amount = 0
+        self.score = 0
+        self.score_counter = Counter(0.1, 4, True, self.update_score)
         self.player = Player(window, self.obj_groups, self)
         self.background = Background(window)
         self.hud = Hud(window)
@@ -30,7 +32,8 @@ class Game:
 
         self.add_objects_counter = Counter(0.1, 100, True, self.add_object)
         
-
+    def update_score(self):
+        self.score += 1
     
     def handle_event(self, event):
         pass
@@ -56,12 +59,13 @@ class Game:
         
         self.background.update(delta_t)
         self.player.update(delta_t)
+
         
         for i in self.obj_groups:
             self.obj_groups[i].update(delta_t)
             
         self.add_objects_counter.update(delta_t)
-
+        self.score_counter.update(delta_t)
         self.hud.update(delta_t, self)
 
         
