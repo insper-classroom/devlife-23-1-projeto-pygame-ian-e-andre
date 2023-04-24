@@ -1,14 +1,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Toast } from '@/plugin/Toast';
-import { useState } from '../state/State';
-import { Emitter } from '@/events/Emitter';
+
 import Button from '@/shared/Button.vue'
 
 export default defineComponent({
     data() {
         return {
-            State: useState(),
             text: "",
             currentPlayerImageIndex: 1
         }
@@ -27,18 +25,18 @@ export default defineComponent({
 <template>
     <div class="installation-steps-component fade">
         <section class="text-container">
-            <h1>Instalacao do jogo</h1>
+            <h1>GAME INSTALLATION</h1>
             <!-- texto a baixo gerado pelo chat GPT -->
             <p> 
-                Para jogar o jogo 2D descrito anteriormente, é necessário seguir algumas etapas simples. Primeiro, é necessário clonar o repositório do jogo no Github, o que pode ser feito através do comando "git clone" seguido pelo link do repositório.
+                To play the previously described 2D game, you need to follow a few simple steps. First, it's necessary to clone the game repository on Github, which can be done through the "git clone" command followed by the repository link.
                 <br>
-                Em seguida, é necessário entrar no diretório onde os arquivos do jogo estão armazenados, o que pode ser feito através do comando "cd".
+                Next, you need to enter the directory where the game files are stored, which can be done through the "cd" command.
                 <br>
-                Para garantir que o jogo seja executado corretamente, é necessário instalar as dependências do jogo, que podem ser feitas através do comando "pip3 install pygame". É importante ressaltar que é necessário ter o Python instalado em seu computador para executar o jogo.
+                To ensure that the game runs correctly, you need to install the game dependencies, which can be done through the "pip3 install pygame" command. It's important to note that you need to have Python installed on your computer to run the game.
                 <br>
-                Além disso, é recomendado que o Pygame seja atualizado para sua versão mais recente, o que pode ser feito através do comando "pip install pygame pip install pygame --upgrade".
+                In addition, it's recommended that Pygame be updated to its latest version, which can be done through the "pip install pygame pip install pygame --upgrade" command.
                 <br>
-                Por fim, para executar o jogo, basta digitar o comando "python3 main.py" no terminal. Com estes simples passos, você estará pronto para desfrutar do jogo 2D emocionante e desafiador.
+                Finally, to run the game, just type the "python3 main.py" command in the terminal. With these simple steps, you'll be ready to enjoy the exciting and challenging 2D game.
             </p>
         </section>
 
@@ -96,10 +94,9 @@ export default defineComponent({
         height: 100%;
     }
 
-    .bash-commands-container {
+    .bash-commands-container iframe {
         width: 100%;
-        top: 100px;
         position: relative;
-
+        top: 25%;
     }
 </style>

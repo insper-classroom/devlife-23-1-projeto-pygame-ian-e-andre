@@ -1,15 +1,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Toast } from '@/plugin/Toast';
-import { useState } from '../state/State';
-import { Emitter } from '@/events/Emitter';
+
 import Button from '@/shared/Button.vue'
 
 export default defineComponent({
     data() {
         return {
-            State: useState(),
-            text: "Materializando diversao por meio do entretenimento.",
+            text: "Overcome all obstacles and reach the top on the best adventure of the year!",
         }
     },
 
@@ -47,15 +45,15 @@ export default defineComponent({
     <div class="first-view-component fade">
         <div class="content">
             <header class="menus-container">
-                <p class="menu active-menu">Home</p>
-                <p class="menu">Descrição</p>
-                <p class="menu">Vídeo</p>
+                <p class="menu active-menu">Init</p>
+                <p class="menu">Description</p>
+                <p class="menu">Video</p>
                 <p class="menu">Backlog</p>
-                <p class="menu">Jogar</p>
-                <p class="menu">Instalação</p>
+                <p class="menu">Play</p>
+                <p class="menu">Installation</p>
 
                 
-                <button class="play-button">Iniciar Jogo</button>
+                <button class="play-button">Launch game</button>
             </header>
 
             <h1 class="title">ROCKET RUNNER</h1>

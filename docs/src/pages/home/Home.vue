@@ -1,23 +1,21 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Toast } from '@/plugin/Toast';
-import { useState } from './state/State';
-import { Emitter } from '@/events/Emitter';
 import FirstView from './components/FirstView.vue';
 import GameDescription from './components/GameDescription.vue';
 import InstallationSteps from './components/InstallationSteps.vue';
+import DevelopmentLog from './components/DevelopmentLog.vue';
 
 export default defineComponent({
     data() {
-        return {
-            State: useState(),
-        }
+        return {}
     },
 
     components: {
         FirstView,
         GameDescription,
-        InstallationSteps
+        InstallationSteps,
+        DevelopmentLog
     }
 
 })
@@ -28,6 +26,7 @@ export default defineComponent({
         <FirstView />
         <GameDescription />
         <InstallationSteps />
+        <DevelopmentLog />
     </div>
 </template>
 
