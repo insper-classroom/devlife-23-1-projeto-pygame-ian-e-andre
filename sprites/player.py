@@ -7,7 +7,7 @@ from sprites.effects.propulsion_fx import (Propulsion_fx)
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, window, obj_groups, coin_count):
+    def __init__(self, window, obj_groups, game):
         pygame.sprite.Sprite.__init__(self)
         
         self.window = window
@@ -24,6 +24,8 @@ class Player(pygame.sprite.Sprite):
         
         self.gravity_acel = 0.02
         self.gravity_max_acel = 0.5
+
+        self.game = game
         
         self.on_top = False
         self.on_floor = False
@@ -127,8 +129,11 @@ class Player(pygame.sprite.Sprite):
                 if (grp_name == "eletric_obstacles"):
                     pygame.quit()
                 elif (grp_name == "coins"):
+                    self.game.coin_amount += 1
                     grp.remove(collided_sprites)
                     self.sounds["coin_sound"].play()
+                    
+
             
     def animation(self):
         self.current_animation_index += 1

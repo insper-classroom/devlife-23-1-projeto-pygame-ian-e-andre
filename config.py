@@ -20,6 +20,8 @@ COIN_HEIGHT = 51
 
 FLOOR_HEIGHT = 55
 
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 
 FPS = 60
 

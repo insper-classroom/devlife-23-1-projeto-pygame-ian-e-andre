@@ -3,7 +3,8 @@ from sprites.player import (Player)
 from sprites.background import (Background)
 from sprites.eletric_obstacle import (Eletric_obstacle)
 from sprites.coin import (Coin)
-from utils.counter import Counter
+from utils.counter import (Counter)
+from sprites.hud import (Hud)
 import random
 
 class Game:
@@ -19,10 +20,11 @@ class Game:
         self.background_image = pygame.transform.scale(self.background_image, (WINDOW_WIDTH, WINDOW_HEIGHT))
         
         self.prev_time = 0
-        self.coin_count = 0
-        self.player = Player(window, self.obj_groups, self.coin_count)
+        self.coin_amount = 0
+        self.player = Player(window, self.obj_groups, self)
         self.background = Background(window)
-        
+        self.hud = Hud(window)
+
         self.obstacle_count = 0
         self.obstacle_count_vel = 0.1
 
@@ -50,7 +52,6 @@ class Game:
     def update(self):
         self.window.fill((100, 100, 100))
         self.window.blit(self.background_image, (0, 0))
-        
         delta_t = self.calc_delta_t()
         
         self.background.update(delta_t)
@@ -60,6 +61,9 @@ class Game:
             self.obj_groups[i].update(delta_t)
             
         self.add_objects_counter.update(delta_t)
+
+        self.hud.update(delta_t, self)
+
         
         
                 
