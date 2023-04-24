@@ -57,7 +57,7 @@ export default defineComponent({
         <section class="characters-image-container">
             <img 
                 v-for="(char, index) in characters"
-                :src="char.path" 
+                :src="String(char.path)" 
                 :style = "{filter: `drop-shadow(${char.shadow})`}"
             >
         </section>
