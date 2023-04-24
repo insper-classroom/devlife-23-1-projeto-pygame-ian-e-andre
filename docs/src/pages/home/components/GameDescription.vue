@@ -1,16 +1,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Toast } from '@/plugin/Toast';
-import { useState } from '../state/State';
-import { Emitter } from '@/events/Emitter';
 import Button from '@/shared/Button.vue'
 
 export default defineComponent({
     data() {
         return {
-            State: useState(),
             text: "",
-            currentPlayerImageIndex: 1
+            characters: [
+                {color: "165, 237, 76", shadow: "", path: new URL('../../../assets/player-sprite/1.png', import.meta.url)},
+                {color: "238, 148, 54", shadow: "", path: new URL('../../../assets/player-sprite/2.png', import.meta.url)},
+                {color: "173, 45, 27", shadow: "", path: new URL('../../../assets/player-sprite/3.png', import.meta.url)},
+                {color: "236, 92, 41", shadow: "", path: new URL('../../../assets/player-sprite/4.png', import.meta.url)},
+            ]
         }
     },
 
@@ -19,10 +21,10 @@ export default defineComponent({
             return Math.random() * (max - min) + min;
         },
         dynamicBlurredBackground() {
-            let imageElement = this.$refs["player-image"] as HTMLElement
-
             setInterval(() => {
-                imageElement.style.filter = `drop-shadow(${this.randint(0, 50)}px ${this.randint(0, 50)}px ${this.randint(100, 150)}px rgba(165, 237, 76, 0.5))`
+                for (let i in this.characters) {
+                    this.characters[i].shadow = `${this.randint(0, 50)}px ${this.randint(0, 50)}px ${this.randint(100, 120)}px rgba(${this.characters[i].color}, 1)`
+                }
             }, 500)
         },
     },
@@ -39,21 +41,25 @@ export default defineComponent({
 <template>
     <div class="game-description-component fade">
         <section class="text-container">
-            <h1>Descricao do jogo</h1>
+            <h1>GAME DESCRIPTION</h1>
             <!-- texto a baixo gerado pelo chat GPT -->
             <p> 
-                Bem-vindo ao nosso emocionante jogo 2D, onde você se juntará ao cientista mais corajoso do mundo em uma aventura de ação de tirar o fôlego! Com o nosso jogo, você estará em um universo repleto de desafios e obstáculos que vão testar sua habilidade e resistência.
+                Welcome to our thrilling 2D game, where you'll join the bravest scientist in the world on a breathtaking action adventure! With our game, you'll be in a universe filled with challenges and obstacles that will test your skill and endurance.
                 <br>
-                Seu objetivo é ajudar o cientista a voar pelo cenário com seu incrível jetpack, enquanto desvia de mísseis, espinhos, inimigos e obstáculos elétricos. Seu personagem terá que ser rápido e ágil para sobreviver ao máximo possível e estabelecer um novo recorde de pontuação. À medida que você avança pelo jogo, encontrará moedas que poderão ser usadas para adquirir outras skins no marketplace de skins, permitindo que você personalize seu personagem com um visual único.
+                Your goal is to help the scientist fly through the scenery with his incredible jetpack, while dodging missiles, spikes, enemies, and electric obstacles. Your character will have to be fast and agile to survive as long as possible and set a new high score. As you progress through the game, you'll find coins that can be used to acquire other skins in the skins marketplace, allowing you to customize your character with a unique look.
                 <br>
-                A mecânica do jogo é muito simples: basta tocar na tela para voar e soltar para descer. Quanto mais tempo você ficar vivo, maior será sua pontuação. Uma vez que sua aventura chegar ao fim, você terá a oportunidade de coletar seus recordes de pontuação para exibi-los para seus amigos e outros jogadores.
+                The game mechanics are very simple: just touch the screen to fly and release to descend. The longer you stay alive, the higher your score will be. Once your adventure comes to an end, you'll have the opportunity to collect your score records to display them to your friends and other players.
                 <br>
-                Este jogo é emocionante, desafiador e divertido para jogadores de todas as idades. É um excelente passatempo para quem deseja testar suas habilidades e superar seus próprios recordes. Baixe agora nosso jogo 2D e experimente a emoção da ação sem fim!
+                This game is exciting, challenging, and fun for players of all ages. It's an excellent pastime for those who want to test their skills and overcome their own records. Download our 2D game now and experience the thrill of endless action!
             </p>
         </section>
 
-        <section class="player-image-container">
-            <img ref="player-image" src="../../../assets/player-sprite/1.png" alt="">
+        <section class="characters-image-container">
+            <img 
+                v-for="(char, index) in characters"
+                :src="char.path" 
+                :style = "{filter: `drop-shadow(${char.shadow})`}"
+            >
         </section>
     </div>
 </template>
@@ -95,16 +101,17 @@ export default defineComponent({
 
     /* ------------------------------------------------------- */
 
-    .player-image-container  {
-        display: flex;
+    .characters-image-container  {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         align-items: center;
         justify-content: center;
     }
 
-    .player-image-container img {
-        width: 100%;
-        filter: drop-shadow(0px 0px 100px rgba(165, 237, 76, 0.5));
+    .characters-image-container img {
+        width: 110%;
         transition: all 1s;
-        max-width: 350px;
+        transition: all .5s;
     }
 </style>
