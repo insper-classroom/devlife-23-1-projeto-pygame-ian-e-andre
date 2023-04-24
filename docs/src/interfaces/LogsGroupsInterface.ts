@@ -1,8 +1,10 @@
 export interface LogsGroupsInterface {
-    [date: string]: Array<{
-        name: string,
-        time: string,
-        developerAvatar: string,
-        opened?: Boolean
-    }>
+    [date: string]: {
+        logs: Array<{
+            name: string,
+            time: string,
+            developerAvatar: string
+        }>,
+        opened: boolean
+    }
 }

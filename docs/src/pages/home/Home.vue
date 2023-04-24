@@ -5,6 +5,7 @@ import FirstView from './components/FirstView.vue';
 import GameDescription from './components/GameDescription.vue';
 import InstallationSteps from './components/InstallationSteps.vue';
 import DevelopmentLog from './components/DevelopmentLog.vue';
+import PhotosGallery from './components/PhotosGallery.vue';
 
 export default defineComponent({
     data() {
@@ -15,7 +16,8 @@ export default defineComponent({
         FirstView,
         GameDescription,
         InstallationSteps,
-        DevelopmentLog
+        DevelopmentLog,
+        PhotosGallery
     }
 
 })
@@ -27,6 +29,7 @@ export default defineComponent({
         <GameDescription />
         <InstallationSteps />
         <DevelopmentLog />
+        <PhotosGallery />
     </div>
 </template>
 

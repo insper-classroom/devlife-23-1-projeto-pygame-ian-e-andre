@@ -27,21 +27,30 @@ export default defineComponent({
             let data = await GetLogsApi()
 
             for (let i in data) {
-                let date = new Date(data[i].committer.date)
+                let date = new Date(data[i].commit.committer.date)
                 let parsedDate = `${date.getDate()}/${date.getMonth() + 1}/2023`
 
                 const log = {
-                    name: data.message,
+                    name: data[i].commit.message,
                     time: `${date.getHours()}:${date.getMinutes()}`,
-                    developerAvatar: data.committer.name == "Ian Desponds" ? this.developersAvatar["ian"] : this.developersAvatar["andre"]
+                    developerAvatar: data[i].commit.committer.name == "Ian Desponds" ? this.developersAvatar["ian"] : this.developersAvatar["andre"]
                 }
 
                 if (this.logsGroups[parsedDate]) {
-                    this.logsGroups[parsedDate].push(log)
+                    this.logsGroups[parsedDate].logs.push(log)
                 } else {
-                    this.logsGroups[parsedDate] = [log]
+                    this.logsGroups[parsedDate] = {logs: [], opened: false}
+                    this.logsGroups[parsedDate].logs = [log]
                 }
             }
+
+        },
+        openGroup(dateIndex: any) {
+            for (let i in this.logsGroups) {
+                this.logsGroups[i].opened = false
+            } 
+
+            this.logsGroups[dateIndex].opened = true
         }
     },
     mounted() {
@@ -59,25 +68,31 @@ export default defineComponent({
         <h1 class="title">DEVELOPMENT LOG</h1>
 
         <div class="daily-logs-container">
-            <div class="log-group-container" >
-                <section class="log-header">
+            <div 
+                class="logs-group-container" 
+                v-for="(group, date) in logsGroups" 
+                :style="{height: group.opened ? ((group.logs.length * 52) + 90 + (10 * (group.logs.length - 1))) + 'px' : '60px'}"
+                @click = "openGroup(date)"
+            >
+                <section class="group-header">
                     <i class="fa-duotone fa-code-branch"></i>
-                    <p>Logs do dia <strong>24/03/2005</strong></p>
+                    <p>Logs do dia <strong>{{ date }}</strong></p>
 
                     <div class="developers-image">
                         <img src="https://i.ibb.co/Tt2RKmd/ian.jpg">
                         <img src="https://i.ibb.co/Jr94jkk/andre.jpg">
                     </div>
-                    <i class="fa-duotone fa-folder-open"></i>
+                    <i class="fa-duotone fa-folder-open fade" v-if="!group.opened"></i>
+                    <i class="fa-solid fa-folder fade" v-if="group.opened"></i>
                 </section>
 
                 <section class="logs-container">
-                    <div class="log">
+                    <div class="log" v-for="(log, index) in group.logs">
                         <div class="content">
-                            <img src="https://i.ibb.co/Jr94jkk/andre.jpg" class="author-avatar">
-                            <p class="log-name">feat: added background effect</p>
+                            <img :src="log.developerAvatar" class="author-avatar">
+                            <p class="log-name">{{ log.name }}</p>
 
-                            <p class="log-time"><strong>9:30</strong>PM</p>
+                            <p class="log-time"><strong>{{ log.time }}</strong>PM</p>
                         </div>
                     </div>
                 </section>
@@ -89,7 +104,7 @@ export default defineComponent({
 
 <style scoped>
     .development-log-component {
-        height: 100vh;
+        height: fit-content;
         width: 100vw;
 
         display: flex;
@@ -107,41 +122,51 @@ export default defineComponent({
         margin-bottom: 20px;
     }
 
+    .daily-logs-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px
+    }
 
-    .log-group-container {
+    .logs-group-container {
         width: 100%;
-        height: 100%;
+        height: 60px;
+        min-height: 60px;
+        transition: all 1s;
         border-radius: 10px;
         
         padding: 15px 20px;
         background-color: rgba(255, 255, 255, 0.025);
         border: solid 1px rgba(255, 255, 255, 0.1);
-        
+        overflow: hidden;
     }
     /* -------------------------------------------- */
-    .log-header {
+    .group-header {
         gap: 20px;
         color: white;
         display: flex;
         align-items: center;
+        cursor: pointer;
+
     }
     
-    .log-header p {
+    .group-header p {
         color: rgba(255, 255, 255, 0.6);
         font-family: "Roboto mono";
     }
 
-    .log-header p strong {
+    .group-header p strong {
         color: white;
     }
 
-    .log-header .developers-image {
+    .group-header .developers-image {
         display: flex;
         margin-left: auto;
         gap: 10px;
+        
     }
 
-    .log-header .developers-image img {
+    .group-header .developers-image img {
         width: 30px;
         border-radius: 100px;
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
@@ -152,11 +177,15 @@ export default defineComponent({
         border-left: solid 2px rgba(255, 255, 255, 0.3);
         margin-left: 3px;
         padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        grid-gap: 10px;
     }
 
     .logs-container .log {
         display: flex;
         align-items: center;
+        cursor: pointer;
     }
 
     .logs-container .log::before  {

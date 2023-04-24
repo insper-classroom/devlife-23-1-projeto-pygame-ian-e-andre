@@ -61,7 +61,7 @@ export default defineComponent({
     
 
             <img src="https://upload.wikimedia.org/wikipedia/pt/3/39/Logo_Insper.png" class="logo">
-            <span class="year-text">2023</span>
+            <span class="year-text">2023 - Andre & Ian</span>
         </div>
 
         <video  class="video" autoplay muted loop>
