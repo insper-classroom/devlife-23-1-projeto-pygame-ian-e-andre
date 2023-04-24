@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'OCR A Std';
-    src: url('./font/OCRAStd.woff2') format('woff2'),
-        url('./font/OCRAStd.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
