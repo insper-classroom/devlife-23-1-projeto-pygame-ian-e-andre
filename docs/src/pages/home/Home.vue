@@ -5,6 +5,7 @@ import { useState } from './state/State';
 import { Emitter } from '@/events/Emitter';
 import FirstView from './components/FirstView.vue';
 import GameDescription from './components/GameDescription.vue';
+import InstallationSteps from './components/InstallationSteps.vue';
 
 export default defineComponent({
     data() {
@@ -15,7 +16,8 @@ export default defineComponent({
 
     components: {
         FirstView,
-        GameDescription
+        GameDescription,
+        InstallationSteps
     }
 
 })
@@ -25,6 +27,7 @@ export default defineComponent({
     <div class="home-component fade">
         <FirstView />
         <GameDescription />
+        <InstallationSteps />
     </div>
 </template>
 

@@ -85,6 +85,8 @@ export default defineComponent({
         padding: 80px;
         z-index: 2;
         position: relative;
+        background: linear-gradient(180deg, rgba(18,19,22, 0.5) 0%, rgba(18,19,22,1) 100%);
+
         backdrop-filter: blur(10px);
     }
 
