@@ -1,0 +1,71 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+html, body { 
+    scroll-behavior: smooth
+  }
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #121316;
+    overflow: hidden;
+    font-size: 14px
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+/* =========================================================== */
+
+::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 100px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    transition: all .5s;
+    border-radius: 100px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 100px;
+    transition: all .5s;
+}

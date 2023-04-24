@@ -1,0 +1,80 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0%;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+.fadeIn {
+    animation: fadeIn;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: .5s;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes hide {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
+
+.hide {
+    animation-name: hide;
+    animation-duration: .5s;
+    animation-fill-mode: forwards; 
+}
+
+
+@keyframes slideIn {
+    0% {
+        opacity: 0%;
+        transform: translateY(-200%);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes width {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 120%;
+    }
+}
+
+/* ----------------------------------------------------------- */
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+
+}
+
+.blink {
+    animation: blink .8s steps(5, start) infinite;
+}
