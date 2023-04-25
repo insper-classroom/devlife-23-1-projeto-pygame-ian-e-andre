@@ -128,6 +128,8 @@ class Player(pygame.sprite.Sprite):
             if (collided_sprites):
                 if (grp_name == "eletric_obstacles"):
                     pygame.quit()
+                elif (grp_name == "shurikens"):
+                    pygame.quit()
                 elif (grp_name == "coins"):
                     self.game.coin_amount += 1
                     grp.remove(collided_sprites)

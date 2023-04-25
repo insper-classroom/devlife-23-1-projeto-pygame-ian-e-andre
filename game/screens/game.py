@@ -2,6 +2,7 @@ from config import *
 from sprites.player import (Player)
 from sprites.background import (Background)
 from sprites.eletric_obstacle import (Eletric_obstacle)
+from sprites.shuriken import (Shuriken)
 from sprites.coin import (Coin)
 from utils.counter import (Counter)
 from sprites.hud import (Hud)
@@ -14,6 +15,7 @@ class Game:
         self.obj_groups = {
             "eletric_obstacles": pygame.sprite.Group(),
             "coins": pygame.sprite.Group(),
+            "shurikens": pygame.sprite.Group(),
         }
 
         self.background_image = pygame.image.load(os.path.join( "assets", "img", "background", "1.png"))
@@ -46,7 +48,7 @@ class Game:
         return delta_t
     
     def add_object(self):
-        objects = [{"group": "coins", "sprite": Coin}, {"group": "eletric_obstacles", "sprite": Eletric_obstacle}]
+        objects = [{"group": "coins", "sprite": Coin}, {"group": "eletric_obstacles", "sprite": Eletric_obstacle}, {"group": "shurikens", "sprite": Shuriken}]
         sorted_index = random.randint(0, len(objects) - 1)
         
         self.obj_groups[objects[sorted_index]["group"]].add(objects[sorted_index]["sprite"](self.window, self.obj_groups))

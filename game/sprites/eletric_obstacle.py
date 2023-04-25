@@ -55,4 +55,3 @@ class Eletric_obstacle(pygame.sprite.Sprite):
         self.update_hitbox()
         self.draw()
         
- 
