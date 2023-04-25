@@ -25,7 +25,7 @@ class Game:
         self.score_counter = Counter(0.1, 4, True, self.update_score)
         self.player = Player(window, self.obj_groups, self)
         self.background = Background(window)
-        self.hud = Hud(window)
+        self.hud = Hud(window, self)
 
         self.obstacle_count = 0
         self.obstacle_count_vel = 0.1
@@ -66,5 +66,5 @@ class Game:
             
         self.add_objects_counter.update(delta_t)
         self.score_counter.update(delta_t)
-        self.hud.update(delta_t, self)
+        self.hud.update(delta_t)
 
