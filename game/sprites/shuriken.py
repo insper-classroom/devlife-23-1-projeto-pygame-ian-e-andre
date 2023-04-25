@@ -19,12 +19,15 @@ class Shuriken(pygame.sprite.Sprite):
         
         self.mask = pygame.mask.from_surface(self.sprite_image)
         
-        self.animation_counter = Counter(0.1, 2, True, self.animation)
+        self.animation_counter = Counter(0.1, 1, True, self.animation)
         self.rotation_angle = 0
+
+        self.vel_y = 0.3
         
     def animation(self):
         self.rotation_angle += 10
         self.sprite_image_rotate = pygame.transform.rotate(self.sprite_image, self.rotation_angle)
+        self.sprite_image_rotate = pygame.transform.smoothscale(self.sprite_image_rotate, (SHURIKEN_WIDTH, SHURIKEN_HEIGHT))
     
     def gen_random_position(self):
         x = WINDOW_WIDTH
@@ -34,13 +37,20 @@ class Shuriken(pygame.sprite.Sprite):
 
     def movement(self, delta_t):
         self.rect.x -= VEL_X * delta_t
-        self.rect.y -= VEL_Y * delta_t
+        self.rect.y -= self.vel_y * delta_t
+        if self.rect.y <=0:
+            self.vel_y *= -1
+            self.rect.y = 0
+        elif self.rect.y >= WINDOW_HEIGHT - SHURIKEN_HEIGHT - FLOOR_HEIGHT:
+            self.vel_y *= -1
+            self.rect.y = WINDOW_HEIGHT - SHURIKEN_HEIGHT - FLOOR_HEIGHT
+        
             
         if (self.rect.x < -SHURIKEN_WIDTH):
             self.obj_groups["shurikens"].remove(self)
             
     def update_hitbox(self):
-        self.mask = pygame.mask.from_surface(self.sprite_image_rotate)    
+        self.mask = pygame.mask.from_surface(self.sprite_image_rotate)
     
     def draw(self):
         self.window.blit(self.sprite_image_rotate, (self.rect.x, self.rect.y))
