@@ -16,7 +16,7 @@ class Coin(pygame.sprite.Sprite):
         
         self.rect = pygame.Rect(position[0], position[1], COIN_WIDTH, COIN_HEIGHT)
 
-        self.animation_images = get_animation_images("game/assets/img/coin", 9, COIN_WIDTH, COIN_HEIGHT)
+        self.animation_images = get_animation_images("assets/img/coin", 9, COIN_WIDTH, COIN_HEIGHT)
         self.current_animation_index = 1
         
         self.animation_counter = Counter(0.1, 8, True, self.animation)

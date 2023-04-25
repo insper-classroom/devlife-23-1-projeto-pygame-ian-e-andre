@@ -11,7 +11,7 @@ class Jump_fx(pygame.sprite.Sprite):
         self.height = 46
         
         self.window = window
-        self.animation_images = get_animation_images("game/assets/img/jump-fx", 22, self.width, self.height)
+        self.animation_images = get_animation_images("assets/img/jump-fx", 22, self.width, self.height)
         self.current_animation_index = 0
         self.player = player 
         self.animation_counter = Counter(0.5, 10, True, self.animation)

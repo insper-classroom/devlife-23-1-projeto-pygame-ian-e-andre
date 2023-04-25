@@ -16,7 +16,7 @@ class Game:
             "coins": pygame.sprite.Group(),
         }
 
-        self.background_image = pygame.image.load(os.path.join('game', "assets", "img", "background", "1.png"))
+        self.background_image = pygame.image.load(os.path.join( "assets", "img", "background", "1.png"))
         self.background_image = pygame.transform.scale(self.background_image, (WINDOW_WIDTH, WINDOW_HEIGHT))
         
         self.prev_time = 0

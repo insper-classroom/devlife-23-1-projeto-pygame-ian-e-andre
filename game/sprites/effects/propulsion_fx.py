@@ -8,7 +8,7 @@ class Propulsion_fx(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         self.window = window
-        self.animation_images = get_animation_images("game/assets/img/propulsion", 4, 80, 80)
+        self.animation_images = get_animation_images("assets/img/propulsion", 4, 80, 80)
         self.current_animation_index = 1
         self.player = player 
         self.animation_counter = Counter(0.1, 8, True, self.animation)
