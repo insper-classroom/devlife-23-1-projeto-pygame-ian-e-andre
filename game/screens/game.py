@@ -1,8 +1,8 @@
 from config import *
 from sprites.player import (Player)
 from sprites.background import (Background)
-from sprites.eletric_obstacle import (Eletric_obstacle)
-from sprites.shuriken import (Shuriken)
+from sprites.electric_obstacle import (Electric_obstacle)
+from sprites.electric_ball import (Electric_ball)
 from sprites.coin import (Coin)
 from utils.counter import (Counter)
 from sprites.hud import (Hud)
@@ -13,9 +13,9 @@ class Game:
         self.window = window
         
         self.obj_groups = {
-            "eletric_obstacles": pygame.sprite.Group(),
+            "electric_obstacles": pygame.sprite.Group(),
             "coins": pygame.sprite.Group(),
-            "shurikens": pygame.sprite.Group(),
+            "electric_balls": pygame.sprite.Group(),
         }
 
         self.background_image = pygame.image.load(os.path.join( "assets", "img", "background", "1.png"))
@@ -48,7 +48,7 @@ class Game:
         return delta_t
     
     def add_object(self):
-        objects = [{"group": "coins", "sprite": Coin}, {"group": "eletric_obstacles", "sprite": Eletric_obstacle}, {"group": "shurikens", "sprite": Shuriken}]
+        objects = [{"group": "coins", "sprite": Coin}, {"group": "electric_obstacles", "sprite": Electric_obstacle}, {"group": "electric_balls", "sprite": Electric_ball}]
         sorted_index = random.randint(0, len(objects) - 1)
         
         self.obj_groups[objects[sorted_index]["group"]].add(objects[sorted_index]["sprite"](self.window, self.obj_groups))
@@ -59,7 +59,7 @@ class Game:
         self.window.blit(self.background_image, (0, 0))
         delta_t = self.calc_delta_t()
         
-        self.background.update(delta_t)
+        # self.background.update(delta_t)
         self.player.update(delta_t)
 
         

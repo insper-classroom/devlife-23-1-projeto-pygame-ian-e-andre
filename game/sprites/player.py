@@ -126,9 +126,9 @@ class Player(pygame.sprite.Sprite):
                 
             collided_sprites = group_mask_collided(self, grp)
             if (collided_sprites):
-                if (grp_name == "eletric_obstacles"):
+                if (grp_name == "electric_obstacles"):
                     pygame.quit()
-                elif (grp_name == "shurikens"):
+                elif (grp_name == "electric_balls"):
                     pygame.quit()
                 elif (grp_name == "coins"):
                     self.game.coin_amount += 1
