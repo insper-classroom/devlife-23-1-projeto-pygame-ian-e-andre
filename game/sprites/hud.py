@@ -28,7 +28,7 @@ class Hud(pygame.sprite.Sprite):
             self.current_animation_index = 1
 
     def draw_fps(self, delta_t):
-        fps = delta_t
+        fps = 1000 / delta_t
         fps_text = self.font_bold_12.render(f"{fps}", True, BLACK)
         self.WINDOW.blit(fps_text, (965, 535))
 
