@@ -59,7 +59,7 @@ class Game:
         self.window.blit(self.background_image, (0, 0))
         delta_t = self.calc_delta_t()
         
-        # self.background.update(delta_t)
+        self.background.update(delta_t)
         self.player.update(delta_t)
 
         

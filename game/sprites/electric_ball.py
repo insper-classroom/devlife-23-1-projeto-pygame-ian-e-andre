@@ -16,7 +16,6 @@ class Electric_ball(pygame.sprite.Sprite):
         position = self.gen_random_position()
         
         self.rect = pygame.Rect(position[0], position[1], ELECTRIC_BALL_WIDTH, ELECTRIC_BALL_HEIGHT)
-        # self.sprite_image = pygame.transform.smoothscale(pygame.image.load(os.path.join( 'assets', 'img', 'electric-balls', '3.png')).convert_alpha(), (ELECTRIC_BALL_WIDTH, ELECTRIC_BALL_HEIGHT))
         self.animation_images = get_animation_images("assets/img/electric-balls", 8, ELECTRIC_BALL_WIDTH, ELECTRIC_BALL_HEIGHT)
         self.current_animation_index = 1
         
@@ -44,13 +43,13 @@ class Electric_ball(pygame.sprite.Sprite):
         self.rect.x -= VEL_X * delta_t
         self.rect.y -= self.vel_y * delta_t
 
-        if self.rect.y<=0:
+        if self.rect.y <= -(ELECTRIC_BALL_HEIGHT // 3):
             self.vel_y *= -1
-            self.rect.y = 0
-                        
-        elif self.rect.y >= WINDOW_HEIGHT - self.rect.height - FLOOR_HEIGHT:
+            self.rect.y = -(ELECTRIC_BALL_HEIGHT // 3)
+
+        elif self.rect.y >= WINDOW_HEIGHT - FLOOR_HEIGHT - (2 * ELECTRIC_BALL_HEIGHT // 3):
             self.vel_y *= -1
-            self.rect.y = WINDOW_HEIGHT - self.rect.height - FLOOR_HEIGHT
+            self.rect.y = WINDOW_HEIGHT - FLOOR_HEIGHT - (2 * ELECTRIC_BALL_HEIGHT // 3)
         
             
         if (self.rect.x < -ELECTRIC_BALL_WIDTH):

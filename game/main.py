@@ -7,7 +7,7 @@ WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.init()
 
 clock = pygame.time.Clock()
-
+                    
 class Main:
     def __init__(self):
         self.current_screen = Game(WINDOW)
