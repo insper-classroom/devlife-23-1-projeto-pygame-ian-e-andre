@@ -25,7 +25,7 @@ class Electric_ball(pygame.sprite.Sprite):
         
         self.animation_counter = Counter(0.1, 10, True, self.animation)
 
-        self.vel_y = 0.3
+        self.vel_y = 0.5 * [1, -1][random.randint(0, 1)]
         
     def animation(self):
         self.current_animation_index += 1
@@ -35,12 +35,12 @@ class Electric_ball(pygame.sprite.Sprite):
     
     def gen_random_position(self):
         x = WINDOW_WIDTH
-        y = random.randint(0, WINDOW_HEIGHT - ELECTRIC_BALL_HEIGHT - FLOOR_HEIGHT)
+        y = random.randint(0, WINDOW_HEIGHT - (ELECTRIC_BALL_HEIGHT // 3) - FLOOR_HEIGHT)
         
         return [x, y]
 
     def movement(self, delta_t):
-        self.rect.x -= VEL_X * delta_t
+        self.rect.x -= VEL_X * delta_t * 2
         self.rect.y -= self.vel_y * delta_t
 
         if self.rect.y <= -(ELECTRIC_BALL_HEIGHT // 3):
