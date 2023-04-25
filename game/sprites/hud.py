@@ -12,20 +12,13 @@ class Hud(pygame.sprite.Sprite):
         self.font_bold_20 = pygame.font.Font(os.path.join( 'assets', 'font', 'static', 'RobotoMono-Bold.ttf'), 20)
         self.font_bold_12 = pygame.font.Font(os.path.join( 'assets', 'font', 'static', 'RobotoMono-Bold.ttf'), 12)
 
-        self.coin_icon_animation_counter = Counter(0.1, 8, True, self.coin_icon_animation)
-        self.coin_icon_animation_images = get_animation_images("assets/img/coin", 9, 40, 50)
-        self.current_animation_index = 1
+        self.coin_image = pygame.transform.smoothscale(pygame.image.load("assets/img/coin/1.png").convert_alpha(), (28, 34))
         
         self.game = game
 
-        self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join( 'assets', 'img', 'coin_box.png')).convert(), (100,50))
+        self.default_background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box.png')).convert_alpha(), (BOX_WIDTH,BOX_HEIGHT))
+        self.coin_background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'coin-box.png')).convert_alpha(), (BOX_WIDTH,BOX_HEIGHT))
         
-        
-    def coin_icon_animation(self):
-        self.current_animation_index += 1
-        
-        if (self.current_animation_index == 9):
-            self.current_animation_index = 1
 
     def draw_fps(self, delta_t):
         fps = 1000 / delta_t
@@ -33,21 +26,19 @@ class Hud(pygame.sprite.Sprite):
         self.WINDOW.blit(fps_text, (965, 535))
 
     def draw_score(self):
-        self.WINDOW.blit(self.background_box, (10,10))
+        self.WINDOW.blit(self.default_background_box, (10,10))
         
         score = self.game.score
         score_text = self.font_bold_20.render(f"{score}", True, WHITE)
-        self.WINDOW.blit(score_text, (57-(score_text.get_width()//2), 22))
+        self.WINDOW.blit(score_text, (10 + ((BOX_WIDTH / 2) - (score_text.get_width() / 2)), 8 + ((BOX_HEIGHT / 2) - (score_text.get_height() / 2))))
         
-
     def draw_coin(self,):
-        self.WINDOW.blit(self.background_box, (890,10))
+        self.WINDOW.blit(self.coin_background_box, (WINDOW_WIDTH - 10 - BOX_WIDTH,10))
         
         coins_text = self.font_bold_20.render(f'{self.game.coin_amount}', True, WHITE)
-        self.WINDOW.blit(coins_text, (WINDOW_WIDTH - 50, 22))
+        self.WINDOW.blit(coins_text, (WINDOW_WIDTH - 10 - ((BOX_WIDTH / 2) + (coins_text.get_width() / 2)), 8 + ((BOX_HEIGHT / 2) - (coins_text.get_height() / 2))))
 
-        image = self.coin_icon_animation_images[self.current_animation_index]
-        self.WINDOW.blit(image, (WINDOW_WIDTH - 95, 5))
+        self.WINDOW.blit(self.coin_image, (WINDOW_WIDTH - BOX_WIDTH , 10 + ((BOX_HEIGHT / 2) - 22)))
         
     
     def update(self, delta_t):
@@ -55,5 +46,4 @@ class Hud(pygame.sprite.Sprite):
         self.draw_score()
         self.draw_fps(delta_t)
         
-        self.coin_icon_animation_counter.update(delta_t)
         
