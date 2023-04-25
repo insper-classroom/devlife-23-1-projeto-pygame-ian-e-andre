@@ -15,7 +15,7 @@ class Electric_ball(pygame.sprite.Sprite):
         
         position = self.gen_random_position()
         
-        self.rect = pygame.Rect(position[0], position[1], ELECTRIC_BALL_WIDTH, ELECTRIC_BALL_HEIGHT)
+        self.rect = pygame.Rect(position[0], position[1], ELECTRIC_BALL_WIDTH//3, ELECTRIC_BALL_HEIGHT//3)
         self.animation_images = get_animation_images("assets/img/electric-balls", 8, ELECTRIC_BALL_WIDTH, ELECTRIC_BALL_HEIGHT)
         self.current_animation_index = 1
         
@@ -56,13 +56,11 @@ class Electric_ball(pygame.sprite.Sprite):
             self.obj_groups["electric_balls"].remove(self)
             
     def update_hitbox(self):
-        dimensions = self.sprite_image.get_bounding_rect()
-        self.rect.width = dimensions[2]
-        self.rect.height = dimensions[3]
         self.mask = pygame.mask.from_surface(self.sprite_image)
     
     def draw(self):
         self.sprite_image = self.animation_images[self.current_animation_index]
+        
         self.window.blit(self.sprite_image, (self.rect.x, self.rect.y))
     
     def update(self, delta_t):

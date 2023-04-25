@@ -4,6 +4,7 @@ from sprites.background import (Background)
 from sprites.electric_obstacle import (Electric_obstacle)
 from sprites.electric_ball import (Electric_ball)
 from sprites.coin import (Coin)
+from sprites.shield_item import (Shield_item)
 from utils.counter import (Counter)
 from sprites.hud import (Hud)
 import random
@@ -16,9 +17,10 @@ class Game:
             "electric_obstacles": pygame.sprite.Group(),
             "coins": pygame.sprite.Group(),
             "electric_balls": pygame.sprite.Group(),
+            "shield_items": pygame.sprite.Group(),
         }
 
-        self.background_image = pygame.image.load(os.path.join( "assets", "img", "background", "1.png"))
+        self.background_image = pygame.image.load(os.path.join( "assets", "img", "background", "1.png",))
         self.background_image = pygame.transform.scale(self.background_image, (WINDOW_WIDTH, WINDOW_HEIGHT))
         
         self.prev_time = 0
@@ -32,7 +34,7 @@ class Game:
         self.obstacle_count = 0
         self.obstacle_count_vel = 0.1
 
-        self.add_objects_counter = Counter(0.1, 100, True, self.add_object)
+        self.add_objects_counter = Counter(0.1, 50, True, self.add_object)
         
     def update_score(self):
         self.score += 1
@@ -53,6 +55,9 @@ class Game:
         
         self.obj_groups[objects[sorted_index]["group"]].add(objects[sorted_index]["sprite"](self.window, self.obj_groups))
         
+        if (random.random() < 0.1): 
+            self.obj_groups["shield_items"].add(Shield_item(self.window, self.obj_groups))
+
     
     def update(self):
         self.window.fill((100, 100, 100))

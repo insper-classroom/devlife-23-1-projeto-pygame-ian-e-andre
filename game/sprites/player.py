@@ -30,8 +30,7 @@ class Player(pygame.sprite.Sprite):
         self.on_top = False
         self.on_floor = False
         
-        self.shield = False
-        self.alive = False
+        self.shield = True
 
         self.sounds = {
             "coin_sound": pygame.mixer.Sound("assets/snd/coin01.ogg")
@@ -51,6 +50,8 @@ class Player(pygame.sprite.Sprite):
             "jump": Jump_fx(window, self),
             "propulsion": Propulsion_fx(window, self),
         }
+        
+        self.shield_image = pygame.transform.smoothscale(pygame.image.load("./assets/img/shield.png").convert_alpha(), (SHIELD_BUBBLE_WIDTH, SHIELD_BUBBLE_HEIGHT))
         
 
     def movement(self, delta_t):
@@ -104,6 +105,12 @@ class Player(pygame.sprite.Sprite):
         else: 
             self.on_top = False
             
+    def kill_player(self, group_name, collided_sprites):
+        if (self.shield):
+            self.obj_groups[group_name].remove(collided_sprites)
+            self.shield = False
+        else: 
+            pygame.quit()
         
     def update_hitbox(self):
         dimensions = self.sprite_image.get_bounding_rect()
@@ -118,22 +125,25 @@ class Player(pygame.sprite.Sprite):
             self.sprite_image = self.walking_animation_images[self.current_animation_index] 
             
         self.window.blit(self.sprite_image, (self.rect.x, self.rect.y))
+        
+        if (self.shield):
+            self.window.blit(self.shield_image, (self.rect.x - 25, self.rect.y - 10))
             
     def check_group_collision(self):
         for grp_name in self.obj_groups:
             grp = self.obj_groups[grp_name]
                 
-                
             collided_sprites = group_mask_collided(self, grp)
             if (collided_sprites):
-                if (grp_name == "electric_obstacles"):
-                    pygame.quit()
-                elif (grp_name == "electric_balls"):
-                    pygame.quit()
+                if (grp_name in ["electric_obstacles", "electric_balls"]):
+                    self.kill_player(grp_name, collided_sprites)
                 elif (grp_name == "coins"):
                     self.game.coin_amount += 1
                     grp.remove(collided_sprites)
                     self.sounds["coin_sound"].play()
+                elif (grp_name == "shield_items"):
+                    grp.remove(collided_sprites)
+                    self.shield = True
                     
 
             
