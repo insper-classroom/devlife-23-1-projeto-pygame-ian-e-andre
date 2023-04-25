@@ -5,7 +5,7 @@ class Background(pygame.sprite.Sprite):
     def __init__(self, window):
         pygame.sprite.Sprite.__init__(self)
         
-        self.floor_image = pygame.image.load(os.path.join("assets", "img", "floor.png"))
+        self.floor_image = pygame.image.load(os.path.join('game', "assets", "img", "floor.png"))
         self.floor_image = pygame.transform.scale(self.floor_image, (WINDOW_WIDTH, WINDOW_HEIGHT))
         
         self.window = window
@@ -16,7 +16,7 @@ class Background(pygame.sprite.Sprite):
         parts = []
         
         for i in range(1, 6):
-            image = pygame.image.load(os.path.join("assets", "img", "background", f"{i}.png")).convert_alpha()
+            image = pygame.image.load(os.path.join('game', "assets", "img", "background", f"{i}.png")).convert_alpha()
             image = pygame.transform.scale(image, (WINDOW_WIDTH, WINDOW_HEIGHT))
 
             parts.append({"x1": 0, "x2": WINDOW_WIDTH, "image": image})
@@ -57,11 +57,3 @@ class Background(pygame.sprite.Sprite):
         
         self.draw()
         
-        
-        
-        
-        
-        
-
-   
-    

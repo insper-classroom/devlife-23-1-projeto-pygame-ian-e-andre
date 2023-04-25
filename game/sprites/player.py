@@ -34,13 +34,13 @@ class Player(pygame.sprite.Sprite):
         self.alive = False
 
         self.sounds = {
-            "coin_sound": pygame.mixer.Sound("assets/snd/coin01.ogg")
+            "coin_sound": pygame.mixer.Sound("game/assets/snd/coin01.ogg")
         }
         
         pygame.mixer.Sound.set_volume(self.sounds["coin_sound"], 0.1)
         
-        self.jetpack_animation_images = get_animation_images("assets/img/player-jetpack", 8, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
-        self.walking_animation_images = get_animation_images("assets/img/player-walking", 16, WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT)
+        self.jetpack_animation_images = get_animation_images("game/assets/img/player-jetpack", 8, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
+        self.walking_animation_images = get_animation_images("game/assets/img/player-walking", 16, WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT)
         self.animation_counter = Counter(0.1, 10, True, self.animation)
         self.current_animation_index = 0
         
@@ -158,10 +158,3 @@ class Player(pygame.sprite.Sprite):
         
         self.draw()
         
-        
-        
-        
-        
-
-   
-    

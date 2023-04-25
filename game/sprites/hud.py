@@ -1,8 +1,7 @@
 import pygame
+from config import *
 from utils.utils import get_animation_images
 from utils.counter import Counter
-
-from config import *
 
 class Hud(pygame.sprite.Sprite):
     def __init__(self, WINDOW):
@@ -11,15 +10,15 @@ class Hud(pygame.sprite.Sprite):
         self.WINDOW = WINDOW
 
 
-        self.font_bold_20 = pygame.font.Font(os.path.join('assets', 'font', 'static', 'RobotoMono-Bold.ttf'), 20)
-        self.font_bold_12 = pygame.font.Font(os.path.join('assets', 'font', 'static', 'RobotoMono-Bold.ttf'), 12)
+        self.font_bold_20 = pygame.font.Font(os.path.join('game', 'assets', 'font', 'static', 'RobotoMono-Bold.ttf'), 20)
+        self.font_bold_12 = pygame.font.Font(os.path.join('game', 'assets', 'font', 'static', 'RobotoMono-Bold.ttf'), 12)
 
 
         self.animation_counter = Counter(0.1, 8, True, self.animation)
-        self.animation_images = get_animation_images("assets/img/coin", 9, 40, 50)
+        self.animation_images = get_animation_images("game/assets/img/coin", 9, 40, 50)
         self.current_animation_index = 1
 
-        box = pygame.image.load(os.path.join('assets', 'img', 'coin_box.png'))
+        box = pygame.image.load(os.path.join('game', 'assets', 'img', 'coin_box.png'))
         self.coin_box = pygame.transform.smoothscale(box, (100,50))
         self.score_box = pygame.transform.smoothscale(box, (100,50))
         

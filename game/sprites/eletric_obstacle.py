@@ -14,7 +14,7 @@ class Eletric_obstacle(pygame.sprite.Sprite):
         position = self.gen_random_position()
         
         self.rect = pygame.Rect(position[0], position[1], ELETRIC_OBSTACLE_WIDTH, ELETRIC_OBSTACLE_HEIGHT)
-        self.animation_images = get_animation_images("assets/img/eletric-obstacle", 4, ELETRIC_OBSTACLE_WIDTH, ELETRIC_OBSTACLE_HEIGHT)
+        self.animation_images = get_animation_images("game/assets/img/eletric-obstacle", 4, ELETRIC_OBSTACLE_WIDTH, ELETRIC_OBSTACLE_HEIGHT)
         self.current_animation_index = 1
         
         self.sprite_image = self.animation_images[self.current_animation_index]
@@ -55,10 +55,4 @@ class Eletric_obstacle(pygame.sprite.Sprite):
         self.update_hitbox()
         self.draw()
         
-        
-        
-        
-        
-
-   
-    
+ 

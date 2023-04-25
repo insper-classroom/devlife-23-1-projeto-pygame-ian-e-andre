@@ -1,5 +1,4 @@
 import pygame
-from pygame.locals import (K_UP,K_DOWN,K_LEFT,K_RIGHT,K_ESCAPE,KEYDOWN,QUIT)
 from config import *
 from utils.counter import Counter
 from utils.utils import get_animation_images
@@ -12,7 +11,7 @@ class Jump_fx(pygame.sprite.Sprite):
         self.height = 46
         
         self.window = window
-        self.animation_images = get_animation_images("assets/img/jump-fx", 22, self.width, self.height)
+        self.animation_images = get_animation_images("game/assets/img/jump-fx", 22, self.width, self.height)
         self.current_animation_index = 0
         self.player = player 
         self.animation_counter = Counter(0.5, 10, True, self.animation)
@@ -39,6 +38,4 @@ class Jump_fx(pygame.sprite.Sprite):
         if (self.jump):
             self.animation_counter.update(delta_t)
             self.draw()
-            
-        
             

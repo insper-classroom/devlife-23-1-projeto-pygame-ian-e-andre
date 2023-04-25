@@ -1,6 +1,5 @@
 import pygame
 from config import *
-from pygame.locals import (KEYDOWN)
 from screens.game import (Game)
 
 WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
