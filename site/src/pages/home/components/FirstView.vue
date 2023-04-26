@@ -50,10 +50,7 @@ export default defineComponent({
                 <a class="menu" href="#logs">Development logs</a>
                 <a class="menu" href="#installation">Installation</a>
                 <a class="menu" href="#gallery">Gallery</a>
-                <a class="menu">Play</a>
-
-                
-                <button class="play-button">Launch game</button>
+                <a class="menu" href="#video">Video</a>
             </header>
 
             <h1 class="title">ROCKET RUNNER</h1>
