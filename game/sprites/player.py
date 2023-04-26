@@ -30,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         self.on_top = False
         self.on_floor = False
         
-        self.shield = True
+        self.shield = False
 
         self.sounds = {
             "coin_sound": pygame.mixer.Sound("assets/snd/coin01.ogg")

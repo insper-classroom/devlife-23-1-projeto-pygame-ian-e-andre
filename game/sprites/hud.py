@@ -17,7 +17,7 @@ class Hud(pygame.sprite.Sprite):
         self.game = game
 
         self.default_background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box.png')).convert_alpha(), (BOX_WIDTH,BOX_HEIGHT))
-        self.coin_background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'coin-box.png')).convert_alpha(), (BOX_WIDTH,BOX_HEIGHT))
+        self.coin_background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box2.png')).convert_alpha(), (BOX_WIDTH,BOX_HEIGHT))
         
 
     def draw_fps(self, delta_t):
