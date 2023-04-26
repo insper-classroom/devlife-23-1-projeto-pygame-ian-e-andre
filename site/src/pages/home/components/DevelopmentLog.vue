@@ -47,10 +47,11 @@ export default defineComponent({
         },
         openGroup(dateIndex: any) {
             for (let i in this.logsGroups) {
+                if (i == dateIndex) continue
                 this.logsGroups[i].opened = false
             } 
 
-            this.logsGroups[dateIndex].opened = true
+            this.logsGroups[dateIndex].opened = !this.logsGroups[dateIndex].opened 
         }
     },
     mounted() {
