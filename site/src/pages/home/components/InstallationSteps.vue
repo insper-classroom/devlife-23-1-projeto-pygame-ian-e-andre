@@ -27,17 +27,17 @@ export default defineComponent({
         <section class="text-container">
             <h1>GAME INSTALLATION</h1>
             <!-- texto a baixo gerado pelo chat GPT -->
-            <p> 
-                To play the previously described 2D game, you need to follow a few simple steps. First, it's necessary to clone the game repository on Github, which can be done through the "git clone" command followed by the repository link.
-                <br>
-                Next, you need to enter the directory where the game files are stored, which can be done through the "cd" command.
-                <br>
-                To ensure that the game runs correctly, you need to install the game dependencies, which can be done through the "pip3 install pygame" command. It's important to note that you need to have Python installed on your computer to run the game.
-                <br>
-                In addition, it's recommended that Pygame be updated to its latest version, which can be done through the "pip install pygame pip install pygame --upgrade" command.
-                <br>
-                Finally, to run the game, just type the "python3 main.py" command in the terminal. With these simple steps, you'll be ready to enjoy the exciting and challenging 2D game.
-            </p>
+            <div class="description-container"> 
+                <p>To play the previously described 2D game, you need to follow a few simple steps. First, it's necessary to clone the game repository on Github, which can be done through the "git clone" command followed by the repository link.</p>
+
+                <p>Next, you need to enter the directory where the game files are stored, which can be done through the "cd" command.</p>
+                
+                <p>To ensure that the game runs correctly, you need to install the game dependencies, which can be done through the "pip3 install pygame" command. It's important to note that you need to have Python installed on your computer to run the game.</p>                
+                
+                <p>In addition, it's recommended that Pygame be updated to its latest version, which can be done through the "pip install pygame pip install pygame --upgrade" command.</p>
+                
+                <p>Finally, to run the game, just type the "python3 main.py" command in the terminal. With these simple steps, you'll be ready to enjoy the exciting and challenging 2D game.</p>
+            </div>
         </section>
 
         <section class="bash-commands-container">
@@ -72,6 +72,29 @@ export default defineComponent({
         width: fit-content;
         color: white;
         gap: 20px;
+    }
+
+    .description-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+    }
+    
+    .description-container p::before {
+        content: '';
+        display: block;
+        height: 5px;
+        width: 5px;
+        min-width: 5px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 100px;
+    }
+
+    .description-container p {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .text-container h1 {

@@ -44,13 +44,13 @@ export default defineComponent({
             <h1>GAME DESCRIPTION</h1>
             <!-- texto a baixo gerado pelo chat GPT -->
             <p> 
-                Welcome to our thrilling 2D game, where you'll join the bravest scientist in the world on a breathtaking action adventure! With our game, you'll be in a universe filled with challenges and obstacles that will test your skill and endurance.
+                <strong>Welcome to our thrilling 2D game</strong>, where you'll join the bravest character in the world on a breathtaking action adventure! With our game, you'll be in a universe filled with challenges and obstacles that will test your skill and endurance.
                 <br>
-                Your goal is to help the scientist fly through the scenery with his incredible jetpack, while dodging missiles, spikes, enemies, and electric obstacles. Your character will have to be fast and agile to survive as long as possible and set a new high score. As you progress through the game, you'll find coins that can be used to acquire other skins in the skins marketplace, allowing you to customize your character with a unique look.
                 <br>
-                The game mechanics are very simple: just touch the screen to fly and release to descend. The longer you stay alive, the higher your score will be. Once your adventure comes to an end, you'll have the opportunity to collect your score records to display them to your friends and other players.
+                <strong>Your goal is to help the character fly through the scenery with his incredible jetpack</strong>, while dodging missiles, spikes, enemies, and electric obstacles. Your character will have to be fast and agile to survive as long as possible and set a new high score. As you progress through the game, you'll find coins that can be used to acquire other skins in the skins marketplace, allowing you to customize your character with a unique look.
                 <br>
-                This game is exciting, challenging, and fun for players of all ages. It's an excellent pastime for those who want to test their skills and overcome their own records. Download our 2D game now and experience the thrill of endless action!
+                <br>
+                The game mechanics are very simple: just touch the screen to fly and release to descend. The longer you stay alive, the higher your score will be. 
             </p>
         </section>
 
