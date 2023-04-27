@@ -3,6 +3,7 @@ from config import *
 from screens.game import (Game)
 from screens.initial import (Initial)
 from screens.game_over import (Game_over)
+from screens.store import (Store)
 
 
 WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -13,7 +14,7 @@ clock = pygame.time.Clock()
                     
 class Main:
     def __init__(self):
-        self.current_screen = Initial(WINDOW)
+        self.current_screen = Game(WINDOW)
 
     def run(self):
         pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])

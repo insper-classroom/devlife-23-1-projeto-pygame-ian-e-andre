@@ -16,7 +16,7 @@ class Initial:
         self.digital_font = pygame.font.Font("assets/font/DS-DIGI.ttf", 30)
         
         self.groups["buttons"].add(Button(window, self.start_game, "START GAME", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 150], "2"))
-        self.groups["buttons"].add(Button(window, self.open_store, "LOJA", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 230], "1"))
+        self.groups["buttons"].add(Button(window, self.open_store, "STORE", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 230], "1"))
     
     def start_game(self):
         event = pygame.event.Event(OPEN_GAME_EVENT)

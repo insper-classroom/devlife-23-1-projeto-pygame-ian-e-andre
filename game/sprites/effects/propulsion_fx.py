@@ -8,7 +8,7 @@ class Propulsion_fx(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         self.window = window
-        self.animation_images = get_animation_images("assets/img/propulsion", 4, 80, 80)
+        self.animation_images = get_animation_images("assets/img/propulsion", 4, 70, 93)
         self.current_animation_index = 1
         self.player = player 
         self.animation_counter = Counter(0.1, 8, True, self.animation)
@@ -19,7 +19,7 @@ class Propulsion_fx(pygame.sprite.Sprite):
         cropped_image = image.subsurface(bounding_rect)
         
         
-        self.window.blit(cropped_image, (self.player.rect.x - 45, self.player.rect.y + 75))
+        self.window.blit(cropped_image, (self.player.rect.x - 27, self.player.rect.y + 70))
         
     def animation(self):
         self.current_animation_index += 1

@@ -1,5 +1,7 @@
 import pygame
 from config import *
+import json
+
 
 def get_animation_images(path, max_index, width, height):
     animation_images = []
@@ -23,3 +25,9 @@ def group_mask_collided(sprite, group):
         return collided_sprites
 
     return False    
+
+def get_storaged_data():
+    file = open('./db/storaged_data.json')
+    data = json.load(file)
+    
+    return data
