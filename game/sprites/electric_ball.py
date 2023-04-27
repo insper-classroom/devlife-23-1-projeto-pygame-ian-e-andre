@@ -35,8 +35,7 @@ class Electric_ball(pygame.sprite.Sprite):
     
     def gen_random_position(self):
         x = WINDOW_WIDTH
-        y = random.randint(0, WINDOW_HEIGHT - (ELECTRIC_BALL_HEIGHT // 3) - FLOOR_HEIGHT)
-        
+        y = random.randint(0, (WINDOW_HEIGHT - (ELECTRIC_BALL_HEIGHT // 3) - FLOOR_HEIGHT) // 2)
         return [x, y]
 
     def movement(self, delta_t):
