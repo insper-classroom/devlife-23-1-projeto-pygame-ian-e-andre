@@ -18,22 +18,99 @@ export default defineComponent({
 
 <template>
     <div class="footer-component fade">
-
-       
+        <aside class="org-container">
+            <img src="https://upload.wikimedia.org/wikipedia/pt/3/39/Logo_Insper.png" >
+            <p >Rua Quatá, 200 - Vila Olímpia, São Paulo/SP </p>
+        </aside>
+        <aside class="developer-container" style="margin-left: auto;">
+            <div class="avatar-container">
+                <img src="https://i.ibb.co/Jr94jkk/andre.jpg"/>
+                <p>Andre Pereira de Oliveira</p>
+            </div>
+            <div class="social-media-icons">
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-github"></i></a>
+                <a href=""><i class="fa-solid fa-at"></i></a>
+            </div>
+        </aside>
+        <aside class="developer-container">
+            <div class="avatar-container">
+                <img src="https://i.ibb.co/Tt2RKmd/ian.jpg"/>
+                <p>Ian Cordibello Desponds                  </p>
+            </div>
+            <div class="social-media-icons">
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-github"></i></a>
+                <a href=""><i class="fa-solid fa-at"></i></a>
+            </div>
+        </aside>
     </div>
 </template>
 
+
 <style scoped>
     .footer-component {
-        height: 600px;
+        height: fit-content;
         width: 100%;
-
         display: flex;
-        flex-direction: column;
+        gap: 40px;
         padding: 80px;
         z-index: 2;
         position: relative;
-        background: linear-gradient(180deg, rgba(18, 18, 18, 0.05) 0%, rgba(255, 255, 255, 0.05) 50%);
+        /* background: linear-gradient(180deg, rgba(18, 18, 18, 0.05) 0%, rgba(255, 255, 255, 0.05) 50%); */
+        background-color: rgba(255, 255, 255, 0.025);
+        border-top: solid 1px rgba(255, 255, 255, 0.1);
     }
    
+    .org-container img {
+        filter: invert(1) brightness(1000);
+        width: 160px;
+    }
+
+    .org-container p {
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 10px;
+        font-family: 'Roboto mono';
+    }
+
+    .developer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .developer-container .avatar-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .developer-container .avatar-container img {
+        width: 30px;
+        border-radius: 100px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .developer-container .avatar-container p {
+        color: white;
+        font-family: "Roboto mono";
+        font-weight: 600;
+    }
+
+    .developer-container .social-media-icons {
+        display: flex;
+        gap: 10px;
+        padding-left: 40px;
+    }
+
+    .developer-container .social-media-icons i {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 18px;
+        transition: all .5s;
+        cursor: pointer;
+    }
+
+    .developer-container .social-media-icons i:hover {
+        color: white;
+    }
 </style>
