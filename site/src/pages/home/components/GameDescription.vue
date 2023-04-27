@@ -8,10 +8,10 @@ export default defineComponent({
         return {
             text: "",
             characters: [
-                {color: "165, 237, 76", shadow: "", path: new URL('../../../assets/player-sprite/1.png', import.meta.url)},
-                {color: "238, 148, 54", shadow: "", path: new URL('../../../assets/player-sprite/2.png', import.meta.url)},
-                {color: "173, 45, 27", shadow: "", path: new URL('../../../assets/player-sprite/3.png', import.meta.url)},
-                {color: "236, 92, 41", shadow: "", path: new URL('../../../assets/player-sprite/4.png', import.meta.url)},
+                {color: "165, 237, 76", shadow: "", path: new URL('../../../assets/player-sprite/d.png', import.meta.url)},
+                {color: "236, 92, 41", shadow: "", path: new URL('../../../assets/player-sprite/a.png', import.meta.url)},
+                {color: "238, 148, 54", shadow: "", path: new URL('../../../assets/player-sprite/b.png', import.meta.url)},
+                {color: "173, 45, 27", shadow: "", path: new URL('../../../assets/player-sprite/c.png', import.meta.url)},
             ]
         }
     },
@@ -110,7 +110,7 @@ export default defineComponent({
     }
 
     .characters-image-container img {
-        width: 110%;
+        width: 80%;
         transition: all 1s;
         transition: all .5s;
     }

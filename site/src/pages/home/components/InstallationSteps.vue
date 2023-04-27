@@ -43,7 +43,7 @@ export default defineComponent({
         <section class="bash-commands-container">
             <iframe
                 src="https://carbon.now.sh/embed?bg=rgba%2818%2C19%2C22%2C1%29&t=seti&wt=none&l=application%2Fx-sh&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=%2523%2520Clonar%2520reposit%25C3%25B3rio%2520do%2520github%250Agit%2520clone%2520%2522https%253A%252F%252Fgithub.com%252Finsper-classroom%252Fdevlife-23-1-projeto-pygame-ian-e-andre.git%2522%250A%2523%2520Entrar%2520no%2520diretorio%2520em%2520que%2520est%25C3%25A1%2520os%2520arquivos%2520do%2520jogo%250Acd%2520devlife-23-1-projeto-pygame-ian-e-andre%252Fgame%250A%2523%2520Instalar%2520depend%25C3%25AAncias%2520%250Apip3%2520install%2520pygame%250A%2523%2520Atualizar%2520o%2520pygame%250Apip%2520install%2520pygame%2520pip%2520install%2520pygame%2520--upgrade%250A%2523%2520Rodar%2520o%2520jogo%2520%250Apython3%2520main.py%250A%250A"
-                style="width: 100%; height: 100%; border:0; transform: scale(1); overflow:hidden;"
+                style="width: 100%; height: 500px; border:0; transform: scale(1); overflow:hidden;"
                 sandbox="allow-scripts allow-same-origin">
             </iframe>
         </section>
@@ -120,6 +120,5 @@ export default defineComponent({
     .bash-commands-container iframe {
         width: 100%;
         position: relative;
-        top: 25%;
     }
 </style>
