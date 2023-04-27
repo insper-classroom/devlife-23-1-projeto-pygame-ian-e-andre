@@ -13,13 +13,15 @@ class Button(pygame.sprite.Sprite):
         self.text = text
         self.position = position
         self.onclick = onclick
-        self.font = pygame.font.Font(os.path.join("assets", "font", 'OCRAStd.woff'), 16)
+        self.font = pygame.font.Font('assets/font/DS-DIGI.ttf', 26)
         
         if (box_type == "1"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box.png')).convert_alpha(), (BUTTON_WIDTH,BUTTON_HEIGHT))
         elif (box_type == "2"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box2.png')).convert_alpha(), (BUTTON_WIDTH,BUTTON_HEIGHT))
-
+        elif (box_type == "3"):
+            self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box3.png')).convert_alpha(), (BUTTON_WIDTH,BUTTON_HEIGHT))
+            
         
     def get_text_center(self, text_width, text_height):
         x = self.position[0] + (BUTTON_WIDTH / 2 - text_width / 2) 

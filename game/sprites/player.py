@@ -110,7 +110,8 @@ class Player(pygame.sprite.Sprite):
             self.obj_groups[group_name].remove(collided_sprites)
             self.shield = False
         else: 
-            pygame.quit()
+            event = pygame.event.Event(OPEN_GAME_OVER_EVENT)
+            pygame.event.post(event)
         
     def update_hitbox(self):
         dimensions = self.sprite_image.get_bounding_rect()
@@ -145,8 +146,6 @@ class Player(pygame.sprite.Sprite):
                     grp.remove(collided_sprites)
                     self.shield = True
                     
-
-            
     def animation(self):
         self.current_animation_index += 1
         
