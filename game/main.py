@@ -2,6 +2,7 @@ import pygame
 from config import *
 from screens.game import (Game)
 from screens.initial import (Initial)
+from screens.game_over import (Game_over)
 
 
 WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -25,6 +26,11 @@ class Main:
                     pygame.quit()
                 elif (event.type == OPEN_GAME_EVENT):
                     self.current_screen = Game(WINDOW)
+                elif (event.type == OPEN_INITIAL_EVENT):
+                    self.current_screen = Initial(WINDOW)
+                elif (event.type == OPEN_GAME_OVER_EVENT):
+                    self.current_screen = Game_over(WINDOW)
+                    
             
             self.current_screen.update()
             

@@ -2,7 +2,7 @@ from config import *
 from sprites.button import (Button)
 
 
-class Initial:
+class Game_over:
     def __init__(self, window):
         self.window = window
         
@@ -13,17 +13,14 @@ class Initial:
         self.background_image = pygame.transform.smoothscale(pygame.image.load("assets/img/blurred-background.png").convert_alpha(), (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.lander_image = pygame.transform.smoothscale(pygame.image.load("assets/img/lander.png").convert_alpha(), (LANDER_WIDTH, LANDER_HEIGHT))
         self.title_panel_image = pygame.transform.smoothscale(pygame.image.load("assets/img/title-panel.png").convert_alpha(), (TITLE_PANEL_WIDTH, TITLE_PANEL_HEIGHT))
-        self.digital_font = pygame.font.Font("assets/font/DS-DIGI.ttf", 30)
+        self.digital_font = pygame.font.Font("assets/font/DS-DIGI.ttf", 20)
+        self.dead_char_image = pygame.transform.smoothscale(pygame.image.load("assets/img/dead-char.png").convert_alpha(), (DEAD_CHAR_IMAGE_WIDTH, DEAD_CHAR_IMAGE_HEIGHT))
         
-        self.groups["buttons"].add(Button(window, self.start_game, "START GAME", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 150], "2"))
-        self.groups["buttons"].add(Button(window, self.open_store, "LOJA", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 230], "1"))
+        self.groups["buttons"].add(Button(window, self.return_initial, "RETURN", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 280], "3"))
     
-    def start_game(self):
-        event = pygame.event.Event(OPEN_GAME_EVENT)
+    def return_initial(self):
+        event = pygame.event.Event(OPEN_INITIAL_EVENT)
         pygame.event.post(event)
-    
-    def open_store(self):
-        pass
     
     def handle_event(self, event):
         if (event.type == pygame.MOUSEBUTTONDOWN):
@@ -36,8 +33,10 @@ class Initial:
         self.window.blit(self.lander_image, (WINDOW_WIDTH / 2 - LANDER_WIDTH / 2, WINDOW_HEIGHT / 2 - LANDER_HEIGHT / 2))
         self.window.blit(self.title_panel_image, (WINDOW_WIDTH / 2 - TITLE_PANEL_WIDTH / 2, 0))
         
-        lander_text = self.digital_font.render("INIT", True, (255, 255, 255))
-        self.window.blit(lander_text, (445, 412))
+        lander_text = self.digital_font.render("GAME OVER", True, (255, 255, 255))
+        self.window.blit(lander_text, (425, 418))
+        
+        self.window.blit(self.dead_char_image, (WINDOW_WIDTH / 2 - DEAD_CHAR_IMAGE_WIDTH / 2, 130))
         
     def change_cursor(self):
         hovering = False
@@ -50,7 +49,7 @@ class Initial:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
-        
+    
     def update(self):
         self.draw()
         
