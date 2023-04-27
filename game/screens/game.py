@@ -7,6 +7,7 @@ from sprites.coin import (Coin)
 from sprites.shield_item import (Shield_item)
 from utils.counter import (Counter)
 from sprites.hud import (Hud)
+from sprites.spike import (Spike)
 import random
 
 class Game:
@@ -18,6 +19,7 @@ class Game:
             "coins": pygame.sprite.Group(),
             "electric_balls": pygame.sprite.Group(),
             "shield_items": pygame.sprite.Group(),
+            "spikes": pygame.sprite.Group()
         }
 
         self.background_image = pygame.image.load(os.path.join( "assets", "img", "background", "1.png",))
@@ -55,8 +57,12 @@ class Game:
         
         self.obj_groups[objects[sorted_index]["group"]].add(objects[sorted_index]["sprite"](self.window, self.obj_groups))
         
-        if (random.random() < 0.1): 
+        if (random.random() < 0.05): 
             self.obj_groups["shield_items"].add(Shield_item(self.window, self.obj_groups))
+        
+        if (random.random() < 0.5):
+            self.obj_groups["spikes"].add(Spike(self.window, self.obj_groups))
+            
 
     
     def update(self):

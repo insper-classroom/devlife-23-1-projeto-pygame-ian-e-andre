@@ -24,7 +24,6 @@ class Main:
                 if (event.type == pygame.QUIT):
                     pygame.quit()
                 elif (event.type == OPEN_GAME_EVENT):
-                    print("ds")
                     self.current_screen = Game(WINDOW)
             
             self.current_screen.update()

@@ -135,7 +135,7 @@ class Player(pygame.sprite.Sprite):
                 
             collided_sprites = group_mask_collided(self, grp)
             if (collided_sprites):
-                if (grp_name in ["electric_obstacles", "electric_balls"]):
+                if (grp_name in ["electric_obstacles", "electric_balls", "spikes"]):
                     self.kill_player(grp_name, collided_sprites)
                 elif (grp_name == "coins"):
                     self.game.coin_amount += 1
