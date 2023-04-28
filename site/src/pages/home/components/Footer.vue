@@ -19,7 +19,7 @@ export default defineComponent({
 <template>
     <div class="footer-component fade">
         <aside class="org-container">
-            <img src="https://upload.wikimedia.org/wikipedia/pt/3/39/Logo_Insper.png" >
+            <a href="https://www.insper.edu.br/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/pt/3/39/Logo_Insper.png" ></a>
             <p >Rua Quatá, 200 - Vila Olímpia, São Paulo/SP </p>
         </aside>
         <aside class="developer-container" style="margin-left: auto;">
