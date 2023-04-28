@@ -6,14 +6,21 @@ import Button from '@/shared/Button.vue'
 export default defineComponent({
     data() {
         return {
-            gallery: [
+            images: [
                 {imageUrl: "https://i.ibb.co/C9HTDCF/Screenshot-2023-04-24-at-18-06-08.png", title: "Game in beta version", description: "Photo taken on 19/04 (sprint 1)"},
                 {imageUrl: "https://i.ibb.co/PZJcBWw/Screenshot-2023-04-24-at-18-33-28.png", title: "Game in qa version", description: "Photo taken on 23/04 (end of sprint 1)"},
-            ]
+            ],
+            maximizedIndex: 0,
+            maximized: true
         }
     },
 
-    methods: {},
+    methods: {
+        maximizeImage(index: number) {
+            this.maximizedIndex = index
+            this.maximized = true
+        }
+    },
     mounted() {
     },
     components: {
@@ -24,22 +31,36 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="photos-gallery-component fade" id="gallery">
-        <h1 class="title">PHOTOS GALLERY</h1>
-        <div class="photos-container">
-            <div class="photo-unit" v-for="(photo, index) in gallery">
-                <div class="image" :style="{backgroundImage: `url(${photo.imageUrl})`}"><div class="gradient"></div></div>
-                <h1>{{ photo.title }} <i class="fa-solid fa-image-polaroid"></i></h1>
-                <p>{{ photo.description }}</p>
+    <div class="photo-gallery-component" id="gallery">
+        <Transition>
+            <div class="maximized-image-container" v-if="maximized">
+                <i class="fa-solid fa-xmark close-icon" @click="maximized = false"></i>
+                <img :src="images[maximizedIndex].imageUrl" alt="">
+            </div>
+        </Transition>
+        <div class="minimized-container fade" >
+            <h1 class="title">PHOTO GALLERY</h1>
+            <div class="images-container">
+                <div class="image-unit" v-for="(photo, index) in images" @click="maximizeImage(index)">
+                    <div class="image" :style="{backgroundImage: `url(${photo.imageUrl})`}"><div class="gradient"></div></div>
+                    <h1>{{ photo.title }} <i class="fa-solid fa-image-polaroid"></i></h1>
+                    <p>{{ photo.description }}</p>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-    .photos-gallery-component {
+    .photo-gallery-component {
         height: 100vh;
         width: 100vw;
+    }
+
+
+    .minimized-container {
+        height: 100%;
+        width: 100%;
 
         display: flex;
         flex-direction: column;
@@ -55,13 +76,13 @@ export default defineComponent({
         margin-bottom: 20px;
     }
 
-    .photos-container {
+    .images-container {
         display: flex;
         align-items: center;
         gap: 20px;
     }
 
-    .photo-unit {
+    .image-unit {
         width: 100%;
         height: fit-content;
         border: solid 1px rgba(255, 255, 255, 0.1);
@@ -70,7 +91,7 @@ export default defineComponent({
         overflow: hidden;
     }
 
-    .photo-unit h1 {
+    .image-unit h1 {
         font-family: 'Roboto mono';
         font-style: normal;
         font-weight: 500;
@@ -83,13 +104,13 @@ export default defineComponent({
         display: flex;
     }
 
-    .photo-unit i {
+    .image-unit i {
         margin-left: 10px;
         font-size: 10px;
         margin-top: 4px;
     }
 
-    .photo-unit p {
+    .image-unit p {
         font-family: 'Roboto mono';
         font-style: normal;
         font-weight: 400;
@@ -100,7 +121,7 @@ export default defineComponent({
         margin-left: 20px;
         margin-bottom: 20px;
     }
-    .photo-unit .image {
+    .image-unit .image {
         background-image: url("https://cdn.discordapp.com/attachments/893276914851147826/1035693932673249391/unknown.png");
         background-position: center;
         background-size: cover;
@@ -111,7 +132,7 @@ export default defineComponent({
         transition: all .5s;
         cursor: pointer;
     }
-    .photo-unit .image .gradient {
+    .image-unit .image .gradient {
         background: linear-gradient(180deg, rgba(18,19,22, 0.1) 0%, rgba(18,19,22,1) 100%);;
         width: 100%;
         height: 100%;
@@ -119,12 +140,54 @@ export default defineComponent({
         position: relative;
         top: 1px;
     }
-    .photo-unit .image:hover .gradient {
+    .image-unit .image:hover .gradient {
         opacity: 0;
     }
-    .photo-unit .image:hover {
+    .image-unit .image:hover {
         z-index: 100;
         filter: grayscale(0);
                 
+    }
+
+    /* ---------------------------------------------------- */
+
+    .maximized-image-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        z-index: 10009000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .maximized-image-container img {
+        border-radius: 10px;
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .maximized-image-container .close-icon {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
+        margin-bottom: 20px;
+        transition: all .5s;
+        cursor: pointer;
+    }
+
+    .maximized-image-container .close-icon:hover {
+        color: white;
+    }
+
+    .v-enter-active,
+    .v-leave-active {
+    transition: opacity 0.3s ease;
+    }
+
+    .v-enter-from,
+    .v-leave-to {
+    opacity: 0;
     }
 </style>

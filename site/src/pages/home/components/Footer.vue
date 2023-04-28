@@ -37,7 +37,7 @@ export default defineComponent({
         <aside class="developer-container">
             <div class="avatar-container">
                 <img src="https://i.ibb.co/Tt2RKmd/ian.jpg"/>
-                <p>Ian Cordibello Desponds                  </p>
+                <p>Ian Cordibello Desponds</p>
             </div>
             <div class="social-media-icons">
                 <a href=""><i class="fa-brands fa-instagram"></i></a>
