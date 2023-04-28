@@ -28,9 +28,9 @@ export default defineComponent({
                 <p>Andre Pereira de Oliveira</p>
             </div>
             <div class="social-media-icons">
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-                <a href=""><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/andrepereira_o/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/andre-pereira-de-oliveira-b2458a206/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/DECO190"><i class="fa-brands fa-github"></i></a>
                 <a href=""><i class="fa-solid fa-at"></i></a>
             </div>
         </aside>
@@ -40,9 +40,9 @@ export default defineComponent({
                 <p>Ian Cordibello Desponds</p>
             </div>
             <div class="social-media-icons">
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-                <a href=""><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/ian_desponds/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/ian-cordibello-desponds-5b02b025a"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/iancdesponds"><i class="fa-brands fa-github"></i></a>
                 <a href=""><i class="fa-solid fa-at"></i></a>
             </div>
         </aside>
