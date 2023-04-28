@@ -14,7 +14,7 @@ clock = pygame.time.Clock()
                     
 class Main:
     def __init__(self):
-        self.current_screen = Game(WINDOW)
+        self.current_screen = Store(WINDOW)
 
     def run(self):
         pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
