@@ -89,6 +89,8 @@ export default defineComponent({
         max-width: 350px;
         border-radius: 10px;
         overflow: hidden;
+        cursor: pointer;
+
     }
 
     .image-unit h1 {
@@ -140,10 +142,10 @@ export default defineComponent({
         position: relative;
         top: 1px;
     }
-    .image-unit .image:hover .gradient {
+    .image-unit:hover .gradient {
         opacity: 0;
     }
-    .image-unit .image:hover {
+    .image-unit:hover .image {
         z-index: 100;
         filter: grayscale(0);
                 
