@@ -11,7 +11,7 @@ export default defineComponent({
                 {imageUrl: "https://i.ibb.co/PZJcBWw/Screenshot-2023-04-24-at-18-33-28.png", title: "Game in qa version", description: "Photo taken on 23/04 (end of sprint 1)"},
             ],
             maximizedIndex: 0,
-            maximized: true
+            maximized: false
         }
     },
 
