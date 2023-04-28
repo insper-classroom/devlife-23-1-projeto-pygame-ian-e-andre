@@ -38,7 +38,7 @@ export default defineComponent({
                 <img :src="images[maximizedIndex].imageUrl" alt="">
             </div>
         </Transition>
-        <div class="minimized-container fade" >
+        <div class="minimized-container fade" :style="{filter: `blur(${maximized ? '10px': ''})`}">
             <h1 class="title">PHOTO GALLERY</h1>
             <p class="description">Below you will find the game's photo gallery and descriptions.</p>
             <div class="images-container">
@@ -58,6 +58,7 @@ export default defineComponent({
         width: 100vw;
     }
 
+    /* ------------------------------- */
 
     .minimized-container {
         height: 100%;
@@ -68,6 +69,7 @@ export default defineComponent({
         padding: 80px;
         z-index: 2;
         position: relative;
+        transition: all .3s;
     }
 
     .title {
@@ -164,8 +166,7 @@ export default defineComponent({
         position: absolute;
         width: 100%;
         height: 100%;
-        backdrop-filter: blur(10px);
-        z-index: 10009000;
+        z-index: 10;
         display: flex;
         flex-direction: column;
         align-items: center;
