@@ -1,5 +1,8 @@
 {
-    "characters": ["1"],
+    "characters": [
+        "1"
+    ],
     "coins_amount": 123,
-    "selected_char": "4"
+    "selected_char": "4",
+    "highscore": 0
 }

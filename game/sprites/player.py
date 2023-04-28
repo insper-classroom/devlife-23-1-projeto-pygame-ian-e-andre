@@ -112,6 +112,7 @@ class Player(pygame.sprite.Sprite):
             self.obj_groups[group_name].remove(collided_sprites)
             self.shield = False
         else: 
+            self.game.update_highscore()
             event = pygame.event.Event(OPEN_GAME_OVER_EVENT)
             pygame.event.post(event)
         

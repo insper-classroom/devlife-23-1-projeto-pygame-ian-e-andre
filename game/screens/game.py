@@ -9,6 +9,7 @@ from utils.counter import (Counter)
 from sprites.hud import (Hud)
 from sprites.spike import (Spike)
 import random
+import json
 
 class Game:
     def __init__(self, window):
@@ -44,6 +45,15 @@ class Game:
     def handle_event(self, event):
         pass
 
+    def update_highscore(self):
+        with open('db/storaged_data.json', 'r') as json_file:
+            data = json.load(json_file)
+            if self.score>data["highscore"]:
+                data["highscore"] = self.score
+        print(data["highscore"])
+        with open('db/storaged_data.json', 'w') as json_file:
+            json.dump(data, json_file, indent=4)
+ 
     def calc_delta_t(self):
         now = pygame.time.get_ticks()
         delta_t = now - self.prev_time
@@ -62,14 +72,11 @@ class Game:
         
         if (random.random() < 0.05):
             self.obj_groups["spikes"].add(Spike(self.window, self.obj_groups))
-            
-
     
     def update(self):
         self.window.fill((100, 100, 100))
         self.window.blit(self.background_image, (0, 0))
         delta_t = self.calc_delta_t()
-        
         self.background.update(delta_t)
         self.player.update(delta_t)
 
@@ -80,4 +87,3 @@ class Game:
         self.add_objects_counter.update(delta_t)
         self.score_counter.update(delta_t)
         self.hud.update(delta_t)
-
