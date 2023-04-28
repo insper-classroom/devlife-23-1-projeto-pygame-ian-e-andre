@@ -67,6 +67,7 @@ export default defineComponent({
 <template>
     <div class="development-log-component fade" id="logs">
         <h1 class="title">DEVELOPMENT LOG</h1>
+        <p class="description">Below you can find the development logs during the sprints sessions</p>
 
         <div class="daily-logs-container">
             <div 
@@ -121,8 +122,15 @@ export default defineComponent({
         font-family: 'OCR A Std';
         font-size: 40px;
         color: white;
+    }
+
+    .description {
+        font-family: 'Roboto mono';
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
         margin-bottom: 20px;
     }
+
 
     .daily-logs-container {
         display: flex;
@@ -149,7 +157,7 @@ export default defineComponent({
         display: flex;
         align-items: center;
         cursor: pointer;
-
+        
     }
     
     .group-header p {

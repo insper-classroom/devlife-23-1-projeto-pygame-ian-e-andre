@@ -40,6 +40,7 @@ export default defineComponent({
         </Transition>
         <div class="minimized-container fade" >
             <h1 class="title">PHOTO GALLERY</h1>
+            <p class="description">Below you will find the game's photo gallery and descriptions.</p>
             <div class="images-container">
                 <div class="image-unit" v-for="(photo, index) in images" @click="maximizeImage(index)">
                     <div class="image" :style="{backgroundImage: `url(${photo.imageUrl})`}"><div class="gradient"></div></div>
@@ -73,6 +74,12 @@ export default defineComponent({
         font-family: 'OCR A Std';
         font-size: 40px;
         color: white;
+        
+    }
+    .description {
+        font-family: 'Roboto mono';
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
         margin-bottom: 20px;
     }
 

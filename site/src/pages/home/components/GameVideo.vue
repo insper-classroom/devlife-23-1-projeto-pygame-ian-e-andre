@@ -25,6 +25,7 @@ export default defineComponent({
 <template>
     <div class="game-video-component fade" id="video">
         <h1>GAME VIDEO</h1>
+        <p class="description">Below you can find the explanatory video of how the game works</p>
         <iframe style="margin-top: 20px;" width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 </template>
@@ -49,7 +50,7 @@ export default defineComponent({
         color: white;
     }
 
-    .game-video-component p {
+    .game-video-component .description {
         font-family: 'Roboto mono';
         font-size: 14px;
         color: rgba(255, 255, 255, 0.6);
