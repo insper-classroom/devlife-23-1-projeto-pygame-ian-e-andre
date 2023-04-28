@@ -14,7 +14,7 @@ clock = pygame.time.Clock()
                     
 class Main:
     def __init__(self):
-        self.current_screen = Store(WINDOW)
+        self.current_screen = Initial(WINDOW)
 
     def run(self):
         pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
@@ -31,6 +31,8 @@ class Main:
                     self.current_screen = Initial(WINDOW)
                 elif (event.type == OPEN_GAME_OVER_EVENT):
                     self.current_screen = Game_over(WINDOW)
+                elif (event.type == OPEN_STORE_EVENT):
+                    self.current_screen = Store(WINDOW)
                     
             
             self.current_screen.update()

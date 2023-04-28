@@ -22,6 +22,11 @@ class Store:
         self.chars_id = ["1", "2", "3", "4"]
         
         self.groups["buttons"].add(Button(window, self.show_next_char, "", [(WINDOW_WIDTH / 2 - ARROW_WIDTH / 2) + 130, 180], "5"))
+        self.groups["buttons"].add(Button(window, self.return_initial_screen, "", [10, 10], "6"))
+
+    def return_initial_screen(self):
+        event = pygame.event.Event(OPEN_INITIAL_EVENT)
+        pygame.event.post(event)
 
     def show_previous_char(self):
         if (self.chars_id.index(self.current_char_id) - 1 < 0):

@@ -27,7 +27,10 @@ class Button(pygame.sprite.Sprite):
         elif (box_type == "5"):
             self.dimensions = [28, 45]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'RightArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        
+        elif (box_type == "6"):
+            self.dimensions = [28, 45]
+            self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'BackArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
+
         self.rect = pygame.Rect(position[0], position[1], self.dimensions[0], self.dimensions[1])
         
     def get_text_center(self, text_width, text_height):

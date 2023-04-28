@@ -23,7 +23,8 @@ class Initial:
         pygame.event.post(event)
     
     def open_store(self):
-        pass
+        event = pygame.event.Event(OPEN_STORE_EVENT)
+        pygame.event.post(event)
     
     def handle_event(self, event):
         if (event.type == pygame.MOUSEBUTTONDOWN):
