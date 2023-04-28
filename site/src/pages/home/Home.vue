@@ -7,6 +7,7 @@ import InstallationSteps from './components/InstallationSteps.vue';
 import DevelopmentLog from './components/DevelopmentLog.vue';
 import PhotosGallery from './components/PhotosGallery.vue';
 import Footer from "./components/Footer.vue"
+import GameVideo from "./components/GameVideo.vue"
 
 export default defineComponent({
     data() {
@@ -19,7 +20,8 @@ export default defineComponent({
         InstallationSteps,
         DevelopmentLog,
         PhotosGallery,
-        Footer
+        Footer,
+        GameVideo
     }
 
 })
@@ -32,6 +34,7 @@ export default defineComponent({
         <InstallationSteps />
         <DevelopmentLog />
         <PhotosGallery />
+        <GameVideo />
         <Footer />
     </div>
 </template>
