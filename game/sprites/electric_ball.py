@@ -39,7 +39,7 @@ class Electric_ball(pygame.sprite.Sprite):
         return [x, y]
 
     def movement(self, delta_t):
-        self.rect.x -= VEL_X * delta_t * 2
+        self.rect.x -= VEL_X * delta_t * 1.5
         self.rect.y -= self.vel_y * delta_t
 
         if self.rect.y <= -(ELECTRIC_BALL_HEIGHT // 3):
