@@ -107,6 +107,7 @@ export default defineComponent({
         grid-template-rows: 1fr 1fr;
         align-items: center;
         justify-content: center;
+        justify-items: center;
     }
 
     .characters-image-container img {
