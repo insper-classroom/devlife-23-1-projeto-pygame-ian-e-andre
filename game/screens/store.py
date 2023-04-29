@@ -13,6 +13,7 @@ class Store:
         self.background_image = pygame.transform.smoothscale(pygame.image.load("assets/img/blurred-background.png").convert_alpha(), (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.lander_image = pygame.transform.smoothscale(pygame.image.load("assets/img/lander.png").convert_alpha(), (LANDER_WIDTH, LANDER_HEIGHT))
         self.title_panel_image = pygame.transform.smoothscale(pygame.image.load("assets/img/title-panel.png").convert_alpha(), (TITLE_PANEL_WIDTH, TITLE_PANEL_HEIGHT))
+        self.coin_bar_image = pygame.transform.smoothscale(pygame.image.load("assets/img/CoinBar.png").convert_alpha(), (COIN_BAR_WIDTH, COIN_BAR_HEIGHT))
         self.coin_image = pygame.transform.smoothscale(pygame.image.load("assets/img/coin/1.png").convert_alpha(), (28, 34))
         self.digital_font_30 = pygame.font.Font("assets/font/DS-DIGI.ttf", 30)
         
@@ -75,7 +76,7 @@ class Store:
         update_stored_data(self.stored_data)
     
     def buy_char(self):
-        price = str(self.stored_data["chars_price"][self.current_char_id])
+        price = self.stored_data["chars_price"][self.current_char_id]
         if (self.stored_data["coins_amount"] < price): return
         
         self.stored_data["coins_amount"] -= price
@@ -95,11 +96,14 @@ class Store:
         self.window.blit(self.lander_image, (WINDOW_WIDTH / 2 - LANDER_WIDTH / 2, WINDOW_HEIGHT / 2 - LANDER_HEIGHT / 2))
         self.window.blit(self.title_panel_image, (WINDOW_WIDTH / 2 - TITLE_PANEL_WIDTH / 2, 0))
         self.window.blit(self.current_char_image, (WINDOW_WIDTH / 2 - self.char_width / 2, 80))
+        self.window.blit(self.coin_bar_image, (WINDOW_WIDTH - 10 - COIN_BAR_WIDTH, 10))
+        
         
         lander_text = self.digital_font_30.render("STORE", True, (255, 255, 255))
         self.window.blit(lander_text, (430, 412))
         
-        
+        coins_text = self.digital_font_30.render(str(self.stored_data["coins_amount"]), True, (255, 255, 255))
+        self.window.blit(coins_text, ((WINDOW_WIDTH - 10 - COIN_BAR_WIDTH) + (COIN_BAR_WIDTH / 2 - coins_text.get_width() / 2) , 15))
             
     def change_cursor(self):
         hovering = False
@@ -117,10 +121,8 @@ class Store:
         if (not self.show_coin): return
         
         x = 0
-        y = 0
         for bttn in self.groups["buttons"]:
             if (bttn.id == "buy"):
-                y = bttn.text_pos[1]
                 x = bttn.text_pos[0] - 30
                 
         

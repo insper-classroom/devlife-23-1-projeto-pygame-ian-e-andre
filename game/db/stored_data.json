@@ -1,6 +1,5 @@
 {
     "purchased_characters": [
-        "1",
         "4",
         "2"
     ],
@@ -16,7 +15,7 @@
         "3": 10,
         "4": 50
     },
-    "coins_amount": 1,
+    "coins_amount": 61,
     "selected_char": "4",
     "last_score": 0,
     "high_score": 102
