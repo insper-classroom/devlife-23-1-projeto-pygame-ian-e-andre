@@ -1,6 +1,6 @@
 from config import *
 from sprites.button import (Button)
-from utils.utils import (get_storaged_data)
+from utils.utils import (get_stored_data)
 
 class Game_over:
     def __init__(self, window):
@@ -15,10 +15,10 @@ class Game_over:
         self.title_panel_image = pygame.transform.smoothscale(pygame.image.load("assets/img/title-panel.png").convert_alpha(), (TITLE_PANEL_WIDTH, TITLE_PANEL_HEIGHT))
         self.digital_font = pygame.font.Font("assets/font/DS-DIGI.ttf", 20)
         
-        self.storage_data = get_storaged_data()
+        self.stored_data = get_stored_data()
         self.dead_char_image = pygame.transform.smoothscale(pygame.image.load(f"assets/img/char-skins/dead-char-{self.storage_data['selected_char']}.png").convert_alpha(), (DEAD_CHAR_IMAGE_WIDTH, DEAD_CHAR_IMAGE_HEIGHT))
         
-        self.groups["buttons"].add(Button(window, self.return_initial, "RETURN", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 280], "3"))
+        self.groups["buttons"].add(Button(window, self.return_initial, "RETURN", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 280], "b3"))
     
     def return_initial(self):
         event = pygame.event.Event(OPEN_INITIAL_EVENT)

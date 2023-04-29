@@ -46,12 +46,12 @@ class Game:
         pass
 
     def update_highscore(self):
-        with open('db/storaged_data.json', 'r') as json_file:
+        with open('db/stored_data.json', 'r') as json_file:
             data = json.load(json_file)
             if self.score>data["highscore"]:
                 data["highscore"] = self.score
         print(data["highscore"])
-        with open('db/storaged_data.json', 'w') as json_file:
+        with open('db/stored_data.json', 'w') as json_file:
             json.dump(data, json_file, indent=4)
  
     def calc_delta_t(self):

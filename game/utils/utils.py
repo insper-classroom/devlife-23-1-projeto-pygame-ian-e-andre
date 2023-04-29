@@ -26,8 +26,8 @@ def group_mask_collided(sprite, group):
 
     return False    
 
-def get_storaged_data():
-    file = open('./db/storaged_data.json')
+def get_stored_data():
+    file = open('./db/stored_data.json')
     data = json.load(file)
     
     return data

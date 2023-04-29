@@ -4,7 +4,7 @@ from config import *
 clock = pygame.time.Clock()
 
 class Button(pygame.sprite.Sprite):
-    def __init__(self, window, onclick, text, position, box_type):
+    def __init__(self, window, onclick, text, position, box_type, id=""):
         pygame.sprite.Sprite.__init__(self)
         
         self.dimensions = [BUTTON_WIDTH, BUTTON_HEIGHT]
@@ -14,20 +14,21 @@ class Button(pygame.sprite.Sprite):
         self.onclick = onclick
         self.font = pygame.font.Font('assets/font/DS-DIGI.ttf', 26)
         self.box_type = box_type
+        self.id = id
         
-        if (box_type == "1"):
+        if (box_type == "b1"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "2"):
+        elif (box_type == "b2"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box2.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "3"):
+        elif (box_type == "b3"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box3.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "4"):
+        elif (box_type == "l_arr"):
             self.dimensions = [28, 45]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'LeftArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "5"):
+        elif (box_type == "r_arr"):
             self.dimensions = [28, 45]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'RightArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "6"):
+        elif (box_type == "l_arr_2"):
             self.dimensions = [20, 32]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'BackArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
 

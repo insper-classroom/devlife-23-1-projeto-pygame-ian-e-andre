@@ -1,7 +1,7 @@
 import pygame
 from config import *
 from utils.counter import Counter
-from utils.utils import (get_animation_images, group_mask_collided, get_storaged_data)
+from utils.utils import (get_animation_images, group_mask_collided, get_stored_data)
 from sprites.effects.jump_fx import (Jump_fx)
 from sprites.effects.propulsion_fx import (Propulsion_fx)
 
@@ -38,7 +38,7 @@ class Player(pygame.sprite.Sprite):
         
         pygame.mixer.Sound.set_volume(self.sounds["coin_sound"], 0.1)
         
-        self.storage_data = get_storaged_data()
+        self.stored_data = get_stored_data()
         
         self.jetpack_animation_images = get_animation_images(f"assets/img/char-skins/char-jetpack-{self.storage_data['selected_char']}", 8, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
         self.walking_animation_images = get_animation_images(f"assets/img/char-skins/char-walking-{self.storage_data['selected_char']}", 16, WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT)

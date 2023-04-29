@@ -2,6 +2,7 @@
     "characters": [
         "1"
     ],
+    "chars_id": ["1", "2", "3", "4"],
     "coins_amount": 123,
     "selected_char": "4",
     "highscore": 0

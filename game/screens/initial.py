@@ -15,8 +15,8 @@ class Initial:
         self.title_panel_image = pygame.transform.smoothscale(pygame.image.load("assets/img/title-panel.png").convert_alpha(), (TITLE_PANEL_WIDTH, TITLE_PANEL_HEIGHT))
         self.digital_font = pygame.font.Font("assets/font/DS-DIGI.ttf", 30)
         
-        self.groups["buttons"].add(Button(window, self.start_game, "START GAME", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 150], "2"))
-        self.groups["buttons"].add(Button(window, self.open_store, "STORE", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 230], "1"))
+        self.groups["buttons"].add(Button(window, self.start_game, "START GAME", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 150], "b2"))
+        self.groups["buttons"].add(Button(window, self.open_store, "STORE", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 230], "b1"))
     
     def start_game(self):
         event = pygame.event.Event(OPEN_GAME_EVENT)
