@@ -31,3 +31,7 @@ def get_stored_data():
     data = json.load(file)
     
     return data
+
+def update_stored_data(data): 
+    with open('db/stored_data.json', 'w') as json_file:
+        json.dump(data, json_file, indent=4)

@@ -5,5 +5,6 @@
     "chars_id": ["1", "2", "3", "4"],
     "coins_amount": 123,
     "selected_char": "4",
-    "highscore": 0
+    "last_score": 0,
+    "high_score": 0
 }

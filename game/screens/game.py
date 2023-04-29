@@ -45,12 +45,12 @@ class Game:
     def handle_event(self, event):
         pass
 
-    def update_highscore(self):
+    def update_high_score(self):
         with open('db/stored_data.json', 'r') as json_file:
             data = json.load(json_file)
             if self.score>data["highscore"]:
                 data["highscore"] = self.score
-        print(data["highscore"])
+                
         with open('db/stored_data.json', 'w') as json_file:
             json.dump(data, json_file, indent=4)
  

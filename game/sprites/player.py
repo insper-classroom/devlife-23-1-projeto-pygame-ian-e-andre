@@ -1,7 +1,7 @@
 import pygame
 from config import *
 from utils.counter import Counter
-from utils.utils import (get_animation_images, group_mask_collided, get_stored_data)
+from utils.utils import (get_animation_images, group_mask_collided, get_stored_data, update_stored_data)
 from sprites.effects.jump_fx import (Jump_fx)
 from sprites.effects.propulsion_fx import (Propulsion_fx)
 
@@ -112,7 +112,9 @@ class Player(pygame.sprite.Sprite):
             self.obj_groups[group_name].remove(collided_sprites)
             self.shield = False
         else: 
-            self.game.update_highscore()
+            if (self.stored_data["high_score"] > self.game.score):
+                self.stored_data["high_score"] = self.game.score
+                update_stored_data(self.stored_data)
             event = pygame.event.Event(OPEN_GAME_OVER_EVENT)
             pygame.event.post(event)
         
