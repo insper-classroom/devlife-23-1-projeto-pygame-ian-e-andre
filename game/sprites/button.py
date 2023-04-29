@@ -4,31 +4,34 @@ from config import *
 clock = pygame.time.Clock()
 
 class Button(pygame.sprite.Sprite):
-    def __init__(self, window, onclick, text, position, box_type, id=""):
+    def __init__(self, window, onclick, text, position, type, id=""):
         pygame.sprite.Sprite.__init__(self)
         
-        self.dimensions = [BUTTON_WIDTH, BUTTON_HEIGHT]
+        self.dimensions = [BOX_BUTTON_WIDTH, BOX_BUTTON_HEIGHT]
         self.window = window
         self.text = text
         self.position = position
         self.onclick = onclick
         self.font = pygame.font.Font('assets/font/DS-DIGI.ttf', 26)
-        self.box_type = box_type
+        self.type = type
         self.id = id
+        self.text_pos = [0, 0]
         
-        if (box_type == "b1"):
+        if (type == "b1"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "b2"):
+        elif (type == "b2"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box2.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "b3"):
+        elif (type == "b3"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box3.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "l_arr"):
+        elif (type == "b4"):
+            self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box4.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
+        elif (type == "l_arr"):
             self.dimensions = [28, 45]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'LeftArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "r_arr"):
+        elif (type == "r_arr"):
             self.dimensions = [28, 45]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'RightArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
-        elif (box_type == "l_arr_2"):
+        elif (type == "l_arr_2"):
             self.dimensions = [20, 32]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'BackArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
 
@@ -44,7 +47,8 @@ class Button(pygame.sprite.Sprite):
         self.window.blit(self.background_box, (self.position[0], self.position[1]))
         
         text = self.font.render(self.text, True, (255, 255, 255))
-        self.window.blit(text, self.get_text_center(text.get_width(), text.get_height()))
+        self.text_pos = self.get_text_center(text.get_width(), text.get_height())
+        self.window.blit(text, self.text_pos)
     
     def handle_click(self):
         mouse_pos = pygame.mouse.get_pos()

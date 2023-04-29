@@ -40,8 +40,8 @@ class Player(pygame.sprite.Sprite):
         
         self.stored_data = get_stored_data()
         
-        self.jetpack_animation_images = get_animation_images(f"assets/img/char-skins/char-jetpack-{self.storage_data['selected_char']}", 8, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
-        self.walking_animation_images = get_animation_images(f"assets/img/char-skins/char-walking-{self.storage_data['selected_char']}", 16, WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT)
+        self.jetpack_animation_images = get_animation_images(f"assets/img/char-skins/char-jetpack-{self.stored_data['selected_char']}", 8, JETPACK_PLAYER_WIDTH, JETPACK_PLAYER_HEIGHT)
+        self.walking_animation_images = get_animation_images(f"assets/img/char-skins/char-walking-{self.stored_data['selected_char']}", 16, WALKING_PLAYER_WIDTH, WALKING_PLAYER_HEIGHT)
         self.animation_counter = Counter(0.1, 10, True, self.animation)
         self.current_animation_index = 0
         
@@ -112,11 +112,16 @@ class Player(pygame.sprite.Sprite):
             self.obj_groups[group_name].remove(collided_sprites)
             self.shield = False
         else: 
-            if (self.stored_data["high_score"] > self.game.score):
+            if (self.game.score > self.stored_data["high_score"] ):
                 self.stored_data["high_score"] = self.game.score
-                update_stored_data(self.stored_data)
+                
+            self.stored_data["coins_amount"] += self.game.taken_coins
+                
+            update_stored_data(self.stored_data)
+            
             event = pygame.event.Event(OPEN_GAME_OVER_EVENT)
             pygame.event.post(event)
+            
         
     def update_hitbox(self):
         dimensions = self.sprite_image.get_bounding_rect()
@@ -144,7 +149,7 @@ class Player(pygame.sprite.Sprite):
                 if (grp_name in ["electric_obstacles", "electric_balls", "spikes"]):
                     self.kill_player(grp_name, collided_sprites)
                 elif (grp_name == "coins"):
-                    self.game.coin_amount += 1
+                    self.game.taken_coins += 1
                     grp.remove(collided_sprites)
                     self.sounds["coin_sound"].play()
                 elif (grp_name == "shield_items"):

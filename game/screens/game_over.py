@@ -16,9 +16,9 @@ class Game_over:
         self.digital_font = pygame.font.Font("assets/font/DS-DIGI.ttf", 20)
         
         self.stored_data = get_stored_data()
-        self.dead_char_image = pygame.transform.smoothscale(pygame.image.load(f"assets/img/char-skins/dead-char-{self.storage_data['selected_char']}.png").convert_alpha(), (DEAD_CHAR_IMAGE_WIDTH, DEAD_CHAR_IMAGE_HEIGHT))
+        self.dead_char_image = pygame.transform.smoothscale(pygame.image.load(f"assets/img/char-skins/dead-char-{self.stored_data['selected_char']}.png").convert_alpha(), (DEAD_CHAR_IMAGE_WIDTH, DEAD_CHAR_IMAGE_HEIGHT))
         
-        self.groups["buttons"].add(Button(window, self.return_initial, "RETURN", [WINDOW_WIDTH / 2 - BUTTON_WIDTH / 2, 280], "b3"))
+        self.groups["buttons"].add(Button(window, self.return_initial, "RETURN", [WINDOW_WIDTH / 2 - BOX_BUTTON_WIDTH / 2, 280], "b3"))
     
     def return_initial(self):
         event = pygame.event.Event(OPEN_INITIAL_EVENT)

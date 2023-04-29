@@ -27,7 +27,7 @@ class Game:
         self.background_image = pygame.transform.scale(self.background_image, (WINDOW_WIDTH, WINDOW_HEIGHT))
         
         self.prev_time = 0
-        self.coin_amount = 0
+        self.taken_coins = 0
         self.score = 0
         self.score_counter = Counter(0.1, 4, True, self.update_score)
         self.player = Player(window, self.obj_groups, self)

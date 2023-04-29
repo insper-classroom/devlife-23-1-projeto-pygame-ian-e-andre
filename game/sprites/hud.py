@@ -35,7 +35,7 @@ class Hud(pygame.sprite.Sprite):
     def draw_coin(self,):
         self.WINDOW.blit(self.coin_background_box, (WINDOW_WIDTH - 10 - BOX_WIDTH,10))
         
-        coins_text = self.font_bold_20.render(f'{self.game.coin_amount}', True, WHITE)
+        coins_text = self.font_bold_20.render(f'{self.game.taken_coins}', True, WHITE)
         self.WINDOW.blit(coins_text, (WINDOW_WIDTH - 10 - ((BOX_WIDTH / 2) + (coins_text.get_width() / 2)), 8 + ((BOX_HEIGHT / 2) - (coins_text.get_height() / 2))))
 
         self.WINDOW.blit(self.coin_image, (WINDOW_WIDTH - BOX_WIDTH , 10 + ((BOX_HEIGHT / 2) - 22)))
