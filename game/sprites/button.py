@@ -28,7 +28,7 @@ class Button(pygame.sprite.Sprite):
             self.dimensions = [28, 45]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'RightArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
         elif (box_type == "6"):
-            self.dimensions = [28, 45]
+            self.dimensions = [20, 32]
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'BackArrow.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
 
         self.rect = pygame.Rect(position[0], position[1], self.dimensions[0], self.dimensions[1])

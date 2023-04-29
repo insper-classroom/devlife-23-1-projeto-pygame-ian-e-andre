@@ -8,6 +8,7 @@ class Store:
         
         self.groups = {
             "buttons": pygame.sprite.Group(),
+            "pagination_buttons": pygame.sprite.Group(),
         }
 
         self.background_image = pygame.transform.smoothscale(pygame.image.load("assets/img/blurred-background.png").convert_alpha(), (WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -21,8 +22,9 @@ class Store:
         self.current_char_id = "1"
         self.chars_id = ["1", "2", "3", "4"]
         
-        self.groups["buttons"].add(Button(window, self.show_next_char, "", [(WINDOW_WIDTH / 2 - ARROW_WIDTH / 2) + 130, 180], "5"))
+        self.groups["pagination_buttons"].add(Button(window, self.show_next_char, "", [(WINDOW_WIDTH / 2 - ARROW_WIDTH / 2) + 130, 180], "5"))
         self.groups["buttons"].add(Button(window, self.return_initial_screen, "", [10, 10], "6"))
+        self.purchase_button = Button(window, self.return_initial_screen, "", [10, 10], "6")
 
     def return_initial_screen(self):
         event = pygame.event.Event(OPEN_INITIAL_EVENT)
@@ -44,38 +46,17 @@ class Store:
         self.current_char_image = pygame.transform.smoothscale(pygame.image.load(f"assets/img/char-skins/char-jetpack-{self.current_char_id}/1.png").convert_alpha(), (self.char_width, self.char_height))
 
     def check_buttons(self):
-        if (self.chars_id.index(self.current_char_id) + 1 >= len(self.chars_id)):
-            for bttn in self.groups["buttons"]:
-                if (bttn.onclick == self.show_next_char):
-                    self.groups["buttons"].remove(bttn)
-            return
-        else:
-            has_next_bttn = False
-            for bttn in self.groups["buttons"]:
-                if (bttn.onclick == self.show_next_char):
-                    has_next_bttn = True
-            if (not has_next_bttn):
-                self.groups["buttons"].add(Button(self.window, self.show_next_char, "", [(WINDOW_WIDTH / 2 - ARROW_WIDTH / 2) + 130, 180], "5"))
-
-        if (self.chars_id.index(self.current_char_id) - 1 < 0):
-            for bttn in self.groups["buttons"]:
-                if (bttn.onclick == self.show_previous_char):
-                    self.groups["buttons"].remove(bttn)
-            return
-        else:
-            has_previous_bttn = False
-            for bttn in self.groups["buttons"]:
-                if (bttn.onclick == self.show_previous_char):
-                    has_previous_bttn = True
-            if (not has_previous_bttn):
-                self.groups["buttons"].add(Button(self.window, self.show_previous_char, "", [(WINDOW_WIDTH / 2 - ARROW_WIDTH / 2) - 130, 180], "4"))
-
-    def open_store(self):
-        pass
-    
+        self.groups["pagination_buttons"].empty()
+        
+        if (self.chars_id.index(self.current_char_id) + 1 < len(self.chars_id)):
+            self.groups["pagination_buttons"].add(Button(self.window, self.show_next_char, "", [(WINDOW_WIDTH / 2 - ARROW_WIDTH / 2) + 130, 180], "5"))
+        
+        if (self.chars_id.index(self.current_char_id) - 1 >= 0):
+            self.groups["pagination_buttons"].add(Button(self.window, self.show_previous_char, "", [(WINDOW_WIDTH / 2 - ARROW_WIDTH / 2) - 130, 180], "4"))
+        
     def handle_event(self, event):
         if (event.type == pygame.MOUSEBUTTONDOWN):
-            for bttn in self.groups["buttons"]:
+            for bttn in self.groups["pagination_buttons"]:
                 bttn.handle_click()
 
     def draw(self):
@@ -91,7 +72,7 @@ class Store:
     def change_cursor(self):
         hovering = False
         mouse_pos = pygame.mouse.get_pos()
-        for bttn in self.groups["buttons"]:
+        for bttn in self.groups["pagination_buttons"]:
             if (bttn.rect.collidepoint(mouse_pos)):
                 hovering = True
 
@@ -105,6 +86,8 @@ class Store:
         
         for i in self.groups:
             self.groups[i].update()
+        
+        self.purchase_button.update()
             
         self.check_buttons()
         self.change_cursor()
