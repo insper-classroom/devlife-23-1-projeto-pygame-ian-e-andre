@@ -12,8 +12,9 @@ class Game_over:
 
         self.background_image = pygame.transform.smoothscale(pygame.image.load("assets/img/blurred-background.png").convert_alpha(), (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.lander_image = pygame.transform.smoothscale(pygame.image.load("assets/img/lander.png").convert_alpha(), (LANDER_WIDTH, LANDER_HEIGHT))
-        self.title_panel_image = pygame.transform.smoothscale(pygame.image.load("assets/img/title-panel.png").convert_alpha(), (TITLE_PANEL_WIDTH, TITLE_PANEL_HEIGHT))
-        self.digital_font = pygame.font.Font("assets/font/DS-DIGI.ttf", 20)
+        self.title_panel_image = pygame.transform.smoothscale(pygame.image.load("assets/img/title-pannel-empty.png").convert_alpha(), (TITLE_PANEL_WIDTH, TITLE_PANEL_HEIGHT))
+        self.digital_font_20 = pygame.font.Font("assets/font/DS-DIGI.ttf", 20)
+        self.digital_font_30 = pygame.font.Font("assets/font/DS-DIGI.ttf", 30)
         
         self.stored_data = get_stored_data()
         self.dead_char_image = pygame.transform.smoothscale(pygame.image.load(f"assets/img/char-skins/dead-char-{self.stored_data['selected_char']}.png").convert_alpha(), (DEAD_CHAR_IMAGE_WIDTH, DEAD_CHAR_IMAGE_HEIGHT))
@@ -35,8 +36,11 @@ class Game_over:
         self.window.blit(self.lander_image, (WINDOW_WIDTH / 2 - LANDER_WIDTH / 2, WINDOW_HEIGHT / 2 - LANDER_HEIGHT / 2))
         self.window.blit(self.title_panel_image, (WINDOW_WIDTH / 2 - TITLE_PANEL_WIDTH / 2, 0))
         
-        lander_text = self.digital_font.render("GAME OVER", True, (255, 255, 255))
+        lander_text = self.digital_font_20.render("GAME OVER", True, (255, 255, 255))
         self.window.blit(lander_text, (425, 418))
+        
+        score_text = self.digital_font_30.render(str(self.stored_data["last_score"]), True, (255, 255, 255))
+        self.window.blit(score_text, (WINDOW_WIDTH / 2 - score_text.get_width() / 2, 35))
         
         self.window.blit(self.dead_char_image, (WINDOW_WIDTH / 2 - DEAD_CHAR_IMAGE_WIDTH / 2, 130))
         

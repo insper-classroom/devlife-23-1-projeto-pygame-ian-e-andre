@@ -116,6 +116,7 @@ class Player(pygame.sprite.Sprite):
                 self.stored_data["high_score"] = self.game.score
                 
             self.stored_data["coins_amount"] += self.game.taken_coins
+            self.stored_data["last_score"] = self.game.score
                 
             update_stored_data(self.stored_data)
             

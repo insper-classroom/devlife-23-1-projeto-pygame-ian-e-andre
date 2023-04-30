@@ -9,8 +9,8 @@ class Hud(pygame.sprite.Sprite):
 
         self.WINDOW = WINDOW
 
-        self.font_bold_20 = pygame.font.Font(os.path.join( 'assets', 'font', 'static', 'RobotoMono-Bold.ttf'), 20)
-        self.font_bold_12 = pygame.font.Font(os.path.join( 'assets', 'font', 'static', 'RobotoMono-Bold.ttf'), 12)
+        self.font_bold_20 = pygame.font.Font(os.path.join( 'assets', 'font', 'DS-DIGI.ttf'), 24)
+        self.font_bold_12 = pygame.font.Font(os.path.join( 'assets', 'font', 'DS-DIGI.ttf'), 12)
 
         self.coin_image = pygame.transform.smoothscale(pygame.image.load("assets/img/coin/1.png").convert_alpha(), (28, 34))
         

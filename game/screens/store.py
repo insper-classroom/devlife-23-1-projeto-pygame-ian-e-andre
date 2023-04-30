@@ -16,6 +16,7 @@ class Store:
         self.coin_bar_image = pygame.transform.smoothscale(pygame.image.load("assets/img/CoinBar.png").convert_alpha(), (COIN_BAR_WIDTH, COIN_BAR_HEIGHT))
         self.coin_image = pygame.transform.smoothscale(pygame.image.load("assets/img/coin/1.png").convert_alpha(), (28, 34))
         self.digital_font_30 = pygame.font.Font("assets/font/DS-DIGI.ttf", 30)
+        self.digital_font_20 = pygame.font.Font("assets/font/DS-DIGI.ttf", 20)
         
         self.char_width = 149
         self.char_height = 192
@@ -102,8 +103,8 @@ class Store:
         lander_text = self.digital_font_30.render("STORE", True, (255, 255, 255))
         self.window.blit(lander_text, (430, 412))
         
-        coins_text = self.digital_font_30.render(str(self.stored_data["coins_amount"]), True, (255, 255, 255))
-        self.window.blit(coins_text, ((WINDOW_WIDTH - 10 - COIN_BAR_WIDTH) + (COIN_BAR_WIDTH / 2 - coins_text.get_width() / 2) , 15))
+        coins_text = self.digital_font_20.render(str(self.stored_data["coins_amount"]), True, (255, 255, 255))
+        self.window.blit(coins_text, ((WINDOW_WIDTH - 10 - COIN_BAR_WIDTH) + (COIN_BAR_WIDTH / 2 - coins_text.get_width() / 2) , 21))
             
     def change_cursor(self):
         hovering = False
