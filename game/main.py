@@ -2,6 +2,7 @@ import pygame
 from config import *
 from screens.game import (Game)
 from screens.initial import (Initial)
+from screens.history import (History)
 from screens.game_over import (Game_over)
 from screens.store import (Store)
 
@@ -33,6 +34,8 @@ class Main:
                     self.current_screen = Game_over(WINDOW)
                 elif (event.type == OPEN_STORE_EVENT):
                     self.current_screen = Store(WINDOW)
+                elif (event.type == OPEN_HISTORY_EVENT):
+                    self.current_screen = History(WINDOW)
                     
             
             self.current_screen.update()

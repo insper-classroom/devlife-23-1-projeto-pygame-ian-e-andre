@@ -1,7 +1,7 @@
 import pygame
 from config import *
 from utils.counter import Counter
-from utils.utils import (get_animation_images, group_mask_collided, get_stored_data, update_stored_data)
+from utils.utils import (get_animation_images, group_mask_collided, get_stored_data, update_stored_data, store_last_match)
 from sprites.effects.jump_fx import (Jump_fx)
 from sprites.effects.propulsion_fx import (Propulsion_fx)
 
@@ -119,6 +119,7 @@ class Player(pygame.sprite.Sprite):
             self.stored_data["last_score"] = self.game.score
                 
             update_stored_data(self.stored_data)
+            store_last_match(self.game.score)
             
             event = pygame.event.Event(OPEN_GAME_OVER_EVENT)
             pygame.event.post(event)

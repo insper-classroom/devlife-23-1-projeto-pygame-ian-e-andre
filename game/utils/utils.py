@@ -1,7 +1,7 @@
 import pygame
 from config import *
 import json
-
+from datetime import datetime
 
 def get_animation_images(path, max_index, width, height):
     animation_images = []
@@ -35,3 +35,17 @@ def get_stored_data():
 def update_stored_data(data): 
     with open('db/stored_data.json', 'w') as json_file:
         json.dump(data, json_file, indent=4)
+        
+def get_matches_history():
+    file = open("./db/history.txt", "r")
+    return file.readlines()
+
+def store_last_match(score): 
+    file = open("./db/history.txt", "a")
+    file.writelines(f"{score} - {get_date_time()}\n")
+    file.close()
+
+def get_date_time():
+    now = datetime.now()
+    date_time = now.strftime("%d/%m/%Y")
+    return date_time
