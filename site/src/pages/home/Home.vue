@@ -1,6 +1,5 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Toast } from '@/plugin/Toast';
 import FirstView from './components/FirstView.vue';
 import GameDescription from './components/GameDescription.vue';
 import InstallationSteps from './components/InstallationSteps.vue';
@@ -46,9 +45,4 @@ export default defineComponent({
         overflow-x: hidden;
         overflow-y: scroll;
     }
-
-   
-    
-   
-
 </style>
