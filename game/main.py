@@ -5,6 +5,7 @@ from screens.initial import (Initial)
 from screens.history import (History)
 from screens.game_over import (Game_over)
 from screens.store import (Store)
+import sys
 
 
 WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -28,6 +29,7 @@ class Main:
                 
                 if (event.type == pygame.QUIT):
                     pygame.quit()
+                    sys.exit()
                 elif (event.type == OPEN_GAME_EVENT):
                     self.current_screen = Game(WINDOW)
                 elif (event.type == OPEN_INITIAL_EVENT):
