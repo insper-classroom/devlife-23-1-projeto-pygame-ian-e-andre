@@ -12,6 +12,8 @@ class Initial:
 
         self.background_image = pygame.transform.smoothscale(pygame.image.load("assets/img/blurred-background.png").convert_alpha(), (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.lander_image = pygame.transform.smoothscale(pygame.image.load("assets/img/lander.png").convert_alpha(), (LANDER_WIDTH, LANDER_HEIGHT))
+        self.instructions_image = pygame.transform.smoothscale(pygame.image.load("assets/img/instructions.png").convert_alpha(), (INSTRUCTIONS_PANEL_WIDTH, INSTRUCTIONS_PANEL_HEIGHT))
+        self.instructions_icon_image = pygame.transform.smoothscale(pygame.image.load("assets/img/info.png").convert_alpha(), (INSTRUCTIONS_ICON_WIDTH, INSTRUCTIONS_ICON_HEIGHT))
         self.title_panel_image = pygame.transform.smoothscale(pygame.image.load("assets/img/title-panel.png").convert_alpha(), (TITLE_PANEL_WIDTH, TITLE_PANEL_HEIGHT))
         self.digital_font = pygame.font.Font("assets/font/DS-DIGI.ttf", 30)
         
@@ -42,8 +44,18 @@ class Initial:
         self.window.blit(self.lander_image, (WINDOW_WIDTH / 2 - LANDER_WIDTH / 2, WINDOW_HEIGHT / 2 - LANDER_HEIGHT / 2))
         self.window.blit(self.title_panel_image, (WINDOW_WIDTH / 2 - TITLE_PANEL_WIDTH / 2, 0))
         
+        
         lander_text = self.digital_font.render("INIT", True, (255, 255, 255))
         self.window.blit(lander_text, (445, 412))
+        
+    def draw_instructions(self):
+        icon_rect = pygame.Rect(WINDOW_WIDTH - 10 - INSTRUCTIONS_ICON_WIDTH, WINDOW_HEIGHT - 10 - INSTRUCTIONS_ICON_HEIGHT, INSTRUCTIONS_ICON_WIDTH, INSTRUCTIONS_ICON_HEIGHT)
+        self.window.blit(self.instructions_icon_image, (WINDOW_WIDTH - 10 - INSTRUCTIONS_ICON_WIDTH, WINDOW_HEIGHT - 10 - INSTRUCTIONS_ICON_HEIGHT))
+        
+        if (icon_rect.collidepoint(pygame.mouse.get_pos())):
+            self.window.blit(self.instructions_image, (WINDOW_WIDTH + 15 - INSTRUCTIONS_PANEL_WIDTH, 180))
+        else:    
+            self.window.blit(self.instructions_image, (WINDOW_WIDTH - 15, 180))
         
     def change_cursor(self):
         hovering = False
@@ -59,6 +71,7 @@ class Initial:
         
     def update(self):
         self.draw()
+        self.draw_instructions()
         
         for i in self.groups:
             self.groups[i].update()

@@ -8,6 +8,7 @@
 - https://opengameart.org/content/cyberpunk-moonlight-sonata
 - https://opengameart.org/content/8bit-menu-highlight
 - https://opengameart.org/content/8bit-death-whirl
+- https://www.iconpacks.net/free-icon/information-348.html
 
 # Assets comprados (licença): 
 
