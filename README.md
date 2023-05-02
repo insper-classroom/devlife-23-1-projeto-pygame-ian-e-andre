@@ -21,13 +21,18 @@ In addition, it's recommended that Pygame be updated to its latest version, whic
 
 Finally, to run the game, just type the "python3 main.py" command in the terminal. With these simple steps, you'll be ready to enjoy the exciting and challenging 2D game.
 
-### Project Development
+## Project Development
 
 - [GitHub Page](https://github.com/insper-classroom/devlife-23-1-projeto-pygame-ian-e-andre)
 - [Development Log - GitHub](https://github.com/insper-classroom/devlife-23-1-projeto-pygame-ian-e-andre/actions)
 - [Development Log - Website](https://insper-classroom.github.io/devlife-23-1-projeto-pygame-ian-e-andre/#logs)
 
-## Other Links
+## Creators
+- Ian Cordibello Desponds
+- Andre Pereira de Oliveira
+
+## Other Info
 
 - [Game Website](https://insper-classroom.github.io/devlife-23-1-projeto-pygame-ian-e-andre/)
 - [Assets sources](game/assets.md)
+- Github Copilot was used to assist the project documentation process
