@@ -56,7 +56,7 @@ export default defineComponent({
         width: 100%;
         display: flex;
         gap: 40px;
-        padding: 30px;
+        padding: 30px 80px;
         z-index: 2;
         position: relative;
         /* background: linear-gradient(180deg, rgba(18, 18, 18, 0.05) 0%, rgba(255, 255, 255, 0.05) 50%); */
@@ -66,7 +66,7 @@ export default defineComponent({
    
     .org-container img {
         filter: invert(1) brightness(1000);
-        width: 160px;
+        width: 120px;
     }
 
     .org-container p {
