@@ -27,8 +27,7 @@ class Main:
             for event in pygame.event.get():
                 self.current_screen.handle_event(event)
                 
-                if (event.type == pygame.QUIT):
-                    pygame.quit()
+                if (event.type == pygame.QUIT) or (event.type == pygame.KEYUP and event.key == pygame.K_ESCAPE):
                     sys.exit()
                 elif (event.type == OPEN_GAME_EVENT):
                     self.current_screen = Game(WINDOW)
