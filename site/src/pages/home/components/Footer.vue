@@ -56,7 +56,7 @@ export default defineComponent({
         width: 100%;
         display: flex;
         gap: 40px;
-        padding: 80px;
+        padding: 30px;
         z-index: 2;
         position: relative;
         /* background: linear-gradient(180deg, rgba(18, 18, 18, 0.05) 0%, rgba(255, 255, 255, 0.05) 50%); */
