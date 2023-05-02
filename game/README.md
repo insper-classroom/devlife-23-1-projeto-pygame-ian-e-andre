@@ -1,4 +1,4 @@
-# ROCKET RUNNER
+# JETPACK MADNESS
 
 Vocês já tiveram 2 exemplos de arquivo README nos projetos anteriores (projeto individual e checks pygame). Desta vez não forneceremos um template, mas você pode usar os projetos anteriores como base.
 
