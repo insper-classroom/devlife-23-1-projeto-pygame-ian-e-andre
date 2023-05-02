@@ -33,7 +33,8 @@ class Player(pygame.sprite.Sprite):
         self.shield = False
 
         self.sounds = {
-            "coin_sound": pygame.mixer.Sound("assets/snd/coin01.ogg")
+            "coin_sound": pygame.mixer.Sound("assets/snd/coin01.ogg"),
+            "death_sound": pygame.mixer.Sound("assets/snd/vgdeathsound.wav"),
         }
         
         pygame.mixer.Sound.set_volume(self.sounds["coin_sound"], 0.1)
@@ -82,7 +83,6 @@ class Player(pygame.sprite.Sprite):
             self.bumping = False
         self.rect.y += self.vely * delta_t
         
-        
         if (self.rect.y >= WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT):
             self.rect.y = WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT
             
@@ -120,6 +120,7 @@ class Player(pygame.sprite.Sprite):
                 
             update_stored_data(self.stored_data)
             store_last_match(self.game.score)
+            self.sounds["death_sound"].play()
             
             event = pygame.event.Event(OPEN_GAME_OVER_EVENT)
             pygame.event.post(event)
@@ -158,6 +159,7 @@ class Player(pygame.sprite.Sprite):
                     grp.remove(collided_sprites)
                     self.shield = True
                     self.sounds["coin_sound"].play()
+                    
                     
     def animation(self):
         self.current_animation_index += 1
