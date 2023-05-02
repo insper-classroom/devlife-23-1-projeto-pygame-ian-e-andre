@@ -12,7 +12,14 @@ import random
 import json
 
 class Game:
+    '''
+    This class is responsible for the game screen and its methods.
+    '''
     def __init__(self, window):
+        '''
+        This method is responsible for initializing the class.
+        It contains the main attributes of the class.
+        '''
         self.window = window
         
         self.obj_groups = {
@@ -40,12 +47,21 @@ class Game:
         self.add_objects_counter = Counter(0.1, 50, True, self.add_object)
         
     def update_score(self):
+        '''
+        Updates the score.
+        '''
         self.score += 1
     
     def handle_event(self, event):
+        '''
+        Handles the events of the game screen.
+        '''
         pass
 
     def update_high_score(self):
+        '''
+        Updates the high score and saves it in the json file.
+        '''
         with open('db/stored_data.json', 'r') as json_file:
             data = json.load(json_file)
             if self.score>data["highscore"]:
@@ -55,6 +71,9 @@ class Game:
             json.dump(data, json_file, indent=4)
  
     def calc_delta_t(self):
+        '''
+        Calculates the time between frames and returns it.
+        '''
         now = pygame.time.get_ticks()
         delta_t = now - self.prev_time
         self.prev_time = now
@@ -62,6 +81,9 @@ class Game:
         return delta_t
     
     def add_object(self):
+        '''
+        Adds objects to the game screen, such as coins, electric obstacles, electric balls, shield items and spikes.
+        '''
         objects = [{"group": "coins", "sprite": Coin}, {"group": "electric_obstacles", "sprite": Electric_obstacle}, {"group": "electric_balls", "sprite": Electric_ball}]
         sorted_index = random.randint(0, len(objects) - 1)
         
@@ -74,6 +96,9 @@ class Game:
             self.obj_groups["spikes"].add(Spike(self.window, self.obj_groups))
     
     def update(self):
+        '''
+        Updates the game state. 
+        '''
         self.window.fill((100, 100, 100))
         self.window.blit(self.background_image, (0, 0))
         delta_t = self.calc_delta_t()

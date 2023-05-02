@@ -3,7 +3,14 @@ from sprites.button import (Button)
 from utils.utils import (get_stored_data)
 
 class Game_over:
+    '''
+    This class is responsible for the game over screen and its methods.
+    '''
     def __init__(self, window):
+        '''
+        This method is responsible for initializing the class.
+        It contains the main attributes of the class.
+        '''
         self.window = window
         
         self.groups = {
@@ -22,15 +29,24 @@ class Game_over:
         self.groups["buttons"].add(Button(window, self.return_initial, "RETURN", [WINDOW_WIDTH / 2 - BOX_BUTTON_WIDTH / 2, 280], "b3"))
     
     def return_initial(self):
+        '''
+        Returns to the initial screen.
+        '''
         event = pygame.event.Event(OPEN_INITIAL_EVENT)
         pygame.event.post(event)
     
     def handle_event(self, event):
+        '''
+        Handles the events of the screen, such as mouse clicks.
+        '''
         if (event.type == pygame.MOUSEBUTTONDOWN):
             for bttn in self.groups["buttons"]:
                 bttn.handle_click()
 
     def draw(self):
+        '''
+        Draws the screen and its elements, such as buttons and player images.
+        '''
         self.window.fill((100, 100, 100))
         self.window.blit(self.background_image, (0, 0))
         self.window.blit(self.lander_image, (WINDOW_WIDTH / 2 - LANDER_WIDTH / 2, WINDOW_HEIGHT / 2 - LANDER_HEIGHT / 2))
@@ -45,6 +61,9 @@ class Game_over:
         self.window.blit(self.dead_char_image, (WINDOW_WIDTH / 2 - DEAD_CHAR_IMAGE_WIDTH / 2, 130))
         
     def change_cursor(self):
+        '''
+        Changes the cursor when it's hovering a button.
+        '''
         hovering = False
         mouse_pos = pygame.mouse.get_pos()
         for bttn in self.groups["buttons"]:
@@ -57,6 +76,9 @@ class Game_over:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
     
     def update(self):
+        '''
+        Updates the game state. 
+        '''
         self.draw()
         
         for i in self.groups:

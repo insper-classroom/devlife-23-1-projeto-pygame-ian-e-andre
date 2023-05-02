@@ -3,7 +3,14 @@ from sprites.button import (Button)
 from utils.utils import (get_stored_data, update_stored_data)
 
 class Store:
+    '''
+    This class is responsible for the store screen and its methods.
+    '''
     def __init__(self, window):
+        '''
+        This method is responsible for initializing the class.
+        It contains the main attributes of the class.
+        '''
         self.window = window
         
         self.groups = {
@@ -31,24 +38,35 @@ class Store:
         self.groups["buttons"].add(Button(window, self.return_initial_screen, "", [10, 10], "l_arr_2"))
 
     def return_initial_screen(self):
+        '''
+        Returns to the initial screen.
+        '''
         event = pygame.event.Event(OPEN_INITIAL_EVENT)
         pygame.event.post(event)
 
     def show_previous_char(self):
+        '''
+        Shows the previous character.
+        '''
         if (self.chars_id.index(self.current_char_id) - 1 < 0): return
         
         self.current_char_id = self.chars_id[self.chars_id.index(self.current_char_id) - 1]
         self.current_char_image = pygame.transform.smoothscale(pygame.image.load(f"assets/img/char-skins/char-jetpack-{self.current_char_id}/1.png").convert_alpha(), (self.char_width, self.char_height))
-
         
     def show_next_char(self):
-        if (self.chars_id.index(self.current_char_id) + 1 >= len(self.chars_id)):
-            return
+        '''
+        Shows the next character.
+        '''
+        if (self.chars_id.index(self.current_char_id) + 1 >= len(self.chars_id)): return
         
         self.current_char_id = self.chars_id[self.chars_id.index(self.current_char_id) + 1]
         self.current_char_image = pygame.transform.smoothscale(pygame.image.load(f"assets/img/char-skins/char-jetpack-{self.current_char_id}/1.png").convert_alpha(), (self.char_width, self.char_height))
 
     def check_buttons(self):
+        '''
+        Checks if there is a character before or after the current one and if there is, 
+        it shows the buttons to go to the next or previous character.
+        '''
         for bttn in self.groups["buttons"]: 
             if (bttn.id in ["pagination", "select", "buy", "selected"]):
                 self.groups["buttons"].remove(bttn)
@@ -73,25 +91,36 @@ class Store:
 
 
     def select_char(self): 
+        '''
+        Selects the current character.
+        '''
         self.stored_data["selected_char"] = self.current_char_id
         update_stored_data(self.stored_data)
     
     def buy_char(self):
+        '''
+        Checks if the user has enough coins to buy the character. 
+        If the user has enough coins, the character is bought.
+        '''
         price = self.stored_data["chars_price"][self.current_char_id]
         if (self.stored_data["coins_amount"] < price): return
         
         self.stored_data["coins_amount"] -= price
         self.stored_data["purchased_characters"].append(self.current_char_id)
         update_stored_data(self.stored_data)
-        
-    
     
     def handle_event(self, event):
+        '''
+        Handles the events of the store screen, such as mouse clicks.
+        '''
         if (event.type == pygame.MOUSEBUTTONDOWN):
             for bttn in self.groups["buttons"]:
                 bttn.handle_click()
 
     def draw(self):
+        '''
+        Draws the store screen.
+        '''
         self.window.fill((100, 100, 100))
         self.window.blit(self.background_image, (0, 0))
         self.window.blit(self.lander_image, (WINDOW_WIDTH / 2 - LANDER_WIDTH / 2, WINDOW_HEIGHT / 2 - LANDER_HEIGHT / 2))
@@ -107,6 +136,9 @@ class Store:
         self.window.blit(coins_text, ((WINDOW_WIDTH - 10 - COIN_BAR_WIDTH) + (COIN_BAR_WIDTH / 2 - coins_text.get_width() / 2) , 21))
             
     def change_cursor(self):
+        '''
+        Changes the cursor to a hand when the mouse is hovering over a button.
+        '''
         hovering = False
         mouse_pos = pygame.mouse.get_pos()
         for bttn in self.groups["buttons"]:
@@ -119,6 +151,9 @@ class Store:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
         
     def draw_coin(self):
+        '''
+        Draws the coin image.
+        '''
         if (not self.show_coin): return
         
         x = 0
@@ -130,6 +165,9 @@ class Store:
         self.window.blit(self.coin_image, (x, 290))
         
     def update(self):
+        '''
+        Updates the game state.
+        '''
         self.draw()
         
         for i in self.groups:

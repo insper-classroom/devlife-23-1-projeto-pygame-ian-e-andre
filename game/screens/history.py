@@ -3,7 +3,14 @@ from sprites.button import (Button)
 from utils.utils import get_matches_history, get_stored_data
 
 class History:
+    '''
+    This class is responsible for the history screen and its methods.
+    '''
     def __init__(self, window):
+        '''
+        This method is responsible for initializing the class.
+        It contains the main attributes of the class.
+        '''
         self.window = window
         
         self.groups = {
@@ -26,24 +33,34 @@ class History:
         
         self.groups["buttons"].add(Button(window, self.return_initial_screen, "", [10, 10], "l_arr_2"))
 
+
     def return_initial_screen(self):
+        '''
+        Returns to the initial screen.
+        '''
         event = pygame.event.Event(OPEN_INITIAL_EVENT)
-        pygame.event.post(event)
-        
-    def start_game(self):
-        event = pygame.event.Event(OPEN_GAME_EVENT)
         pygame.event.post(event)
     
     def open_store(self):
+        '''
+        Opens the store screen.
+        '''
         event = pygame.event.Event(OPEN_STORE_EVENT)
         pygame.event.post(event)
     
     def handle_event(self, event):
+        '''
+        Handles the events of the screen, such as mouse clicks.
+        '''
         if (event.type == pygame.MOUSEBUTTONDOWN):
             for bttn in self.groups["buttons"]:
                 bttn.handle_click()
 
     def draw(self):
+        '''
+        Draws the screen and its elements, such as the background, 
+        the title panel, the history panel and the buttons.
+        '''
         self.window.fill((100, 100, 100))
         self.window.blit(self.background_image, (0, 0))
         self.window.blit(self.lander_image, (WINDOW_WIDTH / 2 - LANDER_WIDTH / 2, WINDOW_HEIGHT / 2 - LANDER_HEIGHT / 2))
@@ -58,6 +75,9 @@ class History:
         self.window.blit(lander_text, (418, 412))
         
     def change_cursor(self):
+        '''
+        Changes the cursor when the mouse is hovering a button.
+        '''
         hovering = False
         mouse_pos = pygame.mouse.get_pos()
         for bttn in self.groups["buttons"]:
@@ -70,6 +90,9 @@ class History:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
         
     def draw_matches_history(self):
+        '''
+        Draws the matches history.
+        '''
         basex = WINDOW_WIDTH / 2 - HISTORY_PANEL_WIDTH / 2
         basey = 160
         
@@ -78,6 +101,9 @@ class History:
             self.window.blit(text, (basex + HISTORY_PANEL_WIDTH / 2 - text.get_width() / 2, basey + i * 20))
         
     def update(self):
+        '''
+        Updates the game state. 
+        '''
         self.draw()
         
         for i in self.groups:
