@@ -9,10 +9,10 @@ export default defineComponent({
             images: [
                 {imageUrl: "https://i.ibb.co/C9HTDCF/Screenshot-2023-04-24-at-18-06-08.png", title: "Game in beta version", description: "Photo taken on 19/04 (sprint 1)"},
                 {imageUrl: "https://i.ibb.co/PZJcBWw/Screenshot-2023-04-24-at-18-33-28.png", title: "Game in beta version", description: "Photo taken on 23/04 (end of sprint 1)"},
-                {imageUrl: "https://i.ibb.co/v1cf15v/Whats-App-Image-2023-05-02-at-10-49-41.jpg", title: "Home screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
-                {imageUrl: "https://i.ibb.co/sqgSj4X/Whats-App-Image-2023-05-02-at-10-49-58.jpg", title: "Skins store (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
+                {imageUrl: "https://i.ibb.co/F6RDkM6/game-initial-screen.png", title: "Home screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
+                {imageUrl: "https://i.ibb.co/RHwGYmt/game-skins-store-screen.png", title: "Skins store (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
                 {imageUrl: "https://i.ibb.co/BgqsfQx/Whats-App-Image-2023-05-02-at-10-51-29.jpg", title: "Game screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
-                {imageUrl: "https://i.ibb.co/1bCjBmp/game-history-screen.png", title: "History screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
+                {imageUrl: "https://i.ibb.co/Gkg9rkT/game-score-history-screen.png", title: "History screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
                 {imageUrl: "https://i.ibb.co/xmXvNHc/game-over-screen.png", title: "Game over screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
             ],
             maximizedIndex: 0,
