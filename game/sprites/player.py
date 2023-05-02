@@ -157,6 +157,7 @@ class Player(pygame.sprite.Sprite):
                 elif (grp_name == "shield_items"):
                     grp.remove(collided_sprites)
                     self.shield = True
+                    self.sounds["coin_sound"].play()
                     
     def animation(self):
         self.current_animation_index += 1
