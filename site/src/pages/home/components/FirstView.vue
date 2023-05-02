@@ -53,7 +53,7 @@ export default defineComponent({
                 <a class="menu" href="#video">Video</a>
             </header>
 
-            <h1 class="title">ROCKET RUNNER</h1>
+            <h1 class="title">JETPACK MADNESS</h1>
             <h2 class="sub-title" ><span ref="text-element"></span> <div class="block-keyboard blink"></div></h2>
     
 
@@ -86,7 +86,7 @@ export default defineComponent({
     }
 
     .title {
-        width: 600px;
+        width: 700px;
         text-align: center;
         color: white;
         font-weight: 500;
