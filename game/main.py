@@ -18,7 +18,9 @@ class Main:
         self.current_screen = Initial(WINDOW)
 
     def run(self):
-        pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
+        pygame.mixer.music.load('assets/snd/Cyberpunk Moonlight Sonata v2.mp3')
+        pygame.mixer.music.set_volume(0.2)
+        pygame.mixer.music.play(loops=-1)
 
         while 1:
             for event in pygame.event.get():

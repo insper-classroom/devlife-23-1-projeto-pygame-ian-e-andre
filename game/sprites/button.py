@@ -13,6 +13,7 @@ class Button(pygame.sprite.Sprite):
         self.position = position
         self.onclick = onclick
         self.font = pygame.font.Font('assets/font/DS-DIGI.ttf', 26)
+        self.click_sound = pygame.mixer.Sound('assets/snd/vgmenuhighlight.wav')
         self.type = type
         self.id = id
         self.text_pos = [0, 0]
@@ -53,6 +54,7 @@ class Button(pygame.sprite.Sprite):
     def handle_click(self):
         mouse_pos = pygame.mouse.get_pos()
         if (self.rect.collidepoint(mouse_pos)):
+            pygame.mixer.Sound.play(self.click_sound)
             self.onclick()
         
     def update(self):
