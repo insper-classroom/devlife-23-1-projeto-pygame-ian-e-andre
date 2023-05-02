@@ -1,8 +1,6 @@
 {
     "purchased_characters": [
-        "4",
-        "2",
-        "3"
+        "4"
     ],
     "chars_id": [
         "1",
@@ -16,8 +14,8 @@
         "3": 10,
         "4": 50
     },
-    "coins_amount": 89,
+    "coins_amount": 0,
     "selected_char": "4",
-    "last_score": 39,
-    "high_score": 717
+    "last_score": 0,
+    "high_score": 0
 }

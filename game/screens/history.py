@@ -20,6 +20,8 @@ class History:
         self.digital_font_20 = pygame.font.Font("assets/font/DS-DIGI.ttf", 20)
         
         self.matches_history = get_matches_history()
+        self.matches_history.reverse()
+        self.matches_history = self.matches_history[0:9]
         self.stored_data = get_stored_data()
         
         self.groups["buttons"].add(Button(window, self.return_initial_screen, "", [10, 10], "l_arr_2"))
