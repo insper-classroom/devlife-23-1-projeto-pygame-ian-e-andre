@@ -7,8 +7,15 @@ export default defineComponent({
     data() {
         return {
             images: [
+
                 {imageUrl: "https://i.ibb.co/C9HTDCF/Screenshot-2023-04-24-at-18-06-08.png", title: "Game in beta version", description: "Photo taken on 19/04 (sprint 1)"},
-                {imageUrl: "https://i.ibb.co/PZJcBWw/Screenshot-2023-04-24-at-18-33-28.png", title: "Game in qa version", description: "Photo taken on 23/04 (end of sprint 1)"},
+                {imageUrl: "https://i.ibb.co/PZJcBWw/Screenshot-2023-04-24-at-18-33-28.png", title: "Game in beta version", description: "Photo taken on 23/04 (end of sprint 1)"},
+                {imageUrl: "https://i.ibb.co/v1cf15v/Whats-App-Image-2023-05-02-at-10-49-41.jpg", title: "Home screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
+                {imageUrl: "https://i.ibb.co/sqgSj4X/Whats-App-Image-2023-05-02-at-10-49-58.jpg", title: "Skins store (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
+                {imageUrl: "https://i.ibb.co/BgqsfQx/Whats-App-Image-2023-05-02-at-10-51-29.jpg", title: "Game screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
+                {imageUrl: "https://i.ibb.co/1bCjBmp/game-history-screen.png", title: "History screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
+                {imageUrl: "https://i.ibb.co/xmXvNHc/game-over-screen.png", title: "Game over screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
+
             ],
             maximizedIndex: 0,
             maximized: false
@@ -44,7 +51,7 @@ export default defineComponent({
             <div class="images-container">
                 <div class="image-unit" v-for="(photo, index) in images" @click="maximizeImage(index)">
                     <div class="image" :style="{backgroundImage: `url(${photo.imageUrl})`}"><div class="gradient"></div></div>
-                    <h1>{{ photo.title }} <i class="fa-solid fa-image-polaroid"></i></h1>
+                    <h1>{{ photo.title }} </h1>
                     <p>{{ photo.description }}</p>
                 </div>
             </div>
@@ -54,7 +61,8 @@ export default defineComponent({
 
 <style scoped>
     .photo-gallery-component {
-        height: 100vh;
+        height: fit-content;
+        min-height: 100vh;
         width: 100vw;
     }
 
@@ -63,7 +71,6 @@ export default defineComponent({
     .minimized-container {
         height: 100%;
         width: 100%;
-
         display: flex;
         flex-direction: column;
         padding: 80px;
@@ -76,7 +83,6 @@ export default defineComponent({
         font-family: 'OCR A Std';
         font-size: 40px;
         color: white;
-        
     }
     .description {
         font-family: 'Roboto mono';
@@ -86,7 +92,9 @@ export default defineComponent({
     }
 
     .images-container {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-auto-rows: fit-content;
         align-items: center;
         gap: 20px;
     }
@@ -95,11 +103,9 @@ export default defineComponent({
         width: 100%;
         height: fit-content;
         border: solid 1px rgba(255, 255, 255, 0.1);
-        max-width: 350px;
         border-radius: 10px;
         overflow: hidden;
         cursor: pointer;
-
     }
 
     .image-unit h1 {
@@ -157,7 +163,6 @@ export default defineComponent({
     .image-unit:hover .image {
         z-index: 100;
         filter: grayscale(0);
-                
     }
 
     /* ---------------------------------------------------- */
