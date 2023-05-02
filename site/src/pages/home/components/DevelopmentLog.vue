@@ -77,15 +77,15 @@ export default defineComponent({
                 @click = "openGroup(date)"
             >
                 <section class="group-header">
-                    <i class="fa-duotone fa-code-branch"></i>
+                    <i class='bx bx-git-branch' style="font-size: 18px"></i>
                     <p>Logs do dia <strong>{{ date }}</strong></p>
 
                     <div class="developers-image">
                         <img src="https://i.ibb.co/Tt2RKmd/ian.jpg">
                         <img src="https://i.ibb.co/Jr94jkk/andre.jpg">
                     </div>
-                    <i class="fa-duotone fa-folder-open fade" v-if="!group.opened"></i>
-                    <i class="fa-solid fa-folder fade" v-if="group.opened"></i>
+                    <i class="bx bxs-folder-open fade" v-if="!group.opened"></i>
+                    <i class="bx bxs-folder fade" v-if="group.opened"></i>
                 </section>
 
                 <section class="logs-container">
@@ -93,7 +93,6 @@ export default defineComponent({
                         <div class="content">
                             <img :src="log.developerAvatar" class="author-avatar">
                             <p class="log-name">{{ log.name }}</p>
-
                             <p class="log-time"><strong>{{ log.time }}</strong>Hrs</p>
                         </div>
                     </div>

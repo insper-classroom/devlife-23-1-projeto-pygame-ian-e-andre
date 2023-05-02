@@ -28,10 +28,10 @@ export default defineComponent({
                 <p>Andre Pereira de Oliveira</p>
             </div>
             <div class="social-media-icons">
-                <a href="https://www.instagram.com/andrepereira_o/"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/andre-pereira-de-oliveira-b2458a206/"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/DECO190"><i class="fa-brands fa-github"></i></a>
-                <a href=""><i class="fa-solid fa-at"></i></a>
+                <a href="https://www.instagram.com/andrepereira_o/"><i class='bx bxl-instagram-alt' ></i></a>
+                <a href="https://www.linkedin.com/in/andre-pereira-de-oliveira-b2458a206/"><i class='bx bxl-linkedin-square' ></i></a>
+                <a href="https://github.com/DECO190"><i class='bx bxl-github' ></i></a>
+                <a href="mailto:andrepo@al.insper.edu.br"><i class='bx bx-voicemail' ></i></a>
             </div>
         </aside>
         <aside class="developer-container">
@@ -40,10 +40,10 @@ export default defineComponent({
                 <p>Ian Cordibello Desponds</p>
             </div>
             <div class="social-media-icons">
-                <a href="https://www.instagram.com/ian_desponds/"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/ian-cordibello-desponds-5b02b025a"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/iancdesponds"><i class="fa-brands fa-github"></i></a>
-                <a href=""><i class="fa-solid fa-at"></i></a>
+                <a href="https://www.instagram.com/ian_desponds/"><i class='bx bxl-instagram-alt' ></i></a>
+                <a href="https://www.linkedin.com/in/ian-cordibello-desponds-5b02b025a"><i class='bx bxl-linkedin-square' ></i></a>
+                <a href="https://github.com/iancdesponds"><i class='bx bxl-github' ></i></a>
+                <a href="mailto:iancd@al.insper.edu.br"><i class='bx bx-voicemail'></i></a>
             </div>
         </aside>
     </div>
@@ -78,7 +78,6 @@ export default defineComponent({
     .developer-container {
         display: flex;
         flex-direction: column;
-        gap: 10px;
     }
     .developer-container .avatar-container {
         display: flex;
@@ -99,13 +98,13 @@ export default defineComponent({
 
     .developer-container .social-media-icons {
         display: flex;
-        gap: 10px;
+        gap: 5px;
         padding-left: 40px;
     }
 
     .developer-container .social-media-icons i {
         color: rgba(255, 255, 255, 0.4);
-        font-size: 18px;
+        font-size: 24px;
         transition: all .5s;
         cursor: pointer;
     }

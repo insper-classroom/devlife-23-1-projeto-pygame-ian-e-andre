@@ -7,7 +7,6 @@ export default defineComponent({
     data() {
         return {
             images: [
-
                 {imageUrl: "https://i.ibb.co/C9HTDCF/Screenshot-2023-04-24-at-18-06-08.png", title: "Game in beta version", description: "Photo taken on 19/04 (sprint 1)"},
                 {imageUrl: "https://i.ibb.co/PZJcBWw/Screenshot-2023-04-24-at-18-33-28.png", title: "Game in beta version", description: "Photo taken on 23/04 (end of sprint 1)"},
                 {imageUrl: "https://i.ibb.co/v1cf15v/Whats-App-Image-2023-05-02-at-10-49-41.jpg", title: "Home screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
@@ -15,7 +14,6 @@ export default defineComponent({
                 {imageUrl: "https://i.ibb.co/BgqsfQx/Whats-App-Image-2023-05-02-at-10-51-29.jpg", title: "Game screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
                 {imageUrl: "https://i.ibb.co/1bCjBmp/game-history-screen.png", title: "History screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
                 {imageUrl: "https://i.ibb.co/xmXvNHc/game-over-screen.png", title: "Game over screen (last version)", description: "Photo taken on 02/05 (end of sprint 2)"},
-
             ],
             maximizedIndex: 0,
             maximized: false
@@ -41,7 +39,7 @@ export default defineComponent({
     <div class="photo-gallery-component" id="gallery">
         <Transition>
             <div class="maximized-image-container" v-if="maximized">
-                <i class="fa-solid fa-xmark close-icon" @click="maximized = false"></i>
+                <i class="bx bx-x-circle close-icon" @click="maximized = false"></i>
                 <img :src="images[maximizedIndex].imageUrl" alt="">
             </div>
         </Transition>
@@ -94,14 +92,14 @@ export default defineComponent({
     .images-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-auto-rows: fit-content;
+        grid-auto-rows: 320px;
         align-items: center;
         gap: 20px;
     }
 
     .image-unit {
+        height: 100%;
         width: 100%;
-        height: fit-content;
         border: solid 1px rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         overflow: hidden;
@@ -198,11 +196,11 @@ export default defineComponent({
 
     .v-enter-active,
     .v-leave-active {
-    transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease;
     }
 
     .v-enter-from,
     .v-leave-to {
-    opacity: 0;
+        opacity: 0;
     }
 </style>
