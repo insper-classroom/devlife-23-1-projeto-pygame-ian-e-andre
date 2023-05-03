@@ -92,7 +92,7 @@ class Game:
         if (random.random() < 0.05): 
             self.obj_groups["shield_items"].add(Shield_item(self.window, self.obj_groups))
         
-        if (random.random() < 0.05):
+        if (random.random() < 0.07):
             self.obj_groups["spikes"].add(Spike(self.window, self.obj_groups))
     
     def update(self):
