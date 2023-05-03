@@ -1,7 +1,5 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Toast } from '@/plugin/Toast';
-import Button from '@/shared/Button.vue'
 import { LogsGroupsInterface } from '../../../interfaces/LogsGroupsInterface';
 import { GetLogsApi } from "../api/GetLogsApi"
 
@@ -57,10 +55,6 @@ export default defineComponent({
     mounted() {
         this.getLogs()
     },
-    components: {
-        Button,
-    }
-
 })
 </script>
 

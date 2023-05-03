@@ -1,4 +1,0 @@
-const config = {
-}
-
-export {config}
