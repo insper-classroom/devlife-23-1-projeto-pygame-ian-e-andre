@@ -11,15 +11,17 @@ The game mechanics are very simple: just touch the screen to fly and release to 
 
 ## Game Installation
 
-To play the previously described 2D game, you need to follow a few simple steps. First, it's necessary to clone the game repository on Github, which can be done through the "git clone" command followed by the repository link.
+To play the previously described 2D game, you need to follow a few simple steps. First, it's necessary to clone the game repository on Github, which can be done through the "git clone" command followed by the [repository link](https://github.com/insper-classroom/devlife-23-1-projeto-pygame-ian-e-andre.git).
 
 Next, you need to enter the directory where the game files are stored, which can be done through the "cd" command.
 
-To ensure that the game runs correctly, you need to install the game dependencies, which can be done through the "pip3 install pygame" command. It's important to note that you need to have Python installed on your computer to run the game.                
+To ensure that the game runs correctly, you need to install the game dependencies, which can be done through the "pip3 install pygame" command. It's important to note that you need to have [Python](https://www.python.org/downloads/) installed on your computer to run the game.                
 
 In addition, it's recommended that Pygame be updated to its latest version, which can be done through the "pip install pygame pip install pygame --upgrade" command.
 
 Finally, to run the game, just type the "python3 main.py" command in the terminal. With these simple steps, you'll be ready to enjoy the exciting and challenging 2D game.
+
+<img src="https://i.ibb.co/k4rYKqs/carbon.png">
 
 ## Project Development
 
@@ -38,3 +40,20 @@ Finally, to run the game, just type the "python3 main.py" command in the termina
 - Github Copilot was used to assist the project documentation process
 - Texts were written assisted by ChatGPT
 - Game was inspired by [Jetpack Joyride](https://www.halfbrick.com/games/jetpack-joyride)
+
+## [Photo Gallery](https://insper-classroom.github.io/devlife-23-1-projeto-pygame-ian-e-andre/#gallery)
+
+### Home Screen
+<img src="https://i.ibb.co/F6RDkM6/game-initial-screen.png">
+
+### Game Screen
+<img src="https://i.ibb.co/BgqsfQx/Whats-App-Image-2023-05-02-at-10-51-29.jpg">
+
+### Skins Store Screen
+<img src="https://i.ibb.co/RHwGYmt/game-skins-store-screen.png">
+
+### Game Over Screen
+<img src="https://i.ibb.co/xmXvNHc/game-over-screen.png">
+
+### History Screen
+<img src="https://i.ibb.co/Gkg9rkT/game-score-history-screen.png">
