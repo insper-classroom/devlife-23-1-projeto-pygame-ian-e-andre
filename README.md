@@ -1,4 +1,4 @@
-# [JETPACK MADNESS]
+# [JETPACK MADNESS](https://insper-classroom.github.io/devlife-23-1-projeto-pygame-ian-e-andre/)
 
 
 ## Game Description
@@ -36,3 +36,5 @@ Finally, to run the game, just type the "python3 main.py" command in the termina
 - [Game Website](https://insper-classroom.github.io/devlife-23-1-projeto-pygame-ian-e-andre/)
 - [Assets sources](game/assets.md)
 - Github Copilot was used to assist the project documentation process
+- Texts were written assisted by ChatGPT
+- Game was inspired by [Jetpack Joyride](https://www.halfbrick.com/games/jetpack-joyride)
