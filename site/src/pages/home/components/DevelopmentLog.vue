@@ -73,7 +73,7 @@ export default defineComponent({
             >
                 <section class="group-header">
                     <i class='bx bx-git-branch' style="font-size: 18px"></i>
-                    <p>Logs do dia <strong>{{ date }}</strong></p>
+                    <p>logs from <strong>{{ date }}</strong></p>
 
                     <div class="developers-image">
                         <img src="https://i.ibb.co/Tt2RKmd/ian.jpg">
@@ -207,6 +207,8 @@ export default defineComponent({
         border: solid 1px rgba(255, 255, 255, 0.1);
         padding: 10px;
         border-radius: 10px;
+
+
     }
 
 
@@ -221,6 +223,10 @@ export default defineComponent({
         margin-left: 10px;
         color: rgba(255, 255, 255, 1);
         font-family: "Roboto mono";
+        white-space: nowrap;                  
+        overflow: hidden; 
+        text-overflow:  ellipsis;
+        max-width: 450px;
     }
 
     .logs-container .log .log-time {
