@@ -3,7 +3,14 @@ from sprites.button import (Button)
 
 
 class Initial:
+    '''
+    This class is responsible for the initial screen and its methods.
+    '''
     def __init__(self, window):
+        '''
+        This method is responsible for initializing the class.
+        It contains the main attributes of the class.
+        '''
         self.window = window
         
         self.groups = {
@@ -22,23 +29,38 @@ class Initial:
         self.groups["buttons"].add(Button(window, self.open_history, "HISTORY", [WINDOW_WIDTH / 2 - BOX_BUTTON_WIDTH / 2, 270], "b1"))
     
     def start_game(self):
+        '''
+        Starts the game.
+        '''
         event = pygame.event.Event(OPEN_GAME_EVENT)
         pygame.event.post(event)
     
     def open_store(self):
+        '''
+        Opens the store.
+        '''
         event = pygame.event.Event(OPEN_STORE_EVENT)
         pygame.event.post(event)
         
     def open_history(self):
+        '''
+        Opens the score history.
+        '''
         event = pygame.event.Event(OPEN_HISTORY_EVENT)
         pygame.event.post(event)
     
     def handle_event(self, event):
+        '''
+        Handles the events of the screen, such as mouse clicks.
+        '''
         if (event.type == pygame.MOUSEBUTTONDOWN):
             for bttn in self.groups["buttons"]:
                 bttn.handle_click()
 
     def draw(self):
+        '''
+        Draws the screen with its elements, such as buttons and background.
+        '''
         self.window.fill((100, 100, 100))
         self.window.blit(self.background_image, (0, 0))
         self.window.blit(self.lander_image, (WINDOW_WIDTH / 2 - LANDER_WIDTH / 2, WINDOW_HEIGHT / 2 - LANDER_HEIGHT / 2))
@@ -49,6 +71,9 @@ class Initial:
         self.window.blit(lander_text, (445, 412))
         
     def draw_instructions(self):
+        '''
+        Draws the instructions panel.
+        '''
         icon_rect = pygame.Rect(WINDOW_WIDTH - 10 - INSTRUCTIONS_ICON_WIDTH, WINDOW_HEIGHT - 10 - INSTRUCTIONS_ICON_HEIGHT, INSTRUCTIONS_ICON_WIDTH, INSTRUCTIONS_ICON_HEIGHT)
         self.window.blit(self.instructions_icon_image, (WINDOW_WIDTH - 10 - INSTRUCTIONS_ICON_WIDTH, WINDOW_HEIGHT - 10 - INSTRUCTIONS_ICON_HEIGHT))
         
@@ -58,6 +83,9 @@ class Initial:
             self.window.blit(self.instructions_image, (WINDOW_WIDTH - 15, 180))
         
     def change_cursor(self):
+        '''
+        Changes the cursor to a hand when the mouse is hovering over a button.
+        '''
         hovering = False
         mouse_pos = pygame.mouse.get_pos()
         for bttn in self.groups["buttons"]:
@@ -70,6 +98,9 @@ class Initial:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
         
     def update(self):
+        '''
+        Updates the game state. 
+        '''
         self.draw()
         self.draw_instructions()
         

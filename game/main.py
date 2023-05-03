@@ -15,10 +15,19 @@ pygame.init()
 clock = pygame.time.Clock()
                     
 class Main:
+    '''
+    This class is responsible for running the game.
+    '''
     def __init__(self):
+        '''
+        Initializes the class on the initial screen.
+        '''
         self.current_screen = Initial(WINDOW)
 
     def run(self):
+        '''
+        Runs the game. Plays the music and generates the game loop.
+        '''
         pygame.mixer.music.load('assets/snd/Cyberpunk Moonlight Sonata v2.mp3')
         pygame.mixer.music.set_volume(0.2)
         pygame.mixer.music.play(loops=-1)
@@ -26,6 +35,9 @@ class Main:
         while 1:
             for event in pygame.event.get():
                 self.current_screen.handle_event(event)
+                '''
+                Handle events here, changing the screen if necessary.
+                '''
                 
                 if (event.type == pygame.QUIT) or (event.type == pygame.KEYUP and event.key == pygame.K_ESCAPE):
                     sys.exit()

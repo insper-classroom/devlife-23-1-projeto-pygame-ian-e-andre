@@ -4,7 +4,13 @@ from config import *
 clock = pygame.time.Clock()
 
 class Button(pygame.sprite.Sprite):
+    '''
+    This class is responsible for the buttons.
+    '''
     def __init__(self, window, onclick, text, position, type, id=""):
+        '''
+        Initializes the class and its attributes.
+        '''
         pygame.sprite.Sprite.__init__(self)
         
         self.dimensions = [BOX_BUTTON_WIDTH, BOX_BUTTON_HEIGHT]
@@ -18,6 +24,9 @@ class Button(pygame.sprite.Sprite):
         self.id = id
         self.text_pos = [0, 0]
         
+        '''
+        Sets the different types of buttons.
+        '''
         if (type == "b1"):
             self.background_box = pygame.transform.smoothscale(pygame.image.load(os.path.join('assets', 'img', 'box.png')).convert_alpha(), (self.dimensions[0], self.dimensions[1]))
         elif (type == "b2"):
@@ -39,12 +48,18 @@ class Button(pygame.sprite.Sprite):
         self.rect = pygame.Rect(position[0], position[1], self.dimensions[0], self.dimensions[1])
         
     def get_text_center(self, text_width, text_height):
+        '''
+        Returns the center of the text.
+        '''
         x = self.position[0] + (self.dimensions[0] / 2 - text_width / 2) 
         y = self.position[1] + (self.dimensions[1] / 2 - text_height / 2) 
         
         return [x, y]
 
     def draw(self):
+        '''
+        Draws the button.
+        '''
         self.window.blit(self.background_box, (self.position[0], self.position[1]))
         
         text = self.font.render(self.text, True, (255, 255, 255))
@@ -52,11 +67,17 @@ class Button(pygame.sprite.Sprite):
         self.window.blit(text, self.text_pos)
     
     def handle_click(self):
+        '''
+        Handles the click of the button.
+        '''
         mouse_pos = pygame.mouse.get_pos()
         if (self.rect.collidepoint(mouse_pos)):
             pygame.mixer.Sound.play(self.click_sound)
             self.onclick()
         
     def update(self):
+        '''
+        Updates the button and draws it.
+        '''
         self.draw()
         

@@ -1,6 +1,10 @@
 import os
 import pygame
 
+'''
+This file contains the constants used in the game.
+'''
+
 WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 562
 

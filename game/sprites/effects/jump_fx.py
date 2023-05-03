@@ -4,7 +4,13 @@ from utils.counter import Counter
 from utils.utils import get_animation_images
 
 class Jump_fx(pygame.sprite.Sprite):
+    '''
+    This class is responsible for the jump effect and animation.
+    '''
     def __init__(self, window, player):
+        '''
+        Initializes the class and its attributes.
+        '''
         pygame.sprite.Sprite.__init__(self)
         
         self.width = 241
@@ -19,11 +25,17 @@ class Jump_fx(pygame.sprite.Sprite):
         self.jumped = False
     
     def draw(self):
+        '''
+        Draws the jump effect.
+        '''
         image = self.animation_images[self.current_animation_index]
         
         self.window.blit(image, (30, WINDOW_HEIGHT - self.height - FLOOR_HEIGHT))
         
     def animation(self):
+        '''
+        Animates the jump effect, changing the current animation index.
+        '''
         self.current_animation_index += 1
         
         if (self.current_animation_index == len(self.animation_images) - 1):
@@ -31,6 +43,9 @@ class Jump_fx(pygame.sprite.Sprite):
             self.jumped = False
     
     def update(self, delta_t):
+        '''
+        Updates the jump effect.
+        '''
         if (self.jump and not self.jumped):
             self.current_animation_index = 0
             self.jumped = True

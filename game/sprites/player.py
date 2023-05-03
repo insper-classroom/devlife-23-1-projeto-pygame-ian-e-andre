@@ -7,7 +7,13 @@ from sprites.effects.propulsion_fx import (Propulsion_fx)
 
 
 class Player(pygame.sprite.Sprite):
+    '''
+    This class is responsible for the player and its animations and methods.
+    '''
     def __init__(self, window, obj_groups, game):
+        '''
+        Initializes the class and its attributes.
+        '''
         pygame.sprite.Sprite.__init__(self)
         
         self.window = window
@@ -17,6 +23,9 @@ class Player(pygame.sprite.Sprite):
     
         self.bumping = False
         
+        '''
+        Sets the player's velocity and acceleration.
+        '''
         self.vely = 0
         
         self.bump_acel = -0.03
@@ -32,6 +41,9 @@ class Player(pygame.sprite.Sprite):
         
         self.shield = False
 
+        '''
+        Loads the player's data, sounds, images, effects and masks.
+        '''
         self.sounds = {
             "coin_sound": pygame.mixer.Sound("assets/snd/coin01.ogg"),
             "death_sound": pygame.mixer.Sound("assets/snd/vgdeathsound.wav"),
@@ -58,6 +70,9 @@ class Player(pygame.sprite.Sprite):
         
 
     def movement(self, delta_t):
+        '''
+        Moves the player, animates it depending on the player's state.
+        '''
         current_image_height = WALKING_PLAYER_HEIGHT
         if (not self.on_floor):
             current_image_height = JETPACK_PLAYER_HEIGHT
@@ -83,6 +98,10 @@ class Player(pygame.sprite.Sprite):
             self.bumping = False
         self.rect.y += self.vely * delta_t
         
+        '''
+        Sets limits to the player's position and determines if the player 
+        is on the floor or on the top.
+        '''
         if (self.rect.y >= WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT):
             self.rect.y = WINDOW_HEIGHT - current_image_height - FLOOR_HEIGHT
             
@@ -108,10 +127,20 @@ class Player(pygame.sprite.Sprite):
             self.on_top = False
             
     def kill_player(self, group_name, collided_sprites):
+        '''
+        Checks if the player has a shield, if it does, the shield is removed,
+        otherwise, the player dies.
+        Saves the player's score and coins amount and updates the stored data 
+        on the json file.
+        '''
         if (self.shield):
             self.obj_groups[group_name].remove(collided_sprites)
             self.shield = False
         else: 
+            '''
+            Updates the high score if the current score is higher than the
+            stored high score.
+            '''
             if (self.game.score > self.stored_data["high_score"] ):
                 self.stored_data["high_score"] = self.game.score
                 
@@ -127,12 +156,18 @@ class Player(pygame.sprite.Sprite):
             
         
     def update_hitbox(self):
+        '''
+        Updates the player's hitbox based on the current sprite image.
+        '''
         dimensions = self.sprite_image.get_bounding_rect()
         self.rect.width = dimensions[2]
         self.rect.height = dimensions[3]
         self.mask = pygame.mask.from_surface(self.sprite_image)
         
     def draw(self):
+        '''
+        Draws the player depending on the current animation and state.
+        '''
         if (not self.on_floor):
             self.sprite_image = self.jetpack_animation_images[self.current_animation_index]
         elif (self.on_floor):
@@ -144,6 +179,11 @@ class Player(pygame.sprite.Sprite):
             self.window.blit(self.shield_image, (self.rect.x - 25, self.rect.y - 10))
             
     def check_group_collision(self):
+        '''
+        Checks if the player collides with any of the groups in the game, 
+        such as coins, shields or obstacles, and performs the corresponding
+        action.
+        '''
         for grp_name in self.obj_groups:
             grp = self.obj_groups[grp_name]
                 
@@ -162,6 +202,9 @@ class Player(pygame.sprite.Sprite):
                     
                     
     def animation(self):
+        '''
+        Animates the player depending on the current state.
+        '''
         self.current_animation_index += 1
         
         if (
@@ -173,8 +216,11 @@ class Player(pygame.sprite.Sprite):
                 
     
     def update(self, delta_t):
-        self.movement(delta_t)
+        '''
+        Updates the player's position, animation, effects, hitbox and draws it.
         
+        '''
+        self.movement(delta_t)
         self.animation_counter.update(delta_t)
         self.check_group_collision()
         self.update_hitbox()
