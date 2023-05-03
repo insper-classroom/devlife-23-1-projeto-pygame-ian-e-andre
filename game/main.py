@@ -7,7 +7,6 @@ from screens.game_over import (Game_over)
 from screens.store import (Store)
 import sys
 
-
 WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 pygame.init()
