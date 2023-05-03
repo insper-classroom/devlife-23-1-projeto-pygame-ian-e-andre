@@ -1,7 +1,5 @@
-
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Toast } from '@/plugin/Toast';
 
 export default defineComponent({
     data() {
@@ -9,8 +7,7 @@ export default defineComponent({
     },
 
     methods: {},
-    mounted() {
-    },
+    mounted() {},
     components: {}
 
 })
@@ -28,10 +25,10 @@ export default defineComponent({
                 <p>Andre Pereira de Oliveira</p>
             </div>
             <div class="social-media-icons">
-                <a href="https://www.instagram.com/andrepereira_o/"><i class='bx bxl-instagram-alt' ></i></a>
-                <a href="https://www.linkedin.com/in/andre-pereira-de-oliveira-b2458a206/"><i class='bx bxl-linkedin-square' ></i></a>
-                <a href="https://github.com/DECO190"><i class='bx bxl-github' ></i></a>
-                <a href="mailto:andrepo@al.insper.edu.br"><i class='bx bx-voicemail' ></i></a>
+                <a href="https://www.instagram.com/andrepereira_o/" target="_blank"><i class='bx bxl-instagram-alt' ></i></a>
+                <a href="https://www.linkedin.com/in/andre-pereira-de-oliveira-b2458a206/" target="_blank"><i class='bx bxl-linkedin-square' ></i></a>
+                <a href="https://github.com/DECO190" target="_blank"><i class='bx bxl-github' ></i></a>
+                <a href="mailto:andrepo@al.insper.edu.br" target="_blank"><i class='bx bx-voicemail' ></i></a>
             </div>
         </aside>
         <aside class="developer-container">
@@ -40,10 +37,10 @@ export default defineComponent({
                 <p>Ian Cordibello Desponds</p>
             </div>
             <div class="social-media-icons">
-                <a href="https://www.instagram.com/ian_desponds/"><i class='bx bxl-instagram-alt' ></i></a>
-                <a href="https://www.linkedin.com/in/ian-cordibello-desponds-5b02b025a"><i class='bx bxl-linkedin-square' ></i></a>
-                <a href="https://github.com/iancdesponds"><i class='bx bxl-github' ></i></a>
-                <a href="mailto:iancd@al.insper.edu.br"><i class='bx bx-voicemail'></i></a>
+                <a href="https://www.instagram.com/ian_desponds/" target="_blank"><i class='bx bxl-instagram-alt' ></i></a>
+                <a href="https://www.linkedin.com/in/ian-cordibello-desponds-5b02b025a" target="_blank"><i class='bx bxl-linkedin-square' ></i></a>
+                <a href="https://github.com/iancdesponds" target="_blank"><i class='bx bxl-github' ></i></a>
+                <a href="mailto:iancd@al.insper.edu.br" target="_blank"><i class='bx bx-voicemail'></i></a>
             </div>
         </aside>
     </div>

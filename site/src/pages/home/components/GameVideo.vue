@@ -1,23 +1,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Toast } from '@/plugin/Toast';
-
-import Button from '@/shared/Button.vue'
 
 export default defineComponent({
     data() {
-        return {
-            text: "",
-            currentPlayerImageIndex: 1
-        }
+        return {}
     },
 
     methods: {},
-    mounted() {
-    },
-    components: {
-        Button,
-    }
+    mounted() {},
+    components: {}
 
 })
 </script>
@@ -26,7 +17,7 @@ export default defineComponent({
     <div class="game-video-component fade" id="video">
         <h1>GAME VIDEO</h1>
         <p class="description">Below you can find a gameplay showing how the game works</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/TCxaUGLHBgk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="100%" height="100%" style="margin-top: 20px;" src="https://www.youtube.com/embed/TCxaUGLHBgk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 </template>
 

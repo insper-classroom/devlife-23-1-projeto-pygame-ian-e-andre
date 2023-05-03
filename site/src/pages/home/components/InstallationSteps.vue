@@ -1,24 +1,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Toast } from '@/plugin/Toast';
-
-import Button from '@/shared/Button.vue'
 
 export default defineComponent({
     data() {
-        return {
-            text: "",
-            currentPlayerImageIndex: 1
-        }
+        return {}
     },
-
     methods: {},
-    mounted() {
-    },
-    components: {
-        Button,
-    }
-
 })
 </script>
 
