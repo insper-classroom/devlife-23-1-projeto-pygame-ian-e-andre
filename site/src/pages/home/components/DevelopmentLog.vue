@@ -17,12 +17,12 @@ export default defineComponent({
                 "andre": "https://i.ibb.co/Jr94jkk/andre.jpg",
                 "ian": "https://i.ibb.co/Tt2RKmd/ian.jpg"
             }, 
-            logsGroups: {}  
+            logsGroups: {},
         }
     },
     methods: {
-        async getLogs() {
-            let data = await GetLogsApi()
+        async getLogsByPage(page: string) {
+            let data = await GetLogsApi(page)
 
             for (let i in data) {
                 let date = new Date(data[i].commit.committer.date)
@@ -41,7 +41,6 @@ export default defineComponent({
                     this.logsGroups[parsedDate].logs = [log]
                 }
             }
-
         },
         openGroup(dateIndex: any) {
             for (let i in this.logsGroups) {
@@ -52,8 +51,10 @@ export default defineComponent({
             this.logsGroups[dateIndex].opened = !this.logsGroups[dateIndex].opened 
         }
     },
-    mounted() {
-        this.getLogs()
+    async mounted() {
+        await this.getLogsByPage("1")
+        await this.getLogsByPage("2")
+
     },
 })
 </script>
