@@ -13,10 +13,16 @@ class Initial:
         '''
         self.window = window
         
+        '''
+        Sets the groups of sprites.
+        '''
         self.groups = {
             "buttons": pygame.sprite.Group(),
         }
 
+        '''
+        Loads the data, images and fonts used in the screen.
+        '''
         self.background_image = pygame.transform.smoothscale(pygame.image.load("assets/img/blurred-background.png").convert_alpha(), (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.lander_image = pygame.transform.smoothscale(pygame.image.load("assets/img/lander.png").convert_alpha(), (LANDER_WIDTH, LANDER_HEIGHT))
         self.instructions_image = pygame.transform.smoothscale(pygame.image.load("assets/img/instructions.png").convert_alpha(), (INSTRUCTIONS_PANEL_WIDTH, INSTRUCTIONS_PANEL_HEIGHT))

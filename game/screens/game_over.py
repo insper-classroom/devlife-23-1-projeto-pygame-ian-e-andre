@@ -17,6 +17,9 @@ class Game_over:
             "buttons": pygame.sprite.Group(),
         }
 
+        '''
+        Loads the data, images and fonts used in the screen.
+        '''
         self.background_image = pygame.transform.smoothscale(pygame.image.load("assets/img/blurred-background.png").convert_alpha(), (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.lander_image = pygame.transform.smoothscale(pygame.image.load("assets/img/lander.png").convert_alpha(), (LANDER_WIDTH, LANDER_HEIGHT))
         self.title_panel_image = pygame.transform.smoothscale(pygame.image.load("assets/img/title-pannel-empty.png").convert_alpha(), (TITLE_PANEL_WIDTH, TITLE_PANEL_HEIGHT))

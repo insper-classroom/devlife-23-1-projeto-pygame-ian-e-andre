@@ -22,6 +22,9 @@ class Game:
         '''
         self.window = window
         
+        '''
+        Sets the groups of sprites.
+        '''
         self.obj_groups = {
             "electric_obstacles": pygame.sprite.Group(),
             "coins": pygame.sprite.Group(),
@@ -30,6 +33,9 @@ class Game:
             "spikes": pygame.sprite.Group()
         }
 
+        '''
+        Loads the data and images used in the screen.
+        '''
         self.background_image = pygame.image.load(os.path.join( "assets", "img", "background", "1.png"))
         self.background_image = pygame.transform.scale(self.background_image, (WINDOW_WIDTH, WINDOW_HEIGHT))
         
